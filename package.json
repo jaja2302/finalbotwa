@@ -2,9 +2,9 @@
   "name": "next-whatsapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "wa-js.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node wa-js.js"
   },
   "keywords": [],
   "author": "",

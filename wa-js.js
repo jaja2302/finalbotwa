@@ -21,7 +21,7 @@ const client = new Client({
         headless:true,
     },
     authStrategy: new LocalAuth({
-        clientId: "jojok",
+        clientId: "nomorxl",
     })
 });
 
@@ -76,21 +76,20 @@ async function sendMessages(numberData) {
     }
 }
 
-// Schedule the task to run every 5 minutes
-cron.schedule('*/1 * * * *', async () => {
-    console.log('Running message sending task...');
+// // Schedule the task to run every 5 minutes
+// cron.schedule('*/1 * * * *', async () => {
+//     console.log('Running message sending task...');
 
-    const smartLabsData = await fetchSmartLabsJSON();
-    if (smartLabsData) {
-        await sendMessages(smartLabsData);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+//     const smartLabsData = await fetchSmartLabsJSON();
+//     if (smartLabsData) {
+//         await sendMessages(smartLabsData);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
 // ... (other parts of your code)
-
 async function sendPdfToGroups() {
     try {
         // Function to fetch PDF files from a given folder and return file names
@@ -114,24 +113,45 @@ async function sendPdfToGroups() {
                 if (groupChat) {
                     await groupChat.sendMessage(media, { sendMediaAsDocument: true });
                     console.log(`File "${fileName}" sent to the group ${groupID} as a document!`);
+
+                    // Delete the file after sending
+                    await deleteFile(fileName, folder);
                 } else {
                     console.log(`Group ${groupID} not found!`);
                 }
             }
         };
+        // takasasi 2 - 120363204285862734@g.us
+        // Tes taksasi - 120363205553012899@g.us
 
-        // Send PDF files from wil1 to group 1
-        await sendPdfToGroup('wil1', '120363205553012899@g.us');
 
-        // Send PDF files from wil2 to group 2
-        await sendPdfToGroup('wil2', '120363204285862734@g.us');
+        // testing 
+        // await sendPdfToGroup('Wilayah_1', '120363204285862734@g.us');
+        // await sendPdfToGroup('Wilayah_2', '120363205553012899@g.us');
+        // await sendPdfToGroup('Wilayah_3', '120363204285862734@g.us');
+
+
+        // real grup taksasi wil1 - 3 
+        // Send PDF files from different folders to respective groups
+        await sendPdfToGroup('Wilayah_1', '120363025737216061@g.us');
+        await sendPdfToGroup('Wilayah_2', '120363047670143778@g.us');
+        await sendPdfToGroup('Wilayah_3', '120363048442215265@g.us');
     } catch (error) {
         console.error('Error fetching or sending PDF files:', error);
     }
 }
 
+async function deleteFile(filename, folder) {
+    try {
+        await axios.get(`https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`);
+        console.log(`File '${filename}' in folder '${folder}' deleted successfully.`);
+    } catch (error) {
+        console.error(`Error deleting file '${filename}' in folder '${folder}':`, error);
+    }
+}
+
 // Schedule the task to run at a specified time
-cron.schedule('56 11 * * *', async () => {
+cron.schedule('05 16 * * *', async () => {
     console.log('Sending files to groups at 16:30 (WIB)...');
     await sendPdfToGroups();
 }, {
@@ -140,9 +160,10 @@ cron.schedule('56 11 * * *', async () => {
 });
 
 
+
 client.on('ready', async () => { 
     console.log('Client is ready!');
-    sendPdfToGroups();
+    // sendPdfToGroups();
 });
 
 client.on('message', async msg => {

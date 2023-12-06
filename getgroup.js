@@ -3,7 +3,7 @@ const venom = require('venom-bot');
 // Initialize Venom client
 venom.create({
   browserArgs: ['--no-sandbox'], // Add browser arguments here if needed
-  session: 'Testing'
+  session: 'nowaxl'
 })
   .then((client) => start(client))
   .catch((error) => {
