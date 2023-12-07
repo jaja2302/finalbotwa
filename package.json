@@ -18,5 +18,9 @@
     "venom-bot": "^5.0.21",
     "whatsapp-web.js": "^1.23.0",
     "ws": "^8.14.2"
+  },
+  "bin": {
+    "myApp": "wa-js.js" 
   }
+  
 }

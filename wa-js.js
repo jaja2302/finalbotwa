@@ -136,6 +136,10 @@ async function sendPdfToGroups() {
         await sendPdfToGroup('Wilayah_1', '120363025737216061@g.us');
         await sendPdfToGroup('Wilayah_2', '120363047670143778@g.us');
         await sendPdfToGroup('Wilayah_3', '120363048442215265@g.us');
+        await sendPdfToGroup('Wilayah_6', '120363152744155925@g.us');
+        await sendPdfToGroup('Wilayah_7', '120363149785590346@g.us');
+        await sendPdfToGroup('Wilayah_7', '120363170524329595@g.us');
+        await sendPdfToGroup('Wilayah_7', '120363166668733371@g.us');
     } catch (error) {
         console.error('Error fetching or sending PDF files:', error);
     }
@@ -158,34 +162,155 @@ cron.schedule('05 16 * * *', async () => {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
+cron.schedule('05 14 * * *', async () => {
+    console.log('Sending files to groups at 16:30 (WIB)...');
+    await sendPdfToGroups();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
 
+cron.schedule('05 12 * * *', async () => {
+    console.log('Sending files to groups at 16:30 (WIB)...');
+    await sendPdfToGroups();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('05 09 * * *', async () => {
+    console.log('Sending files to groups at 16:30 (WIB)...');
+    await sendPdfToGroups();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
 
 
 client.on('ready', async () => { 
     console.log('Client is ready!');
     // sendPdfToGroups();
-});
+
+    
+});async function sendtaksasiest(est, groupID) {
+    try {
+        let folder;
+        // Mapping the est value to the corresponding folder
+        switch (est) {
+            case 'PLE':
+            case 'KNE':
+            case 'RDE':
+            case 'SLE':
+                folder = 'Wilayah_1';
+                break;
+            case 'KDE':
+            case 'BKE':
+            case 'RGE':
+            case 'SGE':
+                folder = 'Wilayah_2';
+                break;
+            case 'SYE':
+            case 'BGE':
+            case 'NBE':
+            case 'UPE':
+                folder = 'Wilayah_3';
+                break;
+                case 'MRE':
+                    case 'NKE':
+                    case 'PDE':
+                    case 'SPE':
+                        folder = 'Wilayah_4';
+                        break;
+                        case 'BTE':
+                        case 'NNE':
+                        case 'SBE':
+                                folder = 'Wilayah_5';
+                                break; 
+                                case 'MLE':
+                            case 'SCE':
+                      
+                                folder = 'Wilayah_6';
+                                break;  
+                                case 'PKE':
+                                    case 'BDE':
+                                    case 'KTE':
+                                    case 'MKE':
+                                    case 'BHE':
+                                  
+                                            folder = 'Wilayah_7';
+                                            break;  
+            default:
+                // Handle cases where est doesn't match any defined folders
+                console.log('Invalid est value provided.');
+                return;
+        }
+
+        // Hit the URL to regenerate and save PDFs in the corresponding folder
+        await axios.get(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est}`);
+        console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
+
+        const fetchPdfFiles = async (folder) => {
+            const response = await axios.get(`https://srs-ssms.com/whatsapp_bot/taksasiScan.php?folder=${folder}`);
+            return Object.values(response.data);
+        };
+
+        const sendPdfToGroup = async (folder, groupID) => {
+            const files = await fetchPdfFiles(folder);
+
+            for (const fileName of files) {
+                const response = await axios.get(`https://srs-ssms.com/whatsapp_bot/taksasi/${folder}/${fileName}`, {
+                    responseType: 'arraybuffer',
+                });
+
+                const base64Data = Buffer.from(response.data).toString('base64');
+                const media = new MessageMedia('application/pdf', base64Data, fileName);
+
+                const groupChat = await client.getChatById(groupID); // Use the passed groupID
+                if (groupChat) {
+                    await groupChat.sendMessage(media, { sendMediaAsDocument: true });
+                    console.log(`File "${fileName}" sent to the group ${groupID} as a document!`);
+
+                    // Delete the file after sending
+                    await deleteFile(fileName, folder);
+                } else {
+                    console.log(`Group ${groupID} not found!`);
+                }
+            }
+        };
+    
+        // Use the provided groupID according to the folder
+        if (folder === 'Wilayah_1') {
+            await sendPdfToGroup(folder, '120363025737216061@g.us');
+        } else if (folder === 'Wilayah_2') {
+            await sendPdfToGroup(folder, '120363047670143778@g.us');
+        } else if (folder === 'Wilayah_3') {
+            await sendPdfToGroup(folder, '120363048442215265@g.us');
+        } else if (folder === 'Wilayah_6') {
+            await sendPdfToGroup(folder, '120363152744155925@g.us');
+        } else if (folder === 'Wilayah_7' && est ==='BHE') {
+            await sendPdfToGroup(folder, '120363149785590346@g.us');
+        }else if (folder === 'Wilayah_7' && est ==='KTE') {
+            await sendPdfToGroup(folder, '120363170524329595@g.us');
+        }else if (folder === 'Wilayah_7' && est ==='BWE') {
+            await sendPdfToGroup(folder, '120363166668733371@g.us');
+        }
+    } catch (error) {
+        console.error(`Error fetching files:`, error);
+    }
+}
+
 
 client.on('message', async msg => {
-    if (msg.body === '!ping reply') {
-        // Send a new message as a reply to the current one
-        msg.reply('pong');
-
-    } else if (msg.body === '!ping') {
-        // Send a new message to the same chat
-        client.sendMessage(msg.from, 'pong');
-
-    }  else if (msg.body === '!groupinfo') {
+    if (msg.body === '!tarik') {
         let chat = await msg.getChat();
         if (chat.isGroup) {
-            msg.reply(`
-                *Group Details*
-                Name: ${chat.name}
-                Description: ${chat.description}
-                Created At: ${chat.createdAt.toString()}
-                Created By: ${chat.owner.user}
-                Participant count: ${chat.participants.length}
-            `);
+            msg.reply('Masukan Estate:');
+            client.on('message', async message => {
+                if (message.from === msg.from) {
+                    const estate = message.body;
+                    sendtaksasiest(estate, chat.id); // Pass the estate and group ID
+                }
+            });
         } else {
             msg.reply('This command can only be used in a group!');
         }
