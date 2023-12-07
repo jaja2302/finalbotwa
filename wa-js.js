@@ -38,56 +38,77 @@ client.on('auth_failure', msg => {
     console.error('AUTHENTICATION FAILURE', msg);
 });
 
-
 // sending message smartlabs json 
-async function fetchSmartLabsJSON() {
+async function sendMessagesBasedOnData() {
     try {
-        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/smartlabs/SmartlabsNumber.json');
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching smartlabsnumber.json:', error);
-        return null;
-    }
-}
+        // Fetch data from the PHP endpoint
+        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php');
+        const numberData = response.data;
 
-// Function to send messages based on smartlabsnumber.json data
-async function sendMessages(numberData) {
-    if (!numberData) {
-        console.error('No smartlabsnumber.json data available.');
-        return;
-    }
-
-    for (const data of numberData) {
-        const phoneNumber = `${data.number}@c.us`;
-        const message = data.Message;
-
-        const contact = await client.getContactById(phoneNumber);
-        if (contact) {
-            const chat = await contact.getChat();
-            if (chat) {
-                await chat.sendMessage(message);
-                console.log(`Message "${message}" sent to ${phoneNumber}`);
-            } else {
-                console.log(`Chat not found for ${phoneNumber}`);
-            }
-        } else {
-            console.log(`Contact not found for ${phoneNumber}`);
+        if (!numberData || !Array.isArray(numberData)) {
+            console.error('Invalid or empty data.');
+            return;
         }
+
+        for (const data of numberData) {
+            const phoneNumber = `${data.penerima}@c.us`; // Adjust to match your JSON structure
+            const message = `${data.pesan} ${data.kodesample}`; // Adjust to match your JSON structure
+            const idmsg = `${data.id}`; 
+
+            const contact = await client.getContactById(phoneNumber);
+            if (contact) {
+                const chat = await contact.getChat();
+                if (chat) {
+                    await sendMessageWithDelay(chat, message, phoneNumber, idmsg);
+                } else {
+                    console.log(`Chat not found for ${phoneNumber}`);
+                }
+            } else {
+                console.log(`Contact not found for ${phoneNumber}`);
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching data or sending messages:', error);
     }
 }
+
+async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
+    await new Promise((resolve) => {
+        setTimeout(async () => {
+            await chat.sendMessage(message);
+            console.log(`Message "${message}" sent to ${phoneNumber}`);
+
+            // After sending the message, proceed to delete the message ID
+            await deletemsg(idmsg);
+            resolve();
+        }, 10000); // 10 seconds delay
+    });
+}
+
+async function deletemsg(idmsg) {
+    try {
+        await axios.post('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php', { id: idmsg });
+        console.log(`Message ID '${idmsg}' deleted successfully.`);
+    } catch (error) {
+        console.error(`Error deleting message ID '${idmsg}':`, error);
+    }
+}
+
+
+// Call the function when the client is ready
+client.on('ready', async () => { 
+    console.log('Client is ready!');
+    // await sendMessagesBasedOnData();
+});
 
 // // Schedule the task to run every 5 minutes
-// cron.schedule('*/1 * * * *', async () => {
-//     console.log('Running message sending task...');
-
-//     const smartLabsData = await fetchSmartLabsJSON();
-//     if (smartLabsData) {
-//         await sendMessages(smartLabsData);
-//     }
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
+cron.schedule('*/1 * * * *', async () => {
+    console.log('Running message sending task...');
+    await sendMessagesBasedOnData();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 // ... (other parts of your code)
 async function sendPdfToGroups(folder, groupID) {
@@ -115,7 +136,8 @@ async function sendPdfToGroups(folder, groupID) {
                     console.log(`File "${fileName}" sent to the group ${groupID} as a document!`);
 
                     // Delete the file after sending
-                    await deleteFile(fileName, folder);
+                  
+                      await deleteFile(fileName, folder);
                 } else {
                     console.log(`Group ${groupID} not found!`);
                 }
@@ -139,14 +161,9 @@ async function deleteFile(filename, folder) {
     }
 }
 
-client.on('ready', async () => { 
-    console.log('Client is ready!');
-
-    // await sendPdfToGroups(Wilayah_7, '120363204285862734@g.us');
-});
-
 
 // Schedule the task to run at a specified time
+
 cron.schedule('05 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
         await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
