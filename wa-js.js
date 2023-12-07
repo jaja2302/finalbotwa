@@ -209,7 +209,25 @@ cron.schedule('02 14 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-
+// sending harian 
+cron.schedule('10 15 * * *', async () => {
+    console.log('Sending Harian Reminder to groups Harian at 15:10 (WIB)...');
+    
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Harian Guys');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta'
+});
 
 async function sendtaksasiest(est, groupID) {
     try {
