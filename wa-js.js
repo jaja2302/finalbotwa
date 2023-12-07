@@ -304,7 +304,7 @@ client.on('message', async msg => {
     if (msg.body === '!tarik') {
         let chat = await msg.getChat();
         if (chat.isGroup) {
-            msg.reply('Masukan Estate:');
+            msg.reply('Masukan Estate (harap semua hurup Kapital):');
             client.on('message', async message => {
                 if (message.from === msg.from) {
                     const estate = message.body;
