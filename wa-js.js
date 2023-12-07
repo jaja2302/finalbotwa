@@ -90,7 +90,7 @@ async function sendMessages(numberData) {
 // });
 
 // ... (other parts of your code)
-async function sendPdfToGroups() {
+async function sendPdfToGroups(folder, groupID) {
     try {
         // Function to fetch PDF files from a given folder and return file names
         const fetchPdfFiles = async (folder) => {
@@ -121,25 +121,10 @@ async function sendPdfToGroups() {
                 }
             }
         };
-        // takasasi 2 - 120363204285862734@g.us
-        // Tes taksasi - 120363205553012899@g.us
 
-
-        // testing 
-        // await sendPdfToGroup('Wilayah_1', '120363204285862734@g.us');
-        // await sendPdfToGroup('Wilayah_2', '120363205553012899@g.us');
-        // await sendPdfToGroup('Wilayah_3', '120363204285862734@g.us');
-
-
-        // real grup taksasi wil1 - 3 
-        // Send PDF files from different folders to respective groups
-        await sendPdfToGroup('Wilayah_1', '120363025737216061@g.us');
-        await sendPdfToGroup('Wilayah_2', '120363047670143778@g.us');
-        await sendPdfToGroup('Wilayah_3', '120363048442215265@g.us');
-        await sendPdfToGroup('Wilayah_6', '120363152744155925@g.us');
-        await sendPdfToGroup('Wilayah_7', '120363149785590346@g.us');
-        await sendPdfToGroup('Wilayah_7', '120363170524329595@g.us');
-        await sendPdfToGroup('Wilayah_7', '120363166668733371@g.us');
+        await sendPdfToGroup(folder, groupID);
+    
+       
     } catch (error) {
         console.error('Error fetching or sending PDF files:', error);
     }
@@ -154,45 +139,62 @@ async function deleteFile(filename, folder) {
     }
 }
 
+client.on('ready', async () => { 
+    console.log('Client is ready!');
+
+    // await sendPdfToGroups(Wilayah_7, '120363204285862734@g.us');
+});
+
+
 // Schedule the task to run at a specified time
 cron.schedule('05 16 * * *', async () => {
-    console.log('Sending files to groups at 16:30 (WIB)...');
-    await sendPdfToGroups();
+    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+        await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+        await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+        await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
-cron.schedule('05 14 * * *', async () => {
-    console.log('Sending files to groups at 16:30 (WIB)...');
-    await sendPdfToGroups();
+cron.schedule('05 09 * * *', async () => {
+    console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
+    // BDE 
+    await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
 cron.schedule('05 12 * * *', async () => {
-    console.log('Sending files to groups at 16:30 (WIB)...');
-    await sendPdfToGroups();
+    console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
+    // KTE 
+    await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-cron.schedule('05 09 * * *', async () => {
-    console.log('Sending files to groups at 16:30 (WIB)...');
-    await sendPdfToGroups();
+cron.schedule('05 15 * * *', async () => {
+    console.log('Sending files to groups BHE at 09:05 (WIB)...');
+    // BHE 
+    await sendPdfToGroups('Wilayah_7', '120363149785590346@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+cron.schedule('02 14 * * *', async () => {
+    console.log('Sending files to groups SCE at 09:05 (WIB)...');
+    // SCE 
+    await sendPdfToGroups('Wilayah_7', '120363152744155925@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
 
-client.on('ready', async () => { 
-    console.log('Client is ready!');
-    // sendPdfToGroups();
 
-    
-});async function sendtaksasiest(est, groupID) {
+async function sendtaksasiest(est, groupID) {
     try {
         let folder;
         // Mapping the est value to the corresponding folder
@@ -246,6 +248,8 @@ client.on('ready', async () => {
         }
 
         // Hit the URL to regenerate and save PDFs in the corresponding folder
+        
+        await axios.get(`https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est}`);
         await axios.get(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est}`);
         console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
 
@@ -287,13 +291,16 @@ client.on('ready', async () => {
             await sendPdfToGroup(folder, '120363048442215265@g.us');
         } else if (folder === 'Wilayah_6') {
             await sendPdfToGroup(folder, '120363152744155925@g.us');
-        } else if (folder === 'Wilayah_7' && est ==='BHE') {
-            await sendPdfToGroup(folder, '120363149785590346@g.us');
-        }else if (folder === 'Wilayah_7' && est ==='KTE') {
-            await sendPdfToGroup(folder, '120363170524329595@g.us');
-        }else if (folder === 'Wilayah_7' && est ==='BWE') {
-            await sendPdfToGroup(folder, '120363166668733371@g.us');
+        } else if (folder === 'Wilayah_7') {
+            if (est === 'BHE') {
+                await sendPdfToGroup(folder, '120363149785590346@g.us');
+            } else if (est === 'KTE') {
+                await sendPdfToGroup(folder, '120363170524329595@g.us');
+            } else if (est === 'BDE') {
+                await sendPdfToGroup(folder, '120363166668733371@g.us');
+            }
         }
+        
     } catch (error) {
         console.error(`Error fetching files:`, error);
     }
@@ -304,7 +311,7 @@ client.on('message', async msg => {
     if (msg.body === '!tarik') {
         let chat = await msg.getChat();
         if (chat.isGroup) {
-            msg.reply('Masukan Estate (harap semua hurup Kapital):');
+            msg.reply('Masukan Estate (Harap semua huruf Kapital):');
             client.on('message', async message => {
                 if (message.from === msg.from) {
                     const estate = message.body;
