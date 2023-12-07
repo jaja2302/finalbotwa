@@ -164,12 +164,11 @@ async function deleteFile(filename, folder) {
 
 // Schedule the task to run at a specified time
 
-cron.schedule('05 16 * * *', async () => {
+cron.schedule('02 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
         await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
         await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
         await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-        await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -344,6 +343,9 @@ async function sendtaksasiest(est, groupID) {
           
         } else if (folder === 'Wilayah_3') {
             await sendPdfToGroup(folder, '120363048442215265@g.us');
+
+            // send to testing 
+            // await sendPdfToGroup(folder, '120363204285862734@g.us');
         } else if (folder === 'Wilayah_6') {
             if (est === 'SCE') {
                 await sendPdfToGroup(folder, '120363152744155925@g.us');
@@ -377,14 +379,14 @@ client.on('message', async msg => {
     let chat = await msg.getChat();
     if (chat.isGroup) {
       listeningForEstateInput = true;
-      msg.reply('Masukan Estate Nach (Harap huruf Kapital Lah kena Error):');
+      msg.reply('Masukan Estate (Harap huruf Kapital!!):');
             
       const listener = async (message) => {
         if (message.from === msg.from) {
           const estate = message.body;
                     
           generatemaps.Generatedmaps().then(() => {
-            msg.reply('Sesabar lagi meolah maps nah...');
+            msg.reply('Mohon Tunggu Maps sedang di proses...');
             setTimeout(() => {
               sendtaksasiest(estate, chat.id);
               listeningForEstateInput = false;
