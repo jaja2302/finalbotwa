@@ -14,13 +14,13 @@
     "express": "^4.18.2",
     "node-cron": "^3.0.3",
     "qrcode-terminal": "^0.12.0",
+    "selenium-webdriver": "^4.16.0",
     "venom": "^0.1.0",
     "venom-bot": "^5.0.21",
     "whatsapp-web.js": "^1.23.0",
     "ws": "^8.14.2"
   },
   "bin": {
-    "myApp": "wa-js.js" 
+    "myApp": "wa-js.js"
   }
-  
 }
