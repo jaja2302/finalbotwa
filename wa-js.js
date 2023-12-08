@@ -2,7 +2,7 @@ const qrcode = require('qrcode-terminal');
 const express = require('express')
 const { Client, LocalAuth,MessageMedia  } = require('whatsapp-web.js');
 const app = express();
-const port = 3000;
+const port = 4000;
 const cron = require('node-cron');
 const axios = require('axios');
 const path = require('path');
@@ -11,8 +11,6 @@ const generatemaps = require('./openBrowser.js');
 app.listen(port, () => {
     console.log('Server berjalan di port :: ${port}')
 })
-
-const allSessionsObject = {};
 
 
 
@@ -99,16 +97,17 @@ async function deletemsg(idmsg) {
 client.on('ready', async () => { 
     console.log('Client is ready!');
     // await sendMessagesBasedOnData();
+    // generatemaps.Generatedmaps()
 });
 
-// // Schedule the task to run every 5 minutes
-// cron.schedule('*/1 * * * *', async () => {
-//     console.log('Running message sending task...');
-//     await sendMessagesBasedOnData();
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
+// Schedule the task to run every 5 minutes
+cron.schedule('*/1 * * * *', async () => {
+    console.log('Running message sending task...');
+    await sendMessagesBasedOnData();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 // ... (other parts of your code)
 async function sendPdfToGroups(folder, groupID) {
@@ -162,7 +161,61 @@ async function deleteFile(filename, folder) {
 }
 
 
-// Schedule the task to run at a specified time
+
+// cronjob generate maps 
+cron.schedule('57 08 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 11 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 13 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 14 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 15 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 16 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+
+
+
+
+// cronjob taksasi 
 
 cron.schedule('02 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
@@ -173,6 +226,19 @@ cron.schedule('02 16 * * *', async () => {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
+
+
+cron.schedule('02 17 * * *', async () => {
+    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+
+
+
 cron.schedule('05 09 * * *', async () => {
     console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
     // BDE 
@@ -208,7 +274,7 @@ cron.schedule('02 14 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-// sending harian 
+// cronjob harian
 cron.schedule('10 15 * * *', async () => {
     console.log('Sending Harian Reminder to groups Harian at 15:10 (WIB)...');
     
@@ -335,16 +401,13 @@ async function sendtaksasiest(est, groupID) {
         if (folder === 'Wilayah_1') {
             await sendPdfToGroup(folder, '120363025737216061@g.us');
         } else if (folder === 'Wilayah_2') {
-            if (est === 'UPE') {
+          
                 await sendPdfToGroup(folder, '120363047670143778@g.us');
-            }else{
-                await sendPdfToGroup(folder, '120363047670143778@g.us');
-            }
+            
           
         } else if (folder === 'Wilayah_3') {
-            await sendPdfToGroup(folder, '120363048442215265@g.us');
-
-            // send to testing 
+            await sendPdfToGroup(folder, '120363048442215265@g.us');    
+        // send to testing 
             // await sendPdfToGroup(folder, '120363204285862734@g.us');
         } else if (folder === 'Wilayah_6') {
             if (est === 'SCE') {
