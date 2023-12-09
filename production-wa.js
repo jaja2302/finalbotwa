@@ -108,6 +108,10 @@ async function deletemsg(idmsg) {
 // });
 
 // ... (other parts of your code)
+// kodingan taksasi 
+
+
+// fungsi send pdf ke groups 
 async function sendPdfToGroups(folder, groupID) {
     try {
         // Function to fetch PDF files from a given folder and return file names
@@ -146,9 +150,22 @@ async function sendPdfToGroups(folder, groupID) {
        
     } catch (error) {
         console.error('Error fetching or sending PDF files:', error);
+        try {
+            const groupChat = await client.getChatById('120363158376501304@g.us');
+            if (groupChat) {
+                const errorMessage = 'There was an error sending the PDF files.\nError Details:\n' + error.stack;
+                await groupChat.sendMessage(errorMessage);
+                console.log('Notification sent to the group about the error.');
+            } else {
+                console.log('Group not found!');
+            }
+        } catch (sendMessageError) {
+            console.error('Error sending message:', sendMessageError);
+        }
     }
+    
 }
-
+// fungsi delete file pdf di group 
 async function deleteFile(filename, folder) {
     try {
         await axios.get(`https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`);
@@ -158,144 +175,7 @@ async function deleteFile(filename, folder) {
     }
 }
 
-
-
-// cronjob generate maps 
-cron.schedule('57 08 * * *', async () => {
-    console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 11 * * *', async () => {
-    console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 13 * * *', async () => {
-    console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 14 * * *', async () => {
-    console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 15 * * *', async () => {
-    console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 16 * * *', async () => {
-    console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-
-
-
-
-// cronjob taksasi 
-
-cron.schedule('02 16 * * *', async () => {
-    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
-        await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
-        await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
-        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-client.on('ready', async () => { 
-    console.log('Client is ready!');
-    await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-    // generatemaps.Generatedmaps()
-});
-cron.schedule('02 17 * * *', async () => {
-    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
-        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-
-
-
-cron.schedule('02 09 * * *', async () => {
-    console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
-    // BDE 
-    await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('02 12 * * *', async () => {
-    console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
-    // KTE 
-    await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('02 15 * * *', async () => {
-    console.log('Sending files to groups BHE at 09:05 (WIB)...');
-    // BHE 
-    await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-cron.schedule('02 14 * * *', async () => {
-    console.log('Sending files to groups SCE at 09:05 (WIB)...');
-    // SCE 
-    await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-// cronjob harian
-cron.schedule('10 15 * * *', async () => {
-    console.log('Sending Harian Reminder to groups Harian at 15:10 (WIB)...');
-    
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Harian Guys');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta'
-});
-
+// fungsi send taksasi per estate pdf ke group 
 async function sendtaksasiest(est, groupID) {
     try {
         let folder;
@@ -394,7 +274,19 @@ async function sendtaksasiest(est, groupID) {
                     // Delete the file after sending
                     await deleteFile(fileName, folder); 
                 } else {
-                    console.log(`Group ${groupID} not found!`);
+                    console.error('Error fetching or sending PDF files:', error);
+                    try {
+                        const groupChat = await client.getChatById('120363158376501304@g.us');
+                        if (groupChat) {
+                            const errorMessage = 'There was an error sending the PDF files.\nError Details:\n' + error.stack;
+                            await groupChat.sendMessage(errorMessage);
+                            console.log('Notification sent to the group about the error.');
+                        } else {
+                            console.log('Group not found!');
+                        }
+                    } catch (sendMessageError) {
+                        console.error('Error sending message:', sendMessageError);
+                    }
                 }
             }
         };
@@ -436,6 +328,213 @@ async function sendtaksasiest(est, groupID) {
     }
 }
 
+// fungsi check folder ada isinya atau tidak 
+async function checkAndDeleteFiles() {
+    try {
+        const getStatus = await axios.get('https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php');
+        const { data: folderStatus } = getStatus;
+
+        if (Array.isArray(folderStatus) && folderStatus.length > 0) {
+            const filesToDelete = folderStatus.filter((file) => file.hasOwnProperty('wilayah') && file.hasOwnProperty('filename'));
+
+            for (const file of filesToDelete) {
+                const { wilayah, filename } = file;
+                await deleteFile(filename, wilayah);
+            }
+        } else {
+            console.log('No files found or empty folder. Nothing to delete.');
+        }
+    } catch (error) {
+        console.error('Error checking and deleting files:', error);
+    }
+}
+// fungsi send berdasarakan wikayah 
+async function sendperwil(wilayah, groupID) {
+    try {
+        let folder;
+        // Mapping the est value to the corresponding folder
+        switch (wilayah) {
+            case '1':
+            case 'Satu':
+            case 'satu':
+                folder = 'Wilayah_1';
+                break;
+            case '2':
+            case 'Dua':
+            case 'dua':
+                folder = 'Wilayah_2';
+                break;
+            case '3':
+            case 'Tiga':
+            case 'tiga':
+                folder = 'Wilayah_3';
+                break;
+            case 'Harian':
+            case 'hariantest':
+            case 'testing':
+            folder = 'Wilayah_testing';
+            break;  
+            default:
+                // Handle cases where est doesn't match any defined folders
+                console.log('Invalid est value provided.');
+                return;
+        }
+        // Usage
+        await axios.get(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php`);
+
+        // testing 
+        if (folder === 'Wilayah_1') {
+            await sendPdfToGroups(folder, '120363025737216061@g.us');
+        } else if (folder === 'Wilayah_2') { 
+        await sendPdfToGroups(folder, '120363047670143778@g.us');
+        } else if (folder === 'Wilayah_3') {
+            await sendPdfToGroups(folder, '120363048442215265@g.us');    
+         } else if (folder === 'Wilayah_testing') {
+            await sendPdfToGroups(folder, '120363204285862734@g.us');    
+        } 
+
+        checkAndDeleteFiles();
+    } catch (error) {
+        console.error(`Error fetching files:`, error);
+    }
+}
+
+
+
+// cronjob generate maps 
+cron.schedule('57 08 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+      checkAndDeleteFiles();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 11 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+      checkAndDeleteFiles();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 13 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+      checkAndDeleteFiles();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 14 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+      checkAndDeleteFiles();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 15 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+      checkAndDeleteFiles();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('57 16 * * *', async () => {
+    console.log('Generate Maps..');
+      generatemaps.Generatedmaps()
+      checkAndDeleteFiles();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+
+
+// cronjob taksasi 
+
+cron.schedule('02 16 * * *', async () => {
+    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+        await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+        await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+
+cron.schedule('02 17 * * *', async () => {
+    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('02 09 * * *', async () => {
+    console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
+    // BDE 
+    // await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('02 12 * * *', async () => {
+    console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
+    // KTE 
+    await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+cron.schedule('02 15 * * *', async () => {
+    console.log('Sending files to groups BHE at 09:05 (WIB)...');
+    // BHE 
+    await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+cron.schedule('02 14 * * *', async () => {
+    console.log('Sending files to groups SCE at 09:05 (WIB)...');
+    // SCE 
+    await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
+
+// cronjob harian
+cron.schedule('10 15 * * *', async () => {
+    console.log('Sending Harian Reminder to groups Harian at 15:10 (WIB)...');
+    
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Harian Guys');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta'
+});
+
+
 
 let listeningForEstateInput = false;
 
@@ -465,7 +564,38 @@ client.on('message', async msg => {
     } else {
       msg.reply('This command can only be used in a group!');
     }
+  }else if (msg.body === '!tariktaksasi' && !listeningForEstateInput) {
+    let chat = await msg.getChat();
+    if (chat.isGroup) {
+      listeningForEstateInput = true;
+      msg.reply('Masukan wilayah (wil 1 sampai 3, harap hanya satu perwilayah percommand):');
+            
+      const listener = async (message) => {
+        if (message.from === msg.from) {
+          const wilayah = message.body;
+          msg.reply('Mohon Tunggu Maps sedang di proses...');     
+          generatemaps.Generatedmaps().then(() => {
+            setTimeout(() => {
+              sendperwil(wilayah, chat.id);
+              listeningForEstateInput = false;
+              client.removeListener('message', listener);
+            }, 10000);
+          });
+        }
+      };
+
+      client.on('message', listener);
+    } else {
+      msg.reply('This command can only be used in a group!');
+    }
   }
+});
+
+client.on('ready', async () => { 
+    console.log('Client is ready!');
+    // await sendPdfToGroups('Wilayah_testing', '120363158376501304@g.us');
+    // generatemaps.Generatedmaps()
+    //    checkAndDeleteFiles();
 });
 
 client.initialize();
