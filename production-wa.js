@@ -2,16 +2,18 @@ const qrcode = require('qrcode-terminal');
 const express = require('express')
 const { Client, LocalAuth,MessageMedia  } = require('whatsapp-web.js');
 const app = express();
-const port = 4000;
+
 const cron = require('node-cron');
 const axios = require('axios');
 const path = require('path');
 const generatemaps = require('./openBrowser.js');
 
-app.listen(port, () => {
-    console.log('Server berjalan di port :: ${port}')
-})
 
+const server = app.listen(0, () => {
+    const { port } = server.address();
+    console.log(`Server running on port ${port}`);
+  });
+  
 
 
 const client = new Client({
@@ -94,20 +96,16 @@ async function deletemsg(idmsg) {
 
 
 // Call the function when the client is ready
-client.on('ready', async () => { 
-    console.log('Client is ready!');
-    // await sendMessagesBasedOnData();
-    // generatemaps.Generatedmaps()
-});
+
 
 // Schedule the task to run every 5 minutes
-cron.schedule('*/1 * * * *', async () => {
-    console.log('Running message sending task...');
-    await sendMessagesBasedOnData();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+// cron.schedule('*/10 * * * *', async () => {
+//     console.log('Running message sending task...');
+//     await sendMessagesBasedOnData();
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
 // ... (other parts of your code)
 async function sendPdfToGroups(folder, groupID) {
@@ -227,7 +225,11 @@ cron.schedule('02 16 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-
+client.on('ready', async () => { 
+    console.log('Client is ready!');
+    await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+    // generatemaps.Generatedmaps()
+});
 cron.schedule('02 17 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
         await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
@@ -239,7 +241,7 @@ cron.schedule('02 17 * * *', async () => {
 
 
 
-cron.schedule('05 09 * * *', async () => {
+cron.schedule('02 09 * * *', async () => {
     console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
     // BDE 
     await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
@@ -248,7 +250,7 @@ cron.schedule('05 09 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-cron.schedule('05 12 * * *', async () => {
+cron.schedule('02 12 * * *', async () => {
     console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
     // KTE 
     await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
@@ -257,7 +259,7 @@ cron.schedule('05 12 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-cron.schedule('05 15 * * *', async () => {
+cron.schedule('02 15 * * *', async () => {
     console.log('Sending files to groups BHE at 09:05 (WIB)...');
     // BHE 
     await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us');
@@ -422,7 +424,7 @@ async function sendtaksasiest(est, groupID) {
                 // send ke testin 
                 // await sendPdfToGroup(folder, '120363158376501304@g.us');
             } else if (est === 'BDE') {
-                await sendPdfToGroup(folder, '120363204285862734@g.us');
+                await sendPdfToGroup(folder, '120363166668733371@g.us');
             }
         } else if (folder === 'Wilayah_8') {
             if (est === 'BHE') {
