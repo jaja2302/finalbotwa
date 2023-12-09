@@ -2,11 +2,11 @@ const qrcode = require('qrcode-terminal');
 const express = require('express')
 const { Client, LocalAuth,MessageMedia  } = require('whatsapp-web.js');
 const app = express();
-
+const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
-const path = require('path');
 const generatemaps = require('./openBrowser.js');
+const path = require('path');
 
 
 const server = app.listen(0, () => {
@@ -37,6 +37,15 @@ client.on('auth_failure', msg => {
     // Fired if session restore was unsuccessful
     console.error('AUTHENTICATION FAILURE', msg);
 });
+client.on('disconnect', (reason) => {
+    logError(new Error(`Disconnected from WhatsApp: ${reason}`));
+    // Other handling, like attempting to reconnect
+});
+process.on('unhandledRejection', (reason, promise) => {
+    logError(new Error(`Unhandled Rejection at: ${promise}. Reason: ${reason}`));
+    // Other handling, like attempting to recover or gracefully shut down
+});
+
 
 // sending message smartlabs json 
 async function sendMessagesBasedOnData() {
@@ -141,6 +150,7 @@ async function sendPdfToGroups(folder, groupID) {
                       await deleteFile(fileName, folder);
                 } else {
                     console.log(`Group ${groupID} not found!`);
+                    logError(error);
                 }
             }
         };
@@ -158,9 +168,11 @@ async function sendPdfToGroups(folder, groupID) {
                 console.log('Notification sent to the group about the error.');
             } else {
                 console.log('Group not found!');
+                logError(error);
             }
         } catch (sendMessageError) {
             console.error('Error sending message:', sendMessageError);
+            logError(error);
         }
     }
     
@@ -172,6 +184,7 @@ async function deleteFile(filename, folder) {
         console.log(`File '${filename}' in folder '${folder}' deleted successfully.`);
     } catch (error) {
         console.error(`Error deleting file '${filename}' in folder '${folder}':`, error);
+        logError(error);
     }
 }
 
@@ -283,9 +296,11 @@ async function sendtaksasiest(est, groupID) {
                             console.log('Notification sent to the group about the error.');
                         } else {
                             console.log('Group not found!');
+                            logError(error);
                         }
                     } catch (sendMessageError) {
                         console.error('Error sending message:', sendMessageError);
+                        logError(error);
                     }
                 }
             }
@@ -325,6 +340,7 @@ async function sendtaksasiest(est, groupID) {
         }
     } catch (error) {
         console.error(`Error fetching files:`, error);
+        logError(error);
     }
 }
 
@@ -343,9 +359,11 @@ async function checkAndDeleteFiles() {
             }
         } else {
             console.log('No files found or empty folder. Nothing to delete.');
+            logError(error);
         }
     } catch (error) {
         console.error('Error checking and deleting files:', error);
+        logError(error);
     }
 }
 // fungsi send berdasarakan wikayah 
@@ -396,8 +414,12 @@ async function sendperwil(wilayah, groupID) {
         checkAndDeleteFiles();
     } catch (error) {
         console.error(`Error fetching files:`, error);
+        logError(error);
     }
 }
+
+
+// Usage:
 
 
 
@@ -479,10 +501,10 @@ cron.schedule('02 17 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-cron.schedule('02 09 * * *', async () => {
+cron.schedule('09 09 * * *', async () => {
     console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
     // BDE 
-    // await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
+    await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -528,6 +550,7 @@ cron.schedule('10 15 * * *', async () => {
         }
     } catch (error) {
         console.error('Error sending message:', error);
+        logError(error);
     }
 }, {
     scheduled: true,
@@ -588,6 +611,13 @@ client.on('message', async msg => {
     } else {
       msg.reply('This command can only be used in a group!');
     }
+  }else if (msg.body === '!status' && !listeningForEstateInput) {
+    let chat = await msg.getChat();
+    if (chat.isGroup) {
+      msg.reply('Bot is running.');
+    } else {
+      msg.reply('This command can only be used in a group!');
+    }
   }
 });
 
@@ -597,5 +627,22 @@ client.on('ready', async () => {
     // generatemaps.Generatedmaps()
     //    checkAndDeleteFiles();
 });
+
+function logError(error) {
+    const errorFolderPath = path.join(__dirname, 'error');
+    const errorLogPath = path.join(errorFolderPath, 'error.log');
+
+    // Create the 'error' folder if it doesn't exist
+    if (!fs.existsSync(errorFolderPath)) {
+        fs.mkdirSync(errorFolderPath);
+    }
+
+    const errorMessage = `${new Date().toISOString()}: ${error.stack}\n`;
+    fs.appendFile(errorLogPath, errorMessage, (err) => {
+        if (err) throw err;
+        console.error('Error logged:', error);
+    });
+}
+
 
 client.initialize();
