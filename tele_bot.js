@@ -191,7 +191,7 @@ cron.schedule('00 19 * * *', async () => {
       return;
     }
     console.log(`PM2 process stopped: ${stdout}`);
-    bot.sendMessage(groupId, 'Bot Mati otomatis jam 12:05!');
+    bot.sendMessage(groupId, 'Bot Mati otomatis jam 19:05!');
   });
   }, {
   scheduled: true,
@@ -203,7 +203,7 @@ cron.schedule('00 19 * * *', async () => {
 cron.schedule('05 19 * * *', async () => {
   console.log('Mematikan PC ');
   // SCE 
-  bot.sendMessage(groupId, 'pcmati!');
+  bot.sendMessage(groupId, 'pcmati! jam 19:05');
 
   // Execute the batch file and store the running process
   runningProcess = exec('shutdownpc.bat', (error, stdout, stderr) => {
