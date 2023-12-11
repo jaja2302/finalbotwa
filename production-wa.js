@@ -5,7 +5,9 @@ const app = express();
 const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
-const generatemaps = require('./openBrowser.js');
+// const generatemaps = require('./openBrowser.js');
+const {  Generatedmaps, GetYoutubeurl } = require('./openBrowser'); // Note: Remove the '.js' extension
+
 const path = require('path');
 
 
@@ -426,7 +428,7 @@ async function sendperwil(wilayah, groupID) {
 // cronjob generate maps 
 cron.schedule('57 08 * * *', async () => {
     console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
+      await Generatedmaps()
       checkAndDeleteFiles();
 }, {
     scheduled: true,
@@ -435,7 +437,7 @@ cron.schedule('57 08 * * *', async () => {
 
 cron.schedule('57 11 * * *', async () => {
     console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
+      await Generatedmaps()
       checkAndDeleteFiles();
 }, {
     scheduled: true,
@@ -444,7 +446,7 @@ cron.schedule('57 11 * * *', async () => {
 
 cron.schedule('57 13 * * *', async () => {
     console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
+      await Generatedmaps()
       checkAndDeleteFiles();
 }, {
     scheduled: true,
@@ -453,7 +455,7 @@ cron.schedule('57 13 * * *', async () => {
 
 cron.schedule('57 14 * * *', async () => {
     console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
+      await Generatedmaps()
       checkAndDeleteFiles();
 }, {
     scheduled: true,
@@ -462,7 +464,7 @@ cron.schedule('57 14 * * *', async () => {
 
 cron.schedule('57 15 * * *', async () => {
     console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
+      await Generatedmaps()
       checkAndDeleteFiles();
 }, {
     scheduled: true,
@@ -471,7 +473,7 @@ cron.schedule('57 15 * * *', async () => {
 
 cron.schedule('57 16 * * *', async () => {
     console.log('Generate Maps..');
-      generatemaps.Generatedmaps()
+      await Generatedmaps()
       checkAndDeleteFiles();
 }, {
     scheduled: true,
@@ -572,7 +574,7 @@ client.on('message', async msg => {
         if (message.from === msg.from) {
           const estate = message.body;
                     
-          generatemaps.Generatedmaps().then(() => {
+          await Generatedmaps().then(() => {
             msg.reply('Mohon Tunggu Maps sedang di proses...');
             setTimeout(() => {
               sendtaksasiest(estate, chat.id);
@@ -597,7 +599,7 @@ client.on('message', async msg => {
         if (message.from === msg.from) {
           const wilayah = message.body;
           msg.reply('Mohon Tunggu Maps sedang di proses...');     
-          generatemaps.Generatedmaps().then(() => {
+            await Generatedmaps().then(() => {
             setTimeout(() => {
               sendperwil(wilayah, chat.id);
               listeningForEstateInput = false;
@@ -624,7 +626,7 @@ client.on('message', async msg => {
 client.on('ready', async () => { 
     console.log('Client is ready!');
     // await sendPdfToGroups('Wilayah_testing', '120363158376501304@g.us');
-    // generatemaps.Generatedmaps()
+    // await Generatedmaps()
     //    checkAndDeleteFiles();
 });
 
