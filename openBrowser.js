@@ -45,6 +45,96 @@ async function Generatedmaps() {
 }
 
 
+async function GenerateTakest(est) {
+  try {
+    const browser = await puppeteer.launch({
+      headless:'new',
+      // headless: false,
+      executablePath: './chrome-win/chrome.exe',
+      browserArgs: [
+        '--disable-web-security',
+        '--no-sandbox',
+        '--disable-web-security',
+        '--aggressive-cache-discard',
+        '--disable-cache',
+        '--disable-application-cache',
+        '--disable-offline-load-stale-cache',
+        '--disk-cache-size=0',
+        '--disable-background-networking',
+        '--disable-default-apps',
+        '--disable-extensions',
+        '--disable-sync',
+        '--disable-translate',
+        '--hide-scrollbars',
+        '--metrics-recording-only',
+        '--mute-audio',
+        '--no-first-run',
+        '--safebrowsing-disable-auto-update',
+        '--ignore-certificate-errors',
+        '--ignore-ssl-errors',
+        '--ignore-certificate-errors-spki-list',
+      ],
+    });
+
+    const page = await browser.newPage();
+
+    await page.goto(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_${est.toLowerCase()}.php`);
+
+    await new Promise(resolve => setTimeout(resolve, 10000));
+
+    await browser.close();
+
+    console.log(`Maps generated successfully`);
+  } catch (error) {
+    console.error(`Error generating maps:`, error);
+  }
+}
+async function GenerateTakest2(est) {
+  try {
+    const browser = await puppeteer.launch({
+      headless:'new',
+      executablePath: './chrome-win/chrome.exe',
+      browserArgs: [
+        '--disable-web-security',
+        '--no-sandbox',
+        '--disable-web-security',
+        '--aggressive-cache-discard',
+        '--disable-cache',
+        '--disable-application-cache',
+        '--disable-offline-load-stale-cache',
+        '--disk-cache-size=0',
+        '--disable-background-networking',
+        '--disable-default-apps',
+        '--disable-extensions',
+        '--disable-sync',
+        '--disable-translate',
+        '--hide-scrollbars',
+        '--metrics-recording-only',
+        '--mute-audio',
+        '--no-first-run',
+        '--safebrowsing-disable-auto-update',
+        '--ignore-certificate-errors',
+        '--ignore-ssl-errors',
+        '--ignore-certificate-errors-spki-list',
+      ],
+    });
+
+    const page = await browser.newPage();
+
+    await page.goto(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}.php`);
+
+
+    await new Promise(resolve => setTimeout(resolve, 10000));
+
+    await browser.close();
+
+    console.log(`Maps generated successfully`);
+  } catch (error) {
+    console.error(`Error generating maps:`, error);
+  }
+}
+
+
 async function GenerateTaksasi() {
   try {
     const browser = await puppeteer.launch({
@@ -140,4 +230,4 @@ async function GetYoutubeurl() {
   }
 }
 
-module.exports = { Generatedmaps,GetYoutubeurl ,GenerateTaksasi};
+module.exports = { Generatedmaps,GetYoutubeurl ,GenerateTaksasi ,GenerateTakest , GenerateTakest2};

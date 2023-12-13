@@ -5,6 +5,9 @@ const app = express();
 const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
+// Usage:
+const schedule = require('node-schedule');
+
 // const generatemaps = require('./openBrowser.js');
 const {  Generatedmaps, GetYoutubeurl , GenerateTaksasi ,GenerateTakest , GenerateTakest2} = require('./openBrowser'); // Note: Remove the '.js' extension
 
@@ -47,7 +50,7 @@ const client = new Client({
         ],
     },
     authStrategy: new LocalAuth({
-        clientId: "botda",
+        clientId: "testingtsel",
     })
 });
 
@@ -71,79 +74,6 @@ process.on('unhandledRejection', (reason, promise) => {
     logError(new Error(`Unhandled Rejection at: ${promise}. Reason: ${reason}`));
     // Other handling, like attempting to recover or gracefully shut down
 });
-
-
-// sending message smartlabs json 
-async function sendMessagesBasedOnData() {
-    try {
-        // Fetch data from the PHP endpoint
-        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php');
-        const numberData = response.data;
-
-        if (!numberData || !Array.isArray(numberData)) {
-            console.error('Invalid or empty data.');
-            return;
-        }
-
-        for (const data of numberData) {
-            const phoneNumber = `${data.penerima}@c.us`; // Adjust to match your JSON structure
-            const message = `${data.pesan} ${data.kodesample}`; // Adjust to match your JSON structure
-            const idmsg = `${data.id}`; 
-
-            const contact = await client.getContactById(phoneNumber);
-            if (contact) {
-                const chat = await contact.getChat();
-                if (chat) {
-                    await sendMessageWithDelay(chat, message, phoneNumber, idmsg);
-                } else {
-                    console.log(`Chat not found for ${phoneNumber}`);
-                }
-            } else {
-                console.log(`Contact not found for ${phoneNumber}`);
-            }
-        }
-    } catch (error) {
-        console.error('Error fetching data or sending messages:', error);
-    }
-}
-
-async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
-    await new Promise((resolve) => {
-        setTimeout(async () => {
-            await chat.sendMessage(message);
-            console.log(`Message "${message}" sent to ${phoneNumber}`);
-
-            // After sending the message, proceed to delete the message ID
-            await deletemsg(idmsg);
-            resolve();
-        }, 10000); // 10 seconds delay
-    });
-}
-
-async function deletemsg(idmsg) {
-    try {
-        await axios.post('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php', { id: idmsg });
-        console.log(`Message ID '${idmsg}' deleted successfully.`);
-    } catch (error) {
-        console.error(`Error deleting message ID '${idmsg}':`, error);
-    }
-}
-
-
-// Call the function when the client is ready
-
-
-// Schedule the task to run every 5 minutes
-// cron.schedule('*/10 * * * *', async () => {
-//     console.log('Running message sending task...');
-//     await sendMessagesBasedOnData();
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
-
-// ... (other parts of your code)
-// kodingan taksasi 
 
 
 // fungsi send pdf ke groups 
@@ -417,18 +347,15 @@ async function sendperwil(wilayah, groupID) {
 
 
 
-// Usage:
 
-
-
-// cronjob generate maps 
-cron.schedule('57 08 * * *', async () => {
-    console.log('Generate Maps..');
+// Function to generate maps and send messages
+const generateAndSendMessage = async (time) => {
+    console.log(`Generate Maps at ${time}..`);
     try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
+        const groupChat = await client.getChatById('120363205553012899@g.us');
         if (groupChat) {
-            await groupChat.sendMessage('Generate Maps Jam 08:57');
-            console.log(`Message sent to the group successfully!`);
+            await groupChat.sendMessage(`Generate Maps Jam ${time}`);
+            console.log(`Message sent to the group successfully at ${time}!`);
         } else {
             console.log(`Group not found!`);
         }
@@ -437,277 +364,58 @@ cron.schedule('57 08 * * *', async () => {
         logError(error);
     }
 
-      await Generatedmaps()
-      await  checkAndDeleteFiles();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+    await Generatedmaps();
+    await checkAndDeleteFiles();
+};
+
+// Define cron job times
+const cronTimes = ['08:57', '14:44', '14:46', '14:48', '15:57', '16:57'];
+
+// Create cron jobs dynamically using a loop
+cronTimes.forEach(time => {
+    const [hours, minutes] = time.split(':');
+    const job = schedule.scheduleJob(`${minutes} ${hours} * * *`, async () => {
+        await generateAndSendMessage(time);
+    });
 });
-
-cron.schedule('57 11 * * *', async () => {
-    console.log('Generate Maps..');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Generate Maps Jam 11:57');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-
-      await Generatedmaps()
-      await  checkAndDeleteFiles();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 13 * * *', async () => {
-    console.log('Generate Maps..');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Generate Maps Jam 13:57');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-
-
-      await Generatedmaps()
-      await  checkAndDeleteFiles();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 14 * * *', async () => {
-    console.log('Generate Maps..');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Generate Maps Jam 14:57');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-
-      await Generatedmaps()
-      await  checkAndDeleteFiles();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 15 * * *', async () => {
-    console.log('Generate Maps..');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Generate Maps Jam 15:57');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-
-      await Generatedmaps()
-      await  checkAndDeleteFiles();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('57 16 * * *', async () => {
-    console.log('Generate Maps..');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Generate Maps Jam 16:57');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-
-      await Generatedmaps()
-      await  checkAndDeleteFiles();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
 
 
 // cronjob taksasi 
-
-cron.schedule('02 16 * * *', async () => {
-    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
-        try {
-            const groupChat = await client.getChatById('120363158376501304@g.us');
-            if (groupChat) {
-                await groupChat.sendMessage('Kirim Taksasi Wil 1 ,2,3 Jam 16:02');
-                console.log(`Message sent to the group successfully!`);
-            } else {
-                console.log(`Group not found!`);
-            }
-        } catch (error) {
-            console.error('Error sending message:', error);
-            logError(error);
-        }
-
-        await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
-        await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
-        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-
-cron.schedule('02 17 * * *', async () => {
-    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
+const tasks = [
+    { time: '02 16 * * *', message: 'Kirim Taksasi Wil 1 ,2,3 Jam 16:02', regions: ['Wilayah_1', 'Wilayah_2', 'Wilayah_3'], groupId: '120363205553012899@g.us' },
+    { time: '02 17 * * *', message: 'Kirim Taksasi Umpang Wil 3 Jam 17:02', regions: ['Wilayah_3'], groupId: '120363205553012899@g.us' },
+    { time: '02 09 * * *', message: 'Kirim Taksasi Wil 7  Jam 09:02', regions: ['Wilayah_7'], groupId: '120363205553012899@g.us' },
+    { time: '02 12 * * *', message: 'Kirim Taksasi KTE Wil 7  Jam 12:02', regions: ['Wilayah_7'], groupId: '120363205553012899@g.us' },
+    { time: '02 15 * * *', message: 'Kirim Taksasi BHE Jam 15:02', regions: ['Wilayah_8'], groupId: '120363205553012899@g.us' },
+    { time: '02 14 * * *', message: 'Kirim Taksasi SCE  Jam 14:02', regions: ['Wilayah_6'], groupId: '120363205553012899@g.us' },
+    { time: '10 15 * * *', message: 'Harian Guys', regions: [], groupId: '120363205553012899@g.us' },
+  ];
+  
+  tasks.forEach(task => {
+    cron.schedule(task.time, async () => {
+      console.log(`Sending files at ${task.time} (WIB)...`);
+      try {
+        const groupChat = await client.getChatById(task.groupId);
         if (groupChat) {
-            await groupChat.sendMessage('Kirim Taksasi Umpang Wil 3 Jam 17:02');
-            console.log(`Message sent to the group successfully!`);
+          await groupChat.sendMessage(task.message);
+          console.log(`Message sent to the group successfully!`);
         } else {
-            console.log(`Group not found!`);
+          console.log(`Group not found!`);
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error sending message:', error);
         logError(error);
-    }
-
-        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('02 09 * * *', async () => {
-    console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Kirim Taksasi Wil 7  Jam 09:02');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-    // BDE 
-    await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('02 12 * * *', async () => {
-    console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Kirim Taksasi KTE Wil 7  Jam 12:02');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-    // KTE 
-    await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-cron.schedule('02 15 * * *', async () => {
-    console.log('Sending files to groups BHE at 09:05 (WIB)...');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Kirim Taksasi BHE Jam 15:02');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-    // BHE 
-    await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-cron.schedule('02 14 * * *', async () => {
-    console.log('Sending files to groups SCE at 09:05 (WIB)...');
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Kirim Taksasi SCE  Jam 14:02');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-    // SCE 
-    await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
-
-// cronjob harian
-cron.schedule('10 15 * * *', async () => {
-    console.log('Sending Harian Reminder to groups Harian at 15:10 (WIB)...');
-    
-    try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
-        if (groupChat) {
-            await groupChat.sendMessage('Harian Guys');
-            console.log(`Message sent to the group successfully!`);
-        } else {
-            console.log(`Group not found!`);
-        }
-    } catch (error) {
-        console.error('Error sending message:', error);
-        logError(error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta'
-});
-
+      }
+      // Sending PDFs to respective groups
+      for (const region of task.regions) {
+        await sendPdfToGroups(region, groupIds[region]); // Assuming groupIds is defined somewhere
+      }
+    }, {
+      scheduled: true,
+      timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+    });
+  });
+  
 
 
 let listeningForEstateInput = false;

@@ -8,7 +8,7 @@
     "dev": "concurrently \"node dbconection.js\" \"node development-wa.js\"",
     "pm2-start": "pm2 start production-wa.js --name my-production-wa",
     "tele": "node tele_bot.js"
-  },  
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "node-cron": "^3.0.3",
+    "node-schedule": "^2.1.1",
     "node-telegram-bot": "^0.1.9",
     "node-telegram-bot-api": "^0.64.0",
     "qrcode-terminal": "^0.12.0",
