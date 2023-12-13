@@ -6,7 +6,7 @@ const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
 // const generatemaps = require('./openBrowser.js');
-const {  Generatedmaps, GetYoutubeurl } = require('./openBrowser'); // Note: Remove the '.js' extension
+const {  Generatedmaps, GetYoutubeurl , GenerateTaksasi } = require('./openBrowser'); // Note: Remove the '.js' extension
 
 const path = require('path');
 
@@ -20,7 +20,31 @@ const server = app.listen(0, () => {
 
 const client = new Client({
     puppeteer:{
-        headless:true,
+        headless:'new',
+        executablePath: './chrome-win/chrome.exe',
+        browserArgs: [
+            '--disable-web-security',
+            '--no-sandbox',
+            '--disable-web-security',
+            '--aggressive-cache-discard',
+            '--disable-cache',
+            '--disable-application-cache',
+            '--disable-offline-load-stale-cache',
+            '--disk-cache-size=0',
+            '--disable-background-networking',
+            '--disable-default-apps',
+            '--disable-extensions',
+            '--disable-sync',
+            '--disable-translate',
+            '--hide-scrollbars',
+            '--metrics-recording-only',
+            '--mute-audio',
+            '--no-first-run',
+            '--safebrowsing-disable-auto-update',
+            '--ignore-certificate-errors',
+            '--ignore-ssl-errors',
+            '--ignore-certificate-errors-spki-list',
+        ],
     },
     authStrategy: new LocalAuth({
         clientId: "nomorxl",
@@ -182,13 +206,44 @@ async function sendPdfToGroups(folder, groupID) {
 // fungsi delete file pdf di group 
 async function deleteFile(filename, folder) {
     try {
-        await axios.get(`https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`);
-        console.log(`File '${filename}' in folder '${folder}' deleted successfully.`);
+        const response = await axios.head(`https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`);
+        
+        if (response.status === 200) {
+            await axios.get(`https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`);
+            console.log(`File '${filename}' in folder '${folder}' deleted successfully.`);
+        } else if (response.status === 404) {
+            console.log(`File '${filename}' in folder '${folder}' doesn't exist. Skipping deletion.`);
+        } else {
+            console.log(`Unexpected status code ${response.status} received. Skipping deletion.`);
+        }
     } catch (error) {
-        console.error(`Error deleting file '${filename}' in folder '${folder}':`, error);
+        console.error(`Error checking or deleting file '${filename}' in folder '${folder}':`, error.message);
         logError(error);
     }
 }
+
+async function checkAndDeleteFiles() {
+    try {
+        const getStatus = await axios.get('https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php');
+        const { data: folderStatus } = getStatus;
+
+        if (Array.isArray(folderStatus) && folderStatus.length > 0) {
+            const filesToDelete = folderStatus.filter((file) => file.hasOwnProperty('wilayah') && file.hasOwnProperty('filename'));
+
+            for (const file of filesToDelete) {
+                const { wilayah, filename } = file;
+                await deleteFile(filename, wilayah);
+            }
+        } else {
+            console.log('No files found or empty folder. Nothing to delete.');
+            // logError is called here, consider removing this line as 'error' isn't defined in this scope
+        }
+    } catch (error) {
+        console.error('Error checking and deleting files:', error);
+        logError(error);
+    }
+}
+
 
 // fungsi send taksasi per estate pdf ke group 
 async function sendtaksasiest(est, groupID) {
@@ -347,28 +402,8 @@ async function sendtaksasiest(est, groupID) {
 }
 
 // fungsi check folder ada isinya atau tidak 
-async function checkAndDeleteFiles() {
-    try {
-        const getStatus = await axios.get('https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php');
-        const { data: folderStatus } = getStatus;
 
-        if (Array.isArray(folderStatus) && folderStatus.length > 0) {
-            const filesToDelete = folderStatus.filter((file) => file.hasOwnProperty('wilayah') && file.hasOwnProperty('filename'));
-
-            for (const file of filesToDelete) {
-                const { wilayah, filename } = file;
-                await deleteFile(filename, wilayah);
-            }
-        } else {
-            console.log('No files found or empty folder. Nothing to delete.');
-            logError(error);
-        }
-    } catch (error) {
-        console.error('Error checking and deleting files:', error);
-        logError(error);
-    }
-}
-// fungsi send berdasarakan wikayah 
+// fungsi send berdasarakan wikayah
 async function sendperwil(wilayah, groupID) {
     try {
         let folder;
@@ -392,33 +427,39 @@ async function sendperwil(wilayah, groupID) {
             case 'Harian':
             case 'hariantest':
             case 'testing':
-            folder = 'Wilayah_testing';
-            break;  
+                folder = 'Wilayah_9';
+                break;  
             default:
                 // Handle cases where est doesn't match any defined folders
                 console.log('Invalid est value provided.');
                 return;
         }
-        // Usage
-        await axios.get(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php`);
 
-        // testing 
+        // Perform operations sequentially
+        await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+
+        // Generate maps
+        await GenerateTaksasi();
+
+        // Send PDFs based on folder
         if (folder === 'Wilayah_1') {
             await sendPdfToGroups(folder, '120363025737216061@g.us');
         } else if (folder === 'Wilayah_2') { 
-        await sendPdfToGroups(folder, '120363047670143778@g.us');
+            await sendPdfToGroups(folder, '120363047670143778@g.us');
         } else if (folder === 'Wilayah_3') {
             await sendPdfToGroups(folder, '120363048442215265@g.us');    
-         } else if (folder === 'Wilayah_testing') {
-            await sendPdfToGroups(folder, '120363204285862734@g.us');    
+        } else if (folder === 'Wilayah_9') {
+            await sendPdfToGroups(folder, '120363205553012899@g.us');    
         } 
 
-        checkAndDeleteFiles();
+        // Check and delete files again
+        await checkAndDeleteFiles();
     } catch (error) {
         console.error(`Error fetching files:`, error);
         logError(error);
     }
 }
+
 
 
 // Usage:
@@ -429,7 +470,7 @@ async function sendperwil(wilayah, groupID) {
 cron.schedule('57 08 * * *', async () => {
     console.log('Generate Maps..');
       await Generatedmaps()
-      checkAndDeleteFiles();
+      await  checkAndDeleteFiles();
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -438,7 +479,7 @@ cron.schedule('57 08 * * *', async () => {
 cron.schedule('57 11 * * *', async () => {
     console.log('Generate Maps..');
       await Generatedmaps()
-      checkAndDeleteFiles();
+      await  checkAndDeleteFiles();
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -447,7 +488,7 @@ cron.schedule('57 11 * * *', async () => {
 cron.schedule('57 13 * * *', async () => {
     console.log('Generate Maps..');
       await Generatedmaps()
-      checkAndDeleteFiles();
+      await  checkAndDeleteFiles();
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -456,7 +497,7 @@ cron.schedule('57 13 * * *', async () => {
 cron.schedule('57 14 * * *', async () => {
     console.log('Generate Maps..');
       await Generatedmaps()
-      checkAndDeleteFiles();
+      await  checkAndDeleteFiles();
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -465,7 +506,7 @@ cron.schedule('57 14 * * *', async () => {
 cron.schedule('57 15 * * *', async () => {
     console.log('Generate Maps..');
       await Generatedmaps()
-      checkAndDeleteFiles();
+      await  checkAndDeleteFiles();
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -474,7 +515,7 @@ cron.schedule('57 15 * * *', async () => {
 cron.schedule('57 16 * * *', async () => {
     console.log('Generate Maps..');
       await Generatedmaps()
-      checkAndDeleteFiles();
+      await  checkAndDeleteFiles();
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -503,7 +544,7 @@ cron.schedule('02 17 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-cron.schedule('09 09 * * *', async () => {
+cron.schedule('02 09 * * *', async () => {
     console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
     // BDE 
     await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
@@ -562,6 +603,7 @@ cron.schedule('10 15 * * *', async () => {
 
 
 let listeningForEstateInput = false;
+let listengtaksasi = false;
 
 client.on('message', async msg => {
   if (msg.body === '!tarik' && !listeningForEstateInput) {
@@ -589,10 +631,10 @@ client.on('message', async msg => {
     } else {
       msg.reply('This command can only be used in a group!');
     }
-  }else if (msg.body === '!tariktaksasi' && !listeningForEstateInput) {
+  }else if (msg.body === '!taksasi' && !listengtaksasi) {
     let chat = await msg.getChat();
     if (chat.isGroup) {
-      listeningForEstateInput = true;
+      listengtaksasi = true;
       msg.reply('Masukan wilayah (wil 1 sampai 3, harap hanya satu perwilayah percommand):');
             
       const listener = async (message) => {
@@ -602,7 +644,7 @@ client.on('message', async msg => {
             await Generatedmaps().then(() => {
             setTimeout(() => {
               sendperwil(wilayah, chat.id);
-              listeningForEstateInput = false;
+              listengtaksasi = false;
               client.removeListener('message', listener);
             }, 10000);
           });
@@ -625,9 +667,17 @@ client.on('message', async msg => {
 
 client.on('ready', async () => { 
     console.log('Client is ready!');
-    // await sendPdfToGroups('Wilayah_testing', '120363158376501304@g.us');
-    // await Generatedmaps()
-    //    checkAndDeleteFiles();
+
+   
+    // checkAndDeleteFiles();
+
+    // await GenerateTaksasi ()
+
+    // checkAndDeleteFiles();
+    // await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+    // await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+    // await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+
 });
 
 function logError(error) {

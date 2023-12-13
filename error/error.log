@@ -1,15 +1,3 @@
-2023-12-09T07:57:00.744Z: ReferenceError: error is not defined
-    at checkAndDeleteFiles (C:\Users\valen\OneDrive\Desktop\Whatsapp\next-vercelwa\production-wa.js:362:22)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2023-12-09T08:57:01.222Z: ReferenceError: error is not defined
-    at checkAndDeleteFiles (C:\Users\valen\OneDrive\Desktop\Whatsapp\next-vercelwa\production-wa.js:362:22)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2023-12-10T06:57:15.053Z: ReferenceError: error is not defined
-    at checkAndDeleteFiles (C:\Users\valen\OneDrive\Desktop\Whatsapp\next-vercelwa\production-wa.js:364:22)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2023-12-10T07:57:14.049Z: ReferenceError: error is not defined
-    at checkAndDeleteFiles (C:\Users\valen\OneDrive\Desktop\Whatsapp\next-vercelwa\production-wa.js:364:22)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2023-12-10T08:57:13.989Z: ReferenceError: error is not defined
-    at checkAndDeleteFiles (C:\Users\valen\OneDrive\Desktop\Whatsapp\next-vercelwa\production-wa.js:364:22)
+2023-12-13T00:28:05.354Z: ReferenceError: error is not defined
+    at checkAndDeleteFiles (C:\Users\valen\OneDrive\Desktop\Whatsapp\next-vercelwa\production-wa.js:398:22)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

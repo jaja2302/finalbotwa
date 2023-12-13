@@ -3,7 +3,31 @@ const puppeteer = require('puppeteer');
 async function Generatedmaps() {
   try {
     const browser = await puppeteer.launch({
-      headless: false
+      headless:'new',
+      executablePath: './chrome-win/chrome.exe',
+      browserArgs: [
+        '--disable-web-security',
+        '--no-sandbox',
+        '--disable-web-security',
+        '--aggressive-cache-discard',
+        '--disable-cache',
+        '--disable-application-cache',
+        '--disable-offline-load-stale-cache',
+        '--disk-cache-size=0',
+        '--disable-background-networking',
+        '--disable-default-apps',
+        '--disable-extensions',
+        '--disable-sync',
+        '--disable-translate',
+        '--hide-scrollbars',
+        '--metrics-recording-only',
+        '--mute-audio',
+        '--no-first-run',
+        '--safebrowsing-disable-auto-update',
+        '--ignore-certificate-errors',
+        '--ignore-ssl-errors',
+        '--ignore-certificate-errors-spki-list',
+      ],
     });
 
     const page = await browser.newPage();
@@ -20,10 +44,57 @@ async function Generatedmaps() {
   }
 }
 
+
+async function GenerateTaksasi() {
+  try {
+    const browser = await puppeteer.launch({
+      headless:'new',
+      executablePath: './chrome-win/chrome.exe',
+      browserArgs: [
+        '--disable-web-security',
+        '--no-sandbox',
+        '--disable-web-security',
+        '--aggressive-cache-discard',
+        '--disable-cache',
+        '--disable-application-cache',
+        '--disable-offline-load-stale-cache',
+        '--disk-cache-size=0',
+        '--disable-background-networking',
+        '--disable-default-apps',
+        '--disable-extensions',
+        '--disable-sync',
+        '--disable-translate',
+        '--hide-scrollbars',
+        '--metrics-recording-only',
+        '--mute-audio',
+        '--no-first-run',
+        '--safebrowsing-disable-auto-update',
+        '--ignore-certificate-errors',
+        '--ignore-ssl-errors',
+        '--ignore-certificate-errors-spki-list',
+      ],
+    });
+
+    const page = await browser.newPage();
+
+    await page.goto('https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php');
+
+    await new Promise(resolve => setTimeout(resolve, 10000));
+
+    await browser.close();
+
+    console.log(`Taksasi generated successfully`);
+  } catch (error) {
+    console.error(`Error generating maps:`, error);
+  }
+}
+
 async function GetYoutubeurl() {
   try {
     const browser = await puppeteer.launch({
-      headless: false
+      headless:true,
+      executablePath: './chrome-win/chrome.exe',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
     const page = await browser.newPage();
@@ -69,4 +140,4 @@ async function GetYoutubeurl() {
   }
 }
 
-module.exports = { Generatedmaps,GetYoutubeurl };
+module.exports = { Generatedmaps,GetYoutubeurl ,GenerateTaksasi};
