@@ -469,6 +469,19 @@ async function sendperwil(wilayah, groupID) {
 // cronjob generate maps 
 cron.schedule('57 08 * * *', async () => {
     console.log('Generate Maps..');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Generate Maps Jam 08:57');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
       await Generatedmaps()
       await  checkAndDeleteFiles();
 }, {
@@ -478,6 +491,19 @@ cron.schedule('57 08 * * *', async () => {
 
 cron.schedule('57 11 * * *', async () => {
     console.log('Generate Maps..');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Generate Maps Jam 11:57');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
       await Generatedmaps()
       await  checkAndDeleteFiles();
 }, {
@@ -487,6 +513,20 @@ cron.schedule('57 11 * * *', async () => {
 
 cron.schedule('57 13 * * *', async () => {
     console.log('Generate Maps..');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Generate Maps Jam 13:57');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
+
       await Generatedmaps()
       await  checkAndDeleteFiles();
 }, {
@@ -496,6 +536,19 @@ cron.schedule('57 13 * * *', async () => {
 
 cron.schedule('57 14 * * *', async () => {
     console.log('Generate Maps..');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Generate Maps Jam 14:57');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
       await Generatedmaps()
       await  checkAndDeleteFiles();
 }, {
@@ -505,6 +558,19 @@ cron.schedule('57 14 * * *', async () => {
 
 cron.schedule('57 15 * * *', async () => {
     console.log('Generate Maps..');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Generate Maps Jam 15:57');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
       await Generatedmaps()
       await  checkAndDeleteFiles();
 }, {
@@ -514,6 +580,19 @@ cron.schedule('57 15 * * *', async () => {
 
 cron.schedule('57 16 * * *', async () => {
     console.log('Generate Maps..');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Generate Maps Jam 16:57');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
       await Generatedmaps()
       await  checkAndDeleteFiles();
 }, {
@@ -527,6 +606,19 @@ cron.schedule('57 16 * * *', async () => {
 
 cron.schedule('02 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+        try {
+            const groupChat = await client.getChatById('120363158376501304@g.us');
+            if (groupChat) {
+                await groupChat.sendMessage('Kirim Taksasi Wil 1 ,2,3 Jam 16:02');
+                console.log(`Message sent to the group successfully!`);
+            } else {
+                console.log(`Group not found!`);
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            logError(error);
+        }
+
         await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
         await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
         await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
@@ -538,6 +630,19 @@ cron.schedule('02 16 * * *', async () => {
 
 cron.schedule('02 17 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Kirim Taksasi Umpang Wil 3 Jam 17:02');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+
         await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
 }, {
     scheduled: true,
@@ -546,6 +651,18 @@ cron.schedule('02 17 * * *', async () => {
 
 cron.schedule('02 09 * * *', async () => {
     console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Kirim Taksasi Wil 7  Jam 09:02');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
     // BDE 
     await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
 }, {
@@ -555,6 +672,18 @@ cron.schedule('02 09 * * *', async () => {
 
 cron.schedule('02 12 * * *', async () => {
     console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Kirim Taksasi KTE Wil 7  Jam 12:02');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
     // KTE 
     await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
 }, {
@@ -564,6 +693,18 @@ cron.schedule('02 12 * * *', async () => {
 
 cron.schedule('02 15 * * *', async () => {
     console.log('Sending files to groups BHE at 09:05 (WIB)...');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Kirim Taksasi BHE Jam 15:02');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
     // BHE 
     await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us');
 }, {
@@ -572,6 +713,18 @@ cron.schedule('02 15 * * *', async () => {
 });
 cron.schedule('02 14 * * *', async () => {
     console.log('Sending files to groups SCE at 09:05 (WIB)...');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Kirim Taksasi SCE  Jam 14:02');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
     // SCE 
     await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
 }, {
