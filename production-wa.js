@@ -47,7 +47,7 @@ const client = new Client({
         ],
     },
     authStrategy: new LocalAuth({
-        clientId: "nomorxl",
+        clientId: "botda",
     })
 });
 
@@ -759,59 +759,96 @@ let listeningForEstateInput = false;
 let listengtaksasi = false;
 
 client.on('message', async msg => {
-  if (msg.body === '!tarik' && !listeningForEstateInput) {
-    let chat = await msg.getChat();
-    if (chat.isGroup) {
-      listeningForEstateInput = true;
-      msg.reply('Masukan Estate (Harap huruf Kapital!!):');
-            
-      const listener = async (message) => {
-        if (message.from === msg.from) {
-          const estate = message.body;
-                    
-          await Generatedmaps().then(() => {
-            msg.reply('Mohon Tunggu Maps sedang di proses...');
-            setTimeout(() => {
-              sendtaksasiest(estate, chat.id);
+    
+if (msg.body === '!tarik' && !listeningForEstateInput) {
+        let chat = await msg.getChat();
+        if (chat.isGroup) {
+          listeningForEstateInput = true;
+          msg.reply('Masukan Estate (Harap huruf Kapital!!):');
+      
+          let inputTimeout = setTimeout(() => {
+            if (listeningForEstateInput) {
+              msg.reply('Waktu habis. Mohon masukkan Perintah !tarik kembali.');
               listeningForEstateInput = false;
               client.removeListener('message', listener);
-            }, 10000);
-          });
+            }
+          }, 60000); // Set a timeout of 60 seconds
+      
+          const listener = async (message) => {
+            if (message.from === msg.from) {
+              const estate = message.body;
+      
+              clearTimeout(inputTimeout); // Clear the timeout as input is received
+      
+              await Generatedmaps().then(() => {
+                msg.reply('Mohon Tunggu Maps sedang di proses...');
+                setTimeout(() => {
+                  sendtaksasiest(estate, chat.id);
+                  listeningForEstateInput = false;
+                  client.removeListener('message', listener);
+                }, 10000);
+              });
+            }
+          };
+      
+          client.on('message', listener);
+        } else {
+          msg.reply('This command can only be used in a group!');
         }
-      };
-
-      client.on('message', listener);
-    } else {
-      msg.reply('This command can only be used in a group!');
-    }
-  }else if (msg.body === '!taksasi' && !listengtaksasi) {
-    let chat = await msg.getChat();
-    if (chat.isGroup) {
-      listengtaksasi = true;
-      msg.reply('Masukan wilayah (wil 1 sampai 3, harap hanya satu perwilayah percommand):');
-            
-      const listener = async (message) => {
-        if (message.from === msg.from) {
-          const wilayah = message.body;
-          msg.reply('Mohon Tunggu Maps sedang di proses...');     
-            await Generatedmaps().then(() => {
-            setTimeout(() => {
-              sendperwil(wilayah, chat.id);
+}
+  
+  
+else if (msg.body === '!taksasi' && !listengtaksasi) {
+        let chat = await msg.getChat();
+        if (chat.isGroup) {
+          listengtaksasi = true;
+          msg.reply('Masukan wilayah (wil 1 sampai 3, harap hanya satu perwilayah percommand):');
+      
+          let inputTimeout = setTimeout(() => {
+            if (listengtaksasi) {
+              msg.reply('Waktu habis. Mohon masukkan wilayah kembali.');
               listengtaksasi = false;
               client.removeListener('message', listener);
-            }, 10000);
-          });
+            }
+          }, 60000); // Set a timeout of 60 seconds
+      
+          const listener = async (message) => {
+            if (message.from === msg.from) {
+              const wilayah = message.body;
+              msg.reply('Mohon Tunggu Maps sedang di proses...');
+      
+              clearTimeout(inputTimeout); // Clear the timeout as input is received
+      
+              await Generatedmaps().then(() => {
+                setTimeout(() => {
+                  sendperwil(wilayah, chat.id);
+                  listengtaksasi = false;
+                  client.removeListener('message', listener);
+                }, 10000);
+              });
+            }
+          };
+      
+          client.on('message', listener);
+        } else {
+          msg.reply('This command can only be used in a group!');
         }
-      };
-
-      client.on('message', listener);
-    } else {
-      msg.reply('This command can only be used in a group!');
-    }
-  }else if (msg.body === '!status' && !listeningForEstateInput) {
+}
+      
+else if (msg.body === '!status' && !listeningForEstateInput) {
     let chat = await msg.getChat();
     if (chat.isGroup) {
       msg.reply('Bot is running.');
+    } else {
+      msg.reply('This command can only be used in a group!');
+    }
+}
+  
+else if (msg.body === '!info' && !listeningForEstateInput) {
+    let chat = await msg.getChat();
+    if (chat.isGroup) {
+      msg.reply(`Hallo ini adalah Bot DA otomatis Taksasi,user dapat memilih command di bawah ini :
+        /tarik = Menarik Taksasi berdasarkan Estate yang di pilih`);
     } else {
       msg.reply('This command can only be used in a group!');
     }
