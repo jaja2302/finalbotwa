@@ -30,7 +30,7 @@ client.on('auth_failure', msg => {
 
 client.on('ready', async () => { 
     console.log('Client is ready!');
-    await GetYoutubeurl();
+    // await GetYoutubeurl();
 });
 
 

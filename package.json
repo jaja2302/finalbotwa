@@ -7,7 +7,8 @@
     "start": "pm2 start production-wa.js --name my-production-wa",
     "dev": "concurrently \"node dbconection.js\" \"node development-wa.js\"",
     "pm2-start": "pm2 start production-wa.js --name my-production-wa",
-    "tele": "node tele_bot.js"
+    "tele": "node tele_bot.js",
+    "wa": "node production-wa.js"
   },
   "keywords": [],
   "author": "",
