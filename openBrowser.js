@@ -50,6 +50,12 @@ async function Generatedmaps() {
 }
 
 async function GenerateTakestEST(est) {
+  const url = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_${est.toLowerCase()}.php`;
+  await generateWithPuppeteer(url);
+  console.log(`Taksasi generated successfully for taksasi '${est}'`);
+}
+
+async function GenDefaultTaksasi(est) {
   const url = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}.php`;
   await generateWithPuppeteer(url);
   console.log(`Taksasi generated successfully for taksasi '${est}'`);
@@ -114,4 +120,4 @@ async function GetYoutubeurl() {
   }
 }
 
-module.exports = { Generatedmaps,GetYoutubeurl ,GenerateTaksasi ,GenerateTakestEST };
+module.exports = { Generatedmaps,GetYoutubeurl ,GenerateTaksasi ,GenerateTakestEST, GenDefaultTaksasi };

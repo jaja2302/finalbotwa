@@ -11,7 +11,7 @@ const { spawn } = require('child_process');
 
 
 // const generatemaps = require('./openBrowser.js');
-const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST, } = require('./openBrowser'); // Note: Remove the '.js' extension
+const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST,GenDefaultTaksasi } = require('./openBrowser'); // Note: Remove the '.js' extension
 
 const path = require('path');
 
@@ -319,7 +319,7 @@ async function sendtaksasiest(est, groupID) {
                 await GenerateTakestEST(est);
                 break;
             default:
-                await GenerateTaksasi;
+                await GenDefaultTaksasi(est);
                 break;
         }
 
@@ -515,7 +515,7 @@ tasks.forEach(task => {
         try {
             const groupChat = await client.getChatById('120363158376501304@g.us');
             if (groupChat) {
-                await groupChat.sendMessage(`Sending files at ${task.time} (WIB)...`);
+                await groupChat.sendMessage(task.message);
                 console.log(`Message sent to the group successfully!`);
             } else {
                 console.log(`Group not found!`);
@@ -573,7 +573,7 @@ cron.schedule('00 16 * * *', async () => {
     
         // Wait for 10 seconds after checkAndDeleteFiles
         await GenerateTaksasi();
-        await GenerateTakestEST('NBE');
+        // await GenerateTakestEST('NBE');
     
 
         await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
@@ -603,6 +603,21 @@ const bat = spawn('cmd.exe', ['/k', 'path/to/your/batchfile.bat'], {
 });
 
 bat.unref();
+
+const captureConsole = () => {
+    exec('YOUR_COMMAND_HERE', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`Captured output: ${stdout}`);
+        // Here you can send 'stdout' wherever you need or process it further
+    });
+};
 
 client.on('message', async msg => {
 
@@ -711,53 +726,26 @@ client.on('message', async msg => {
         bat.unref();
     } else {
         msg.reply('This command can only be used by an authorized user!');
-    }
+    }    
 }
-
 
 });
 
 
 
-const tasks2 = [
-    { 
-        time: '02 16 * * *', 
-        message: 'Kirim Taksasi Wil 1 ,2,3 Jam 16:02', 
-        regions: ['Wilayah_1', 'Wilayah_2', 'Wilayah_3'], 
-        groupId: '120363205553012899@g.us',
-        generate: 'all'
-    },
-    { 
-        time: '49 09 * * *', 
-        message: 'Kirim Taksasi BDE  Jam 14:02', 
-        regions: ['Wilayah_6'], 
-        groupId: '120363205553012899@g.us',
-        generate: 'BDE'
-    },
-];
 
 client.on('ready', async () => {
     console.log('Client is ready!');
+           await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+    
+  
+        // await GenerateTakestEST('KTE');
+    
 
-    // for (const task2 of tasks2) {
-    //     try {
-    //         await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
-    //         if (task2.generate === 'all') {
-    //             await GenerateTaksasi(task2.generate);
-    //         } else if (task2.generate !== 'none' && task2.generate !== 'all') {
-    //             await GenerateTakest(task2.generate);
-    //         }
-
-    //         for (const region of task2.regions) {
-    //             await sendPdfToGroups(region, task2.groupId); // Use task2.groupId for all regions
-    //         }
-    //     } catch (error) {
-    //         console.error('Error processing task:', error);
-    //         logError(error);
-    //     }
-    // }
-
+        // // regions: ['Wilayah_7'], 
+        // // groupId: '120363170524329595@g.us',
+        // await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us'); // Use task.groupId for all regions
+    
 
     const number = '6281349807050@c.us'; // Replace with the target number
     const message = 'Bot Starting '; // Message to be sent
