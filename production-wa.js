@@ -11,7 +11,7 @@ const { spawn } = require('child_process');
 
 
 // const generatemaps = require('./openBrowser.js');
-const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakest, GenerateTakest2 } = require('./openBrowser'); // Note: Remove the '.js' extension
+const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST, } = require('./openBrowser'); // Note: Remove the '.js' extension
 
 const path = require('path');
 
@@ -307,8 +307,8 @@ async function sendtaksasiest(est, groupID) {
                 console.log('Invalid est value provided.');
                 return;
         }
-        await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
+        await Generatedmaps();
+        await checkAndDeleteFiles(); 
         // Hit the URL to regenerate and save PDFs in the corresponding folder
         switch (est) {
             case 'BHE':
@@ -316,10 +316,10 @@ async function sendtaksasiest(est, groupID) {
             case 'BDE':
             case 'SCE':
             case 'UPE':
-                await GenerateTakest(est);
+                await GenerateTakestEST(est);
                 break;
             default:
-                await GenerateTakest2(est);
+                await GenerateTaksasi;
                 break;
         }
 
@@ -396,7 +396,8 @@ async function sendperwil(wilayah, groupID) {
         }
 
         // Perform operations sequentially
-        await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+        await Generatedmaps(); 
+        await checkAndDeleteFiles(); 
 
         // Generate maps
         await GenerateTaksasi();
@@ -413,7 +414,7 @@ async function sendperwil(wilayah, groupID) {
         }
 
         // Check and delete files again
-        await checkAndDeleteFiles();
+        // await checkAndDeleteFiles();
     } catch (error) {
         console.error(`Error fetching files:`, error);
         logError(error);
@@ -466,62 +467,55 @@ cronTimes.forEach(time => {
 
 const tasks = [
     { 
-        time: '02 16 * * *', 
-        message: 'Kirim Taksasi Wil 1 ,2,3 Jam 16:02', 
-        regions: ['Wilayah_1', 'Wilayah_2', 'Wilayah_3'], 
-        groupId: '120363205553012899@g.us',
-        generate: 'all'
-    },
-    { 
-        time: '02 17 * * *', 
+        time: '00 17 * * *', 
         message: 'Kirim Taksasi Umpang Wil 3 Jam 17:02', 
         regions: ['Wilayah_3'], 
-        groupId: '120363205553012899@g.us',
+        groupId: '120363048442215265@g.us',
         generate: 'UPE'
     },
     { 
-        time: '02 09 * * *', 
+        time: '00 09 * * *', 
         message: 'Kirim Taksasi Wil 7 BDE  Jam 09:02', 
         regions: ['Wilayah_7'], 
-        groupId: '120363205553012899@g.us',
+        groupId: '120363166668733371@g.us',
         generate: 'BDE'
     },
     { 
-        time: '02 12 * * *', 
+        time: '00 12 * * *', 
         message: 'Kirim Taksasi KTE Wil 7  Jam 12:02', 
         regions: ['Wilayah_7'], 
-        groupId: '120363205553012899@g.us',
+        groupId: '120363170524329595@g.us',
         generate: 'KTE'
     },
     { 
-        time: '02 15 * * *', 
+        time: '00 15 * * *', 
         message: 'Kirim Taksasi BHE Jam 15:02', 
         regions: ['Wilayah_8'], 
-        groupId: '120363205553012899@g.us',
+        groupId: '120363149785590346@g.us',
         generate: 'BHE'
     },
     { 
-        time: '02 14 * * *', 
+        time: '00 14 * * *', 
         message: 'Kirim Taksasi SCE  Jam 14:02', 
         regions: ['Wilayah_6'], 
-        groupId: '120363205553012899@g.us',
+        groupId: '120363152744155925@g.us',
         generate: 'SCE'
     },
     { 
-        time: '10 15 * * *', 
+        time: '20 15 * * *', 
         message: 'Harian Guys', 
         regions: [], 
-        groupId: '120363205553012899@g.us',
+        groupId: '120363158376501304@g.us',
         generate: 'none'
-    },
+    }
 ];
 tasks.forEach(task => {
     cron.schedule(task.time, async () => {
         console.log(`Sending files at ${task.time} (WIB)...`);
         try {
-            const groupChat = await client.getChatById(task.groupId);
+            const groupChat = await client.getChatById('120363158376501304@g.us');
             if (groupChat) {
-                await groupChat.sendMessage(task.message);
+                await groupChat.sendMessage(`Sending files at ${task.time} (WIB)...`);
                 console.log(`Message sent to the group successfully!`);
             } else {
                 console.log(`Group not found!`);
@@ -530,19 +524,26 @@ tasks.forEach(task => {
             console.error('Error sending message:', error);
             logError(error);
         }
+       
+        try {
+            await Generatedmaps();
 
-        // Sending PDFs to respective groups
-        for (const region of task.regions) {
-            await sendPdfToGroups(region, groupIds[region]); // Assuming groupIds is defined somewhere
+            await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+        
+            // Wait for 10 seconds after checkAndDeleteFiles
+             if (task.generate !== 'none' ) {
+                await GenerateTakestEST(task.generate);
+            }
+        
+            for (const region of task.regions) {
+                await sendPdfToGroups(region, task.groupId); // Use task.groupId for all regions
+            }
+        } catch (error) {
+            console.error('Error processing task:', error);
+            logError(error);
         }
-
-        // Execute GenerateTakest and GenerateTaksasi here based on 'generate' property
-        if (task.generate === 'all') {
-            await GenerateTaksasi();
-        } else if (task.generate !== 'none') {
-            await GenerateTakest(estvalue); // Placeholder value for estvalue
-        }
-        // If 'none', no generation task needs to be performed
+        
+        
     }, {
         scheduled: true,
         timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -550,187 +551,47 @@ tasks.forEach(task => {
 });
 
 
-// cron.schedule('02 16 * * *', async () => {
-//     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Kirim Taksasi Wil 1 ,2,3 Jam 16:02');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-//     await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
-//     // Generate maps
-//     await GenerateTaksasi();
-
-//     await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
-//     await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
-//     await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-// });
 
 
-// cron.schedule('02 17 * * *', async () => {
-//     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Kirim Taksasi Umpang Wil 3 Jam 17:02');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-//     await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+cron.schedule('00 16 * * *', async () => {
+    console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+    try {
+        const groupChat = await client.getChatById('120363158376501304@g.us');
+        if (groupChat) {
+            await groupChat.sendMessage('Kirim Taksasi Wil 1 ,2,3 Jam 16:02');
+            console.log(`Message sent to the group successfully!`);
+        } else {
+            console.log(`Group not found!`);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        logError(error);
+    }
+ 
+    try {
+        await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+    
+        // Wait for 10 seconds after checkAndDeleteFiles
+        await GenerateTaksasi();
+        await GenerateTakestEST('NBE');
+    
 
-//     // Generate maps
-//     // await GenerateTaksasi();
-//     await GenerateTakest(UPE);
+        await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+        await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+        await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+    } catch (error) {
+        console.error('Error processing task:', error);
+        logError(error);
+    }
 
-//     await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-// });
 
-// cron.schedule('02 09 * * *', async () => {
-//     console.log('Sending files to groups Taksasi Wil - VII at 14:05 (WIB)...');
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Kirim Taksasi Wil 7  Jam 09:02');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-//     // BDE 
-//     await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
-//     // Generate maps
-//     // await GenerateTaksasi();
-//     await GenerateTakest(BDE);
-
-//     await sendPdfToGroups('Wilayah_7', '120363166668733371@g.us');
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-// });
-
-// cron.schedule('02 12 * * *', async () => {
-//     console.log('Sending files to groups Taksasi KTE at 12:05 (WIB)...');
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Kirim Taksasi KTE Wil 7  Jam 12:02');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-//     // KTE 
-//     await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
-//     // Generate maps
-//     // await GenerateTaksasi();
-//     await GenerateTakest(KTE);
-
-//     await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us');
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-// });
-
-// cron.schedule('02 15 * * *', async () => {
-//     console.log('Sending files to groups BHE at 09:05 (WIB)...');
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Kirim Taksasi BHE Jam 15:02');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-//     // BHE 
-
-//     await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
-//     // Generate maps
-//     // await GenerateTaksasi();
-//     await GenerateTakest(BHE);
-//     await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us');
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-// });
-// cron.schedule('02 14 * * *', async () => {
-//     console.log('Sending files to groups SCE at 09:05 (WIB)...');
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Kirim Taksasi SCE  Jam 14:02');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-//     // SCE 
-//     await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-
-//     // Generate maps
-//     // await GenerateTaksasi();
-//     await GenerateTakest(SCE);
-//     await sendPdfToGroups('Wilayah_6', '120363152744155925@g.us');
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-// });
-
-// // cronjob harian
-// cron.schedule('10 15 * * *', async () => {
-//     console.log('Sending Harian Reminder to groups Harian at 15:10 (WIB)...');
-
-//     try {
-//         const groupChat = await client.getChatById('120363158376501304@g.us');
-//         if (groupChat) {
-//             await groupChat.sendMessage('Harian Guys');
-//             console.log(`Message sent to the group successfully!`);
-//         } else {
-//             console.log(`Group not found!`);
-//         }
-//     } catch (error) {
-//         console.error('Error sending message:', error);
-//         logError(error);
-//     }
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta'
-// });
-
+    // await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+    // await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+    // await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+});
 
 
 let listeningForEstateInput = false;
@@ -856,15 +717,54 @@ client.on('message', async msg => {
 
 });
 
+
+
+const tasks2 = [
+    { 
+        time: '02 16 * * *', 
+        message: 'Kirim Taksasi Wil 1 ,2,3 Jam 16:02', 
+        regions: ['Wilayah_1', 'Wilayah_2', 'Wilayah_3'], 
+        groupId: '120363205553012899@g.us',
+        generate: 'all'
+    },
+    { 
+        time: '49 09 * * *', 
+        message: 'Kirim Taksasi BDE  Jam 14:02', 
+        regions: ['Wilayah_6'], 
+        groupId: '120363205553012899@g.us',
+        generate: 'BDE'
+    },
+];
+
 client.on('ready', async () => {
     console.log('Client is ready!');
 
+    // for (const task2 of tasks2) {
+    //     try {
+    //         await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+
+    //         if (task2.generate === 'all') {
+    //             await GenerateTaksasi(task2.generate);
+    //         } else if (task2.generate !== 'none' && task2.generate !== 'all') {
+    //             await GenerateTakest(task2.generate);
+    //         }
+
+    //         for (const region of task2.regions) {
+    //             await sendPdfToGroups(region, task2.groupId); // Use task2.groupId for all regions
+    //         }
+    //     } catch (error) {
+    //         console.error('Error processing task:', error);
+    //         logError(error);
+    //     }
+    // }
+
+
     const number = '6281349807050@c.us'; // Replace with the target number
-    const message = 'hai'; // Message to be sent
+    const message = 'Bot Starting '; // Message to be sent
 
     const chat = await client.getChatById(number);
     if (chat) {
-        chat.sendMessage(message);
+        await chat.sendMessage(message); // Ensure to use await here for sendMessage
         console.log('Message sent successfully!');
     } else {
         console.log('Chat not found!');
