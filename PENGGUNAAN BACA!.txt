@@ -1,0 +1,25 @@
+### Cara Menjalankan:
+
+Untuk memulai pertama kali, gunakan perintah berikut dalam terminal: 
+npm run start
+
+### Melihat Status Bot di Terminal:
+
+Untuk memantau status bot pada terminal, gunakan perintah:
+pm2 log bot_da
+
+### Penting untuk Diperhatikan:
+
+Jangan langsung menutup terminal untuk menghentikan WhatsApp bot, karena prosesnya akan tetap berjalan di latar belakang.
+
+Untuk menghentikan bot dengan aman, gunakan perintah berikut:
+pm2 stop bot_da
+
+ntuk menghentikan bot dengan aman, gunakan perintah berikut:
+pm2 start bot_da
+---
+
+@created_by: TEAM DA 2023
+@SRS
+
+

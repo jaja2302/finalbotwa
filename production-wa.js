@@ -310,18 +310,19 @@ async function sendtaksasiest(est, groupID) {
         await Generatedmaps();
         await checkAndDeleteFiles(); 
         // Hit the URL to regenerate and save PDFs in the corresponding folder
-        switch (est) {
-            case 'BHE':
-            case 'KTE':
-            case 'BDE':
-            case 'SCE':
-            case 'UPE':
-                await GenerateTakestEST(est);
-                break;
-            default:
-                await GenDefaultTaksasi(est);
-                break;
-        }
+        // switch (est) {
+        //     case 'BHE':
+        //     case 'KTE':
+        //     case 'BDE':
+        //     case 'SCE':
+        //     case 'UPE':
+        //         await GenerateTakestEST(est);
+        //         break;
+        //     default:
+        //         await GenDefaultTaksasi(est);
+        //         break;
+        // }
+        await GenDefaultTaksasi(est);
 
         console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
 
@@ -468,35 +469,35 @@ cronTimes.forEach(time => {
 const tasks = [
     { 
         time: '00 17 * * *', 
-        message: 'Kirim Taksasi Umpang Wil 3 Jam 17:02', 
+        message: 'Kirim Taksasi Umpang Wil 3 Jam 17:00', 
         regions: ['Wilayah_3'], 
         groupId: '120363048442215265@g.us',
         generate: 'UPE'
     },
     { 
         time: '00 09 * * *', 
-        message: 'Kirim Taksasi Wil 7 BDE  Jam 09:02', 
+        message: 'Kirim Taksasi Wil 7 BDE  Jam 09:00', 
         regions: ['Wilayah_7'], 
         groupId: '120363166668733371@g.us',
         generate: 'BDE'
     },
     { 
         time: '00 12 * * *', 
-        message: 'Kirim Taksasi KTE Wil 7  Jam 12:02', 
+        message: 'Kirim Taksasi KTE Wil 7  Jam 12:00', 
         regions: ['Wilayah_7'], 
         groupId: '120363170524329595@g.us',
         generate: 'KTE'
     },
     { 
         time: '00 15 * * *', 
-        message: 'Kirim Taksasi BHE Jam 15:02', 
+        message: 'Kirim Taksasi BHE Jam 15:00', 
         regions: ['Wilayah_8'], 
         groupId: '120363149785590346@g.us',
         generate: 'BHE'
     },
     { 
         time: '00 14 * * *', 
-        message: 'Kirim Taksasi SCE  Jam 14:02', 
+        message: 'Kirim Taksasi SCE  Jam 14:00', 
         regions: ['Wilayah_6'], 
         groupId: '120363152744155925@g.us',
         generate: 'SCE'
@@ -532,7 +533,9 @@ tasks.forEach(task => {
         
             // Wait for 10 seconds after checkAndDeleteFiles
              if (task.generate !== 'none' ) {
-                await GenerateTakestEST(task.generate);
+                // await GenerateTakestEST(task.generate);
+                await GenDefaultTaksasi(task.generate);
+
             }
         
             for (const region of task.regions) {
@@ -736,7 +739,7 @@ client.on('message', async msg => {
 
 client.on('ready', async () => {
     console.log('Client is ready!');
-           await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+        await checkAndDeleteFiles(); // Ensure files are checked and deleted first
     
   
         // await GenerateTakestEST('KTE');
