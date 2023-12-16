@@ -11,7 +11,7 @@ const { spawn } = require('child_process');
 
 
 // const generatemaps = require('./openBrowser.js');
-const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST,GenDefaultTaksasi } = require('./openBrowser'); // Note: Remove the '.js' extension
+const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST,GenDefaultTaksasi,Generatedmapsest } = require('./openBrowser'); // Note: Remove the '.js' extension
 
 const path = require('path');
 
@@ -286,7 +286,7 @@ async function sendtaksasiest(est, groupID) {
                 folder = 'Wilayah_5';
                 break;
             case 'MLE':
-
+          
                 folder = 'Wilayah_6';
                 break;
             case 'PKE':
@@ -294,7 +294,6 @@ async function sendtaksasiest(est, groupID) {
             case 'KTE':
             case 'MKE':
             case 'SCE':
-
                 folder = 'Wilayah_7';
                 break;
 
@@ -307,22 +306,22 @@ async function sendtaksasiest(est, groupID) {
                 console.log('Invalid est value provided.');
                 return;
         }
-        await Generatedmaps();
+        await Generatedmapsest(est);
         await checkAndDeleteFiles(); 
         // Hit the URL to regenerate and save PDFs in the corresponding folder
-        // switch (est) {
-        //     case 'BHE':
-        //     case 'KTE':
-        //     case 'BDE':
-        //     case 'SCE':
-        //     case 'UPE':
-        //         await GenerateTakestEST(est);
-        //         break;
-        //     default:
-        //         await GenDefaultTaksasi(est);
-        //         break;
-        // }
-        await GenDefaultTaksasi(est);
+        switch (est) {
+            case 'KTE':
+            case 'SCE':
+            case 'UPE':
+            case 'BDE':
+            case 'BHE':
+                await GenerateTakestEST(est);
+                break;
+            default:
+                await GenDefaultTaksasi(est);
+                break;
+        }
+        // await GenDefaultTaksasi(est);
 
         console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
 
@@ -530,13 +529,18 @@ tasks.forEach(task => {
             await Generatedmaps();
 
             await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-        
+         
             // Wait for 10 seconds after checkAndDeleteFiles
              if (task.generate !== 'none' ) {
                 // await GenerateTakestEST(task.generate);
                 await GenDefaultTaksasi(task.generate);
+                // await GenerateTakestEST(est);
+             }
+            // }else if (task.generate == 'KTE' || task.generate == 'UPE' || task.generate == 'SCE') {
+            //     // await GenerateTakestEST(task.generate);
+            //     await GenerateTakestEST(est);
 
-            }
+            // }
         
             for (const region of task.regions) {
                 await sendPdfToGroups(region, task.groupId); // Use task.groupId for all regions
@@ -741,14 +745,24 @@ client.on('ready', async () => {
     console.log('Client is ready!');
         await checkAndDeleteFiles(); // Ensure files are checked and deleted first
     
-  
-        // await GenerateTakestEST('KTE');
+        // await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+    
+        // // Wait for 10 seconds after checkAndDeleteFiles
+        // await GenerateTaksasi();
+        // // await GenerateTakestEST('NBE');
     
 
-        // // regions: ['Wilayah_7'], 
-        // // groupId: '120363170524329595@g.us',
-        // await sendPdfToGroups('Wilayah_7', '120363170524329595@g.us'); // Use task.groupId for all regions
+        // // await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+        // // await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+        // await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+
+        // await GenerateTakestEST('BHE');
     
+  
+        // await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us'); // Use task.groupId for all regions
+        // regions: ['Wilayah_8'], 
+        // groupId: '120363149785590346@g.us',
+        // generate: 'BHE'
 
     const number = '6281349807050@c.us'; // Replace with the target number
     const message = 'Bot Starting '; // Message to be sent
