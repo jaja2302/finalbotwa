@@ -355,6 +355,7 @@ async function sendtaksasiest(est, groupID) {
         }
 
 
+
     } catch (error) {
         console.error(`Error fetching files:`, error);
         logError(error);
@@ -471,6 +472,8 @@ const tasks = [
         message: 'Kirim Taksasi Umpang Wil 3 Jam 17:00', 
         regions: ['Wilayah_3'], 
         groupId: '120363048442215265@g.us',
+        // test  
+        // groupId: '120363205553012899@g.us',
         generate: 'UPE'
     },
     { 
@@ -478,6 +481,9 @@ const tasks = [
         message: 'Kirim Taksasi Wil 7 BDE  Jam 09:00', 
         regions: ['Wilayah_7'], 
         groupId: '120363166668733371@g.us',
+
+        // tes 
+        // groupId: '120363205553012899@g.us',
         generate: 'BDE'
     },
     { 
@@ -485,6 +491,9 @@ const tasks = [
         message: 'Kirim Taksasi KTE Wil 7  Jam 12:00', 
         regions: ['Wilayah_7'], 
         groupId: '120363170524329595@g.us',
+
+        // testgrup
+        // groupId: '120363205553012899@g.us',
         generate: 'KTE'
     },
     { 
@@ -492,6 +501,8 @@ const tasks = [
         message: 'Kirim Taksasi BHE Jam 15:00', 
         regions: ['Wilayah_8'], 
         groupId: '120363149785590346@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
         generate: 'BHE'
     },
     { 
@@ -499,6 +510,8 @@ const tasks = [
         message: 'Kirim Taksasi SCE  Jam 14:00', 
         regions: ['Wilayah_6'], 
         groupId: '120363152744155925@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
         generate: 'SCE'
     },
     { 
@@ -506,6 +519,9 @@ const tasks = [
         message: 'Harian Guys', 
         regions: [], 
         groupId: '120363158376501304@g.us',
+
+        // testgrup
+        // groupId: '120363205553012899@g.us',
         generate: 'none'
     }
 ];
@@ -601,9 +617,6 @@ cron.schedule('00 16 * * *', async () => {
 });
 
 
-let listeningForEstateInput = false;
-let listengtaksasi = false;
-
 const bat = spawn('cmd.exe', ['/k', 'path/to/your/batchfile.bat'], {
     detached: true,
     stdio: 'ignore' // Prevents the spawned process from sharing the console with Node.js
@@ -625,6 +638,13 @@ const captureConsole = () => {
         // Here you can send 'stdout' wherever you need or process it further
     });
 };
+
+let listeningForEstateInput = false;
+let listengtaksasi = false;
+let listen2 = false;
+let listen3 = false;
+let listen4 = false;
+
 
 client.on('message', async msg => {
 
@@ -703,7 +723,7 @@ client.on('message', async msg => {
         }
     }
 
-    else if (msg.body === '!status' && !listeningForEstateInput) {
+    else if (msg.body === '!status' && !listen2) {
         let chat = await msg.getChat();
         if (chat.isGroup) {
             msg.reply('Bot is running.');
@@ -713,7 +733,7 @@ client.on('message', async msg => {
     }
   
 
-    else if (msg.body === '!matikanpc' && !listeningForEstateInput) {
+    else if (msg.body === '!matikanpc' && !listen3) {
     const allowedNumber = '6281349807050@c.us'; // Specify the allowed number here
     
     const senderNumber = msg.from; // Get the sender's number from the message
@@ -722,20 +742,52 @@ client.on('message', async msg => {
     
     // Check if the sender's number matches the allowed number
     if (senderNumber === allowedNumber) {
-        msg.reply('Shutting down the PC in 30 minutes. Please save your work.');
-        
-        // Execute the batch file to shutdown the PC in 30 minutes using spawn
-        const bat = spawn('cmd.exe', ['/k', 'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\shutdownpc.bat'], {
-            detached: true,
-            stdio: 'ignore'
-        });
-        
-        bat.unref();
-    } else {
-        msg.reply('This command can only be used by an authorized user!');
-    }    
-}
+            msg.reply('Shutting down the PC in 30 minutes. Please save your work.');
+            
+            // Execute the batch file to shutdown the PC in 30 minutes using spawn
+            const bat = spawn('cmd.exe', ['/k', 'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\shutdownpc.bat'], {
+                detached: true,
+                stdio: 'ignore'
+            });
+            
+            bat.unref();
+        } else {
+            msg.reply('This command can only be used by an authorized user!');
+        }    
+    }
+    else if (msg.body === '!getlog' && !listen4) {
+        try {
+            const logFilePath = './bot-da-out.log'; // Replace with your log file path
 
+            // Create MessageMedia from file path
+            const media = MessageMedia.fromFilePath(logFilePath);
+
+            // Send the log file as a document
+            await client.sendMessage(msg.from, media, { sendMediaAsDocument: true });
+
+            // Respond to confirm sending the log file
+            await client.sendMessage(msg.from, 'Log file sent successfully!');
+        } catch (error) {
+            // Handle errors, such as file not found or other issues
+            console.error('Error sending log file:', error);
+            await client.sendMessage(msg.from, 'Error sending log file. Please try again later.');
+        }
+    } else if (msg.body === '!clearlog' && !listen4) {
+        try {
+            const logFilePath = './bot-da-out.log'; // Replace with your log file path
+
+            // Empty the log file by truncating it
+            fs.writeFileSync(logFilePath, '');
+
+            // Respond to confirm clearing the log file
+            await client.sendMessage(msg.from, 'Log file cleared successfully!');
+        } catch (error) {
+            // Handle errors, such as file not found or other issues
+            console.error('Error clearing log file:', error);
+            await client.sendMessage(msg.from, 'Error clearing log file. Please try again later.');
+        }
+    }
+    
 });
 
 

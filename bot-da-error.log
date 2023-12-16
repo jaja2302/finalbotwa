@@ -1721,3 +1721,63 @@ Error processing task: ReferenceError: est is not defined
 Error logged: ReferenceError: est is not defined
     at cron.schedule.scheduled [as _execution] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:535:41)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error sending log file: TypeError: client.sendFile is not a function
+    at Client.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:763:26)
+    at Client.emit (node:events:517:28)
+    at C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:421:18
+    at Page._onBindingCalled (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:998:62)
+    at C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:152:60
+    at C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\vendor\mitt\src\index.js:51:62
+    at Array.map (<anonymous>)
+    at Object.emit (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\vendor\mitt\src\index.js:51:43)
+    at CDPSession.emit (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\EventEmitter.js:72:22)
+    at CDPSession._onMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:249:18)
+    at Connection._onMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:117:25)
+    at WebSocket.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\node\NodeWebSocketTransport.js:13:32)
+    at WebSocket.onMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\ws\lib\event-target.js:199:18)
+    at WebSocket.emit (node:events:517:28)
+    at Receiver.receiverOnMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\ws\lib\websocket.js:1137:20)
+    at Receiver.emit (node:events:517:28)
+TypeError: client.sendText is not a function
+    at Client.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:770:26)
+    at Client.emit (node:events:517:28)
+    at C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:421:18
+    at Page._onBindingCalled (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:998:62)
+    at C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:152:60
+    at C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\vendor\mitt\src\index.js:51:62
+    at Array.map (<anonymous>)
+    at Object.emit (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\vendor\mitt\src\index.js:51:43)
+    at CDPSession.emit (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\EventEmitter.js:72:22)
+    at CDPSession._onMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:249:18)
+    at Connection._onMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:117:25)
+    at WebSocket.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\node\NodeWebSocketTransport.js:13:32)
+    at WebSocket.onMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\ws\lib\event-target.js:199:18)
+    at WebSocket.emit (node:events:517:28)
+    at Receiver.receiverOnMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\ws\lib\websocket.js:1137:20)
+    at Receiver.emit (node:events:517:28)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: TypeError: client.sendText is not a function
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:76:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error sending log file: Error: Evaluation failed: DOMException: Failed to execute 'atob' on 'Window': The string to be decoded is not correctly encoded.
+    at window.WWebJS.mediaInfoToFile (__puppeteer_evaluation_script__:498:35)
+    at window.WWebJS.processMediaData (__puppeteer_evaluation_script__:295:36)
+    at window.WWebJS.sendMessage (__puppeteer_evaluation_script__:19:39)
+    at __puppeteer_evaluation_script__:10:45
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:221:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:16)
+    at async Client.sendMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:888:28)
+    at async Client.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:766:13)
+Error sending log file: Error: Evaluation failed: DOMException: Failed to execute 'atob' on 'Window': The string to be decoded is not correctly encoded.
+    at window.WWebJS.mediaInfoToFile (__puppeteer_evaluation_script__:498:35)
+    at window.WWebJS.processMediaData (__puppeteer_evaluation_script__:295:36)
+    at window.WWebJS.sendMessage (__puppeteer_evaluation_script__:19:39)
+    at __puppeteer_evaluation_script__:10:45
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:221:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:16)
+    at async Client.sendMessage (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:888:28)
+    at async Client.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:766:13)
