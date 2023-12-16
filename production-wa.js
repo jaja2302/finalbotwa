@@ -757,38 +757,73 @@ client.on('message', async msg => {
     }
     else if (msg.body === '!getlog' && !listen4) {
         try {
-            const logFilePath = './bot-da-out.log'; // Replace with your log file path
+            const logFilePath = './bot-da-out.log'; // Main log file path
+            const errorLogFilePath = './bot-da-error.log'; // Error log file path
 
-            // Create MessageMedia from file path
-            const media = MessageMedia.fromFilePath(logFilePath);
+            // Create MessageMedia for main log file
+            const logMedia = MessageMedia.fromFilePath(logFilePath);
 
-            // Send the log file as a document
-            await client.sendMessage(msg.from, media, { sendMediaAsDocument: true });
+            // Create MessageMedia for error log file
+            const errorLogMedia = MessageMedia.fromFilePath(errorLogFilePath);
 
-            // Respond to confirm sending the log file
-            await client.sendMessage(msg.from, 'Log file sent successfully!');
+            // Send the main log file as a document
+            await client.sendMessage(msg.from, logMedia, { sendMediaAsDocument: true });
+
+            // Send the error log file as a document
+            await client.sendMessage(msg.from, errorLogMedia, { sendMediaAsDocument: true });
+
+            // Respond to confirm sending both log files
+            await client.sendMessage(msg.from, 'Log files sent successfully!');
         } catch (error) {
             // Handle errors, such as file not found or other issues
-            console.error('Error sending log file:', error);
-            await client.sendMessage(msg.from, 'Error sending log file. Please try again later.');
+            console.error('Error sending log files:', error);
+            await client.sendMessage(msg.from, 'Error sending log files. Please try again later.');
         }
     } else if (msg.body === '!clearlog' && !listen4) {
         try {
-            const logFilePath = './bot-da-out.log'; // Replace with your log file path
+            const logFilePath = './bot-da-out.log'; // Main log file path
+            const errorLogFilePath = './bot-da-error.log'; // Error log file path
 
-            // Empty the log file by truncating it
+            // Clear main log file
             fs.writeFileSync(logFilePath, '');
 
-            // Respond to confirm clearing the log file
-            await client.sendMessage(msg.from, 'Log file cleared successfully!');
+            // Clear error log file
+            fs.writeFileSync(errorLogFilePath, '');
+
+            // Respond to confirm clearing both log files
+            await client.sendMessage(msg.from, 'Log files cleared successfully!');
         } catch (error) {
             // Handle errors, such as file not found or other issues
-            console.error('Error clearing log file:', error);
-            await client.sendMessage(msg.from, 'Error clearing log file. Please try again later.');
+            console.error('Error clearing log files:', error);
+            await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
         }
     }
     
+  
+
 });
+    const allowedNumber = '6281349807050@c.us'; // Specify the allowed number here
+    const errorLogPath = './bot-da-error.log';
+
+    // Function to send the error log to the group
+    async function sendErrorLogToGroup() {
+        try {
+        const errorLog = fs.readFileSync(errorLogPath, 'utf8');
+        await client.sendMessage(allowedNumber, errorLog);
+        console.log('Error log sent to the group.');
+        } catch (error) {
+        console.error(`Error reading or sending error log: ${error}`);
+        }
+    }
+    
+    // Watch for changes in the error.log file
+    fs.watchFile(errorLogPath, (curr, prev) => {
+        if (curr.size > prev.size) {
+        // If the current size is greater than the previous size, indicating an update
+        console.log('Detected change in error.log. Sending to group...');
+        sendErrorLogToGroup();
+        }
+    });
 
 
 
