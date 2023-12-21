@@ -192,7 +192,7 @@ async function sendPdfToGroups(folder, groupID) {
     } catch (error) {
         console.error('Error fetching or sending PDF files:', error);
         try {
-            const groupChat = await client.getChatById('120363158376501304@g.us');
+            const groupChat = await client.getChatById('120363205553012899@g.us');
             if (groupChat) {
                 const errorMessage = 'There was an error sending the PDF files.\nError Details:\n' + error.stack;
                 await groupChat.sendMessage(errorMessage);
@@ -286,20 +286,24 @@ async function sendtaksasiest(est, groupID) {
                 folder = 'Wilayah_5';
                 break;
             case 'MLE':
-          
+            case 'SCE':
                 folder = 'Wilayah_6';
                 break;
             case 'PKE':
             case 'BDE':
             case 'KTE':
             case 'MKE':
-            case 'SCE':
+           
                 folder = 'Wilayah_7';
                 break;
 
             case 'BHE':
 
                 folder = 'Wilayah_8';
+                break;
+            case 'SJE':
+
+                folder = 'Inti';
                 break;
             default:
                 // Handle cases where est doesn't match any defined folders
@@ -352,6 +356,8 @@ async function sendtaksasiest(est, groupID) {
             if (est === 'BHE') {
                 await sendPdfToGroups(folder, '120363149785590346@g.us');
             }
+        }else if (folder === 'Inti') {
+            await sendPdfToGroups(folder, '120363207525577365@g.us');
         }
 
 
@@ -435,7 +441,7 @@ async function sendperwil(wilayah, groupID) {
 const generateAndSendMessage = async (time) => {
     console.log(`Generate Maps at ${time}..`);
     try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
+        const groupChat = await client.getChatById('120363205553012899@g.us');
         if (groupChat) {
             await groupChat.sendMessage(`Generate Maps Jam ${time}`);
             console.log(`Message sent to the group successfully at ${time}!`);
@@ -506,6 +512,15 @@ const tasks = [
         generate: 'BHE'
     },
     { 
+        time: '03 15 * * *', 
+        message: 'Kirim Taksasi SJE Jam 15:00', 
+        regions: ['Inti'], 
+        groupId: '120363207525577365@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'SJE'
+    },
+    { 
         time: '00 14 * * *', 
         message: 'Kirim Taksasi SCE  Jam 14:00', 
         regions: ['Wilayah_6'], 
@@ -529,7 +544,7 @@ tasks.forEach(task => {
     cron.schedule(task.time, async () => {
         console.log(`Sending files at ${task.time} (WIB)...`);
         try {
-            const groupChat = await client.getChatById('120363158376501304@g.us');
+            const groupChat = await client.getChatById('120363205553012899@g.us');
             if (groupChat) {
                 await groupChat.sendMessage(task.message);
                 console.log(`Message sent to the group successfully!`);
@@ -547,10 +562,12 @@ tasks.forEach(task => {
             await checkAndDeleteFiles(); // Ensure files are checked and deleted first
          
             // Wait for 10 seconds after checkAndDeleteFiles
-             if (task.generate !== 'none' ) {
+             if (task.generate !== 'none' && task.generate !== 'SJE' ) {
                 // await GenerateTakestEST(task.generate);
-                await GenDefaultTaksasi(task.generate);
+                await GenerateTakestEST(task.generate);
                 // await GenerateTakestEST(est);
+             }else {
+                await GenDefaultTaksasi(task.generate);
              }
             // }else if (task.generate == 'KTE' || task.generate == 'UPE' || task.generate == 'SCE') {
             //     // await GenerateTakestEST(task.generate);
@@ -616,34 +633,35 @@ cron.schedule('00 16 * * *', async () => {
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
-
-const bat = spawn('cmd.exe', ['/k', 'path/to/your/batchfile.bat'], {
-    detached: true,
-    stdio: 'ignore' // Prevents the spawned process from sharing the console with Node.js
-});
-
-bat.unref();
-
-const captureConsole = () => {
-    exec('YOUR_COMMAND_HERE', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`Captured output: ${stdout}`);
-        // Here you can send 'stdout' wherever you need or process it further
-    });
-};
-
 let listeningForEstateInput = false;
 let listengtaksasi = false;
 let listen2 = false;
 let listen3 = false;
 let listen4 = false;
+
+const allowedNumber = '120363205553012899@g.us'; 
+const adminNumber = '6281349807050@c.us'; 
+const errorLogPath = './bot-da-error.log';
+
+// Function to send the error log to the group
+async function sendErrorLogToGroup() {
+    try {
+    const errorLog = fs.readFileSync(errorLogPath, 'utf8');
+    await client.sendMessage(allowedNumber, errorLog);
+    console.log('Error log sent to the group.');
+    } catch (error) {
+    console.error(`Error reading or sending error log: ${error}`);
+    }
+}
+
+// Watch for changes in the error.log file
+fs.watchFile(errorLogPath, (curr, prev) => {
+    if (curr.size > prev.size) {
+    // If the current size is greater than the previous size, indicating an update
+    console.log('Detected change in error.log. Sending to group...');
+    sendErrorLogToGroup();
+    }
+});
 
 
 client.on('message', async msg => {
@@ -734,18 +752,17 @@ client.on('message', async msg => {
   
 
     else if (msg.body === '!matikanpc' && !listen3) {
-    const allowedNumber = '6281349807050@c.us'; // Specify the allowed number here
-    
+   
     const senderNumber = msg.from; // Get the sender's number from the message
     
     console.log('Sender:', senderNumber); // Log the sender's number to check
     
     // Check if the sender's number matches the allowed number
-    if (senderNumber === allowedNumber) {
+    if (senderNumber === adminNumber) {
             msg.reply('Shutting down the PC in 30 minutes. Please save your work.');
             
             // Execute the batch file to shutdown the PC in 30 minutes using spawn
-            const bat = spawn('cmd.exe', ['/k', 'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\shutdownpc.bat'], {
+            const bat = spawn('cmd.exe', ['/k', 'C:\Users\jaja.valentino\Desktop\finalbotwa\shutdownpc.bat'], {
                 detached: true,
                 stdio: 'ignore'
             });
@@ -802,56 +819,14 @@ client.on('message', async msg => {
   
 
 });
-    const allowedNumber = '6281349807050@c.us'; // Specify the allowed number here
-    const errorLogPath = './bot-da-error.log';
-
-    // Function to send the error log to the group
-    async function sendErrorLogToGroup() {
-        try {
-        const errorLog = fs.readFileSync(errorLogPath, 'utf8');
-        await client.sendMessage(allowedNumber, errorLog);
-        console.log('Error log sent to the group.');
-        } catch (error) {
-        console.error(`Error reading or sending error log: ${error}`);
-        }
-    }
-    
-    // Watch for changes in the error.log file
-    fs.watchFile(errorLogPath, (curr, prev) => {
-        if (curr.size > prev.size) {
-        // If the current size is greater than the previous size, indicating an update
-        console.log('Detected change in error.log. Sending to group...');
-        sendErrorLogToGroup();
-        }
-    });
-
+   
 
 
 
 client.on('ready', async () => {
     console.log('Client is ready!');
-        await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-    
-        // await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-    
-        // // Wait for 10 seconds after checkAndDeleteFiles
-        // await GenerateTaksasi();
-        // // await GenerateTakestEST('NBE');
-    
 
-        // // await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
-        // // await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
-        // await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
-
-        // await GenerateTakestEST('BHE');
-    
-  
-        // await sendPdfToGroups('Wilayah_8', '120363149785590346@g.us'); // Use task.groupId for all regions
-        // regions: ['Wilayah_8'], 
-        // groupId: '120363149785590346@g.us',
-        // generate: 'BHE'
-
-    const number = '6281349807050@c.us'; // Replace with the target number
+    const number = '120363205553012899@g.us'; // Replace with the target number
     const message = 'Bot Starting '; // Message to be sent
 
     const chat = await client.getChatById(number);

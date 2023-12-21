@@ -1,9 +1,34 @@
-Server running on port 60798
+Generate Maps at 16:57..
+Message sent to the group successfully at 16:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'Rekap_Taksasi_Suja_Rabu, 20 Desember 2023.pdf' in folder 'Inti' deleted successfully.
+File 'Rekap_Taksasi_Sulung Research Station_Rabu, 20 Desember 2023.pdf' in folder 'Wilayah_9' deleted successfully.
+Sending files at 00 17 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+No files found or empty folder. Nothing to delete.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_upe.php'
+Taksasi generated successfully for taksasi 'UPE'
+File "Rekap_Taksasi_Umpang_Rabu, 20 Desember 2023.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Umpang_Rabu, 20 Desember 2023.pdf' in folder 'Wilayah_3' deleted successfully.
+Server running on port 50450
 AUTHENTICATED
 Client is ready!
-No files found or empty folder. Nothing to delete.
 Message sent successfully!
-Detected change in error.log. Sending to group...
-Error log sent to the group.
-Detected change in error.log. Sending to group...
-Error log sent to the group.
+Server running on port 50545
+AUTHENTICATED
+Client is ready!
+Message sent successfully!
+Sender: 6281349807050@c.us
+Sender: 6281349807050@c.us
+Server running on port 50616
+AUTHENTICATED
+Client is ready!
+Message sent successfully!
+Sender: 6281349807050@c.us
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+Invalid est value provided.
+Server running on port 50016
