@@ -1,2 +1,2 @@
 @echo off
-start cmd /k "cd C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa && node tele_bot"
+start cmd /k "cd C:\Users\jaja.valentino\Desktop\finalbotwa && npm run start"

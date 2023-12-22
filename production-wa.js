@@ -302,14 +302,20 @@ async function sendtaksasiest(est, groupID) {
                 folder = 'Wilayah_8';
                 break;
             case 'SJE':
+            case 'TBE':
 
                 folder = 'Inti';
+            case 'LME1':
+
+            folder = 'Plasma';
                 break;
             default:
                 // Handle cases where est doesn't match any defined folders
                 console.log('Invalid est value provided.');
                 return;
         }
+
+    
         await Generatedmapsest(est);
         await checkAndDeleteFiles(); 
         // Hit the URL to regenerate and save PDFs in the corresponding folder
@@ -319,6 +325,8 @@ async function sendtaksasiest(est, groupID) {
             case 'UPE':
             case 'BDE':
             case 'BHE':
+            case 'LME1':
+            case 'TBE':
                 await GenerateTakestEST(est);
                 break;
             default:
@@ -357,7 +365,14 @@ async function sendtaksasiest(est, groupID) {
                 await sendPdfToGroups(folder, '120363149785590346@g.us');
             }
         }else if (folder === 'Inti') {
-            await sendPdfToGroups(folder, '120363207525577365@g.us');
+            if (est === 'SJE') {
+                await sendPdfToGroups(folder, '120363207525577365@g.us');
+            }else {
+                await sendPdfToGroups(folder, '120363193125275627@g.us');
+            }
+           
+        }else if (folder === 'Plasma') {
+            await sendPdfToGroups(folder, '120363208984887370@g.us');
         }
 
 
@@ -530,6 +545,24 @@ const tasks = [
         generate: 'SCE'
     },
     { 
+        time: '03 12 * * *', 
+        message: 'Kirim Taksasi LME1  Jam 12:03', 
+        regions: ['Plasma'], 
+        groupId: '120363208984887370@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'LME1'
+    },
+    { 
+        time: '03 14 * * *', 
+        message: 'Kirim Taksasi TBE  Jam 12:03', 
+        regions: ['Inti'], 
+        groupId: '120363193125275627@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'TBE'
+    },
+    { 
         time: '20 15 * * *', 
         message: 'Harian Guys', 
         regions: [], 
@@ -596,7 +629,7 @@ tasks.forEach(task => {
 cron.schedule('00 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
     try {
-        const groupChat = await client.getChatById('120363158376501304@g.us');
+        const groupChat = await client.getChatById('120363205553012899@g.us');
         if (groupChat) {
             await groupChat.sendMessage('Kirim Taksasi Wil 1 ,2,3 Jam 16:02');
             console.log(`Message sent to the group successfully!`);
@@ -751,27 +784,6 @@ client.on('message', async msg => {
     }
   
 
-    else if (msg.body === '!matikanpc' && !listen3) {
-   
-    const senderNumber = msg.from; // Get the sender's number from the message
-    
-    console.log('Sender:', senderNumber); // Log the sender's number to check
-    
-    // Check if the sender's number matches the allowed number
-    if (senderNumber === adminNumber) {
-            msg.reply('Shutting down the PC in 30 minutes. Please save your work.');
-            
-            // Execute the batch file to shutdown the PC in 30 minutes using spawn
-            const bat = spawn('cmd.exe', ['/k', 'C:\Users\jaja.valentino\Desktop\finalbotwa\shutdownpc.bat'], {
-                detached: true,
-                stdio: 'ignore'
-            });
-            
-            bat.unref();
-        } else {
-            msg.reply('This command can only be used by an authorized user!');
-        }    
-    }
     else if (msg.body === '!getlog' && !listen4) {
         try {
             const logFilePath = './bot-da-out.log'; // Main log file path
@@ -825,7 +837,8 @@ client.on('message', async msg => {
 
 client.on('ready', async () => {
     console.log('Client is ready!');
-
+    await checkAndDeleteFiles(); // Ensure files are checked and deleted first
+    
     const number = '120363205553012899@g.us'; // Replace with the target number
     const message = 'Bot Starting '; // Message to be sent
 
