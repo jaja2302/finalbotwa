@@ -249,3 +249,439 @@ Error stopping the PM2 process: Error: Command failed: pm2 stop my-production-wa
 
 Error starting the bot: Error: Command failed: pm2 start bot_da
 
+No internet connection!
+No internet connection!
+No internet connection!
+No internet connection!
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'sendSeen')
+    at __puppeteer_evaluation_script__:7:31
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+Error: Cannot find module 'pm2'
+Require stack:
+- C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Hook._require.Module.require (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at Object.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:11:13)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Object.<anonymous> (C:\Users\valen\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\valen\\OneDrive\\Desktop\\WaFresh\\finalbotwa\\production-wa.js'
+  ]
+}
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+No internet connection!
+ReferenceError: pm2 is not defined
+    at stopPM2Process (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:88:5)
+    at Timeout.checkInternetConnection [as _onTimeout] (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:137:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: pm2 is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:145:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+ReferenceError: number is not defined
+    at Client.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:98:43)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: ReferenceError: number is not defined
+    at process.<anonymous> (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:529:35)
+    at emit (node:internal/process/promises:149:20)
+    at processPromiseRejections (node:internal/process/promises:283:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)

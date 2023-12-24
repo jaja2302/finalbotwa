@@ -11,7 +11,23 @@ const groupId = -4028539622;
 // Create a new bot instance
 const bot = new TelegramBot(token, { polling: true });
 
+function isBotOnline() {
+  // Implement your logic to check if the bot is online
+  // For example, check if the bot is connected or responsive
+  return true; // Replace this with your logic
+}
+
+// Function to notify the client if the bot is ready
+function notifyIfBotIsReady(clientId) {
+  if (isBotOnline()) {
+      bot.sendMessage(clientId, 'Bot is ready!');
+  } else {
+      bot.sendMessage(clientId, 'Bot is currently offline.');
+  }
+}
+
 // Handle incoming messages
+
 bot.onText(/\/status/, (msg) => {
   const chatId = msg.chat.id;
 
@@ -28,7 +44,7 @@ bot.onText(/\/startwa/, (msg) => {
     bot.sendMessage(groupId, 'Bot Starting!');
   
     // Start the PM2 process
-    exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
+    exec('pm2 start production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log', (error, stdout, stderr) => {
       if (error) {
         console.error(`Error starting the PM2 process: ${error}`);
         bot.sendMessage(chatId, 'Error starting the bot.');
@@ -47,7 +63,7 @@ bot.onText(/\/startwa/, (msg) => {
     bot.sendMessage(groupId, 'Stopping Bot...');
   
     // Stop the PM2 process
-    exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
+    exec('pm2 stop bot_da', (error, stdout, stderr) => {
       if (error) {
         console.error(`Error stopping the PM2 process: ${error}`);
         bot.sendMessage(chatId, 'Error stopping the bot.');
@@ -74,6 +90,32 @@ bot.onText(/\/startwa/, (msg) => {
     }
   });
 
+  bot.onText(/\/getstatusbot/, (msg) => {
+    const chatId = msg.chat.id;
+    exec('pm2 list', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error checking PM2 status: ${error}`);
+            bot.sendMessage(chatId, 'Error fetching bot status.');
+            return;
+        }
+
+        // Split the output by new line and find 'bot_da' with 'online' status
+        const processes = stdout.split('\n');
+
+        let botStatus = 'offline';
+
+        processes.forEach((process) => {
+            if (process.includes('bot_da') && process.includes('online')) {
+                botStatus = 'online';
+            }
+        });
+
+        bot.sendMessage(chatId, `Bot is ${botStatus}.`);
+    });
+});
+
+
+
 
   const errorLogPath = './error/error.log'; // Replace with the correct path
 
@@ -97,146 +139,147 @@ bot.onText(/\/startwa/, (msg) => {
     }
   });
 
-cron.schedule('50 08 * * *', async () => {
-    console.log('Menyalakan Bot WA');
-    // SCE 
-    exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error starting the PM2 process: ${error}`);
-        bot.sendMessage(groupId, 'Error!');
-        return;
-      }
-      console.log(`PM2 process started: ${stdout}`);
-      bot.sendMessage(groupId, 'Bot menyala otomatis jam 08:50!');
-    });
+
+// cron.schedule('50 08 * * *', async () => {
+//     console.log('Menyalakan Bot WA');
+//     // SCE 
+//     exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
+//       if (error) {
+//         console.error(`Error starting the PM2 process: ${error}`);
+//         bot.sendMessage(groupId, 'Error!');
+//         return;
+//       }
+//       console.log(`PM2 process started: ${stdout}`);
+//       bot.sendMessage(groupId, 'Bot menyala otomatis jam 08:50!');
+//     });
   
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
-cron.schedule('05 09 * * *', async () => {
-  console.log('Mematikan Bot WA');
-  // SCE 
-  exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error stopping the PM2 process: ${error}`);
-      bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
-      return;
-    }
-    console.log(`PM2 process stopped: ${stdout}`);
-    bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
-  });
-}, {
-  scheduled: true,
-  timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// cron.schedule('05 09 * * *', async () => {
+//   console.log('Mematikan Bot WA');
+//   // SCE 
+//   exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
+//     if (error) {
+//       console.error(`Error stopping the PM2 process: ${error}`);
+//       bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
+//       return;
+//     }
+//     console.log(`PM2 process stopped: ${stdout}`);
+//     bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
+//   });
+// }, {
+//   scheduled: true,
+//   timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
-cron.schedule('50 11 * * *', async () => {
-  console.log('Menyalakan Bot WA');
-  // SCE 
-  exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error starting the PM2 process: ${error}`);
-      bot.sendMessage(groupId, 'Error!');
-      return;
-    }
-    console.log(`PM2 process started: ${stdout}`);
-    bot.sendMessage(groupId, 'Bot menyala otomatis jam 11:50!');
-  });
+// cron.schedule('50 11 * * *', async () => {
+//   console.log('Menyalakan Bot WA');
+//   // SCE 
+//   exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
+//     if (error) {
+//       console.error(`Error starting the PM2 process: ${error}`);
+//       bot.sendMessage(groupId, 'Error!');
+//       return;
+//     }
+//     console.log(`PM2 process started: ${stdout}`);
+//     bot.sendMessage(groupId, 'Bot menyala otomatis jam 11:50!');
+//   });
 
-}, {
-  scheduled: true,
-  timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// }, {
+//   scheduled: true,
+//   timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
-cron.schedule('05 12 * * *', async () => {
-console.log('Mematikan Bot WA');
-// SCE 
-exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error stopping the PM2 process: ${error}`);
-    bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
-    return;
-  }
-  console.log(`PM2 process stopped: ${stdout}`);
-  bot.sendMessage(groupId, 'Bot Mati otomatis jam 12:05!');
-});
-}, {
-scheduled: true,
-timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// cron.schedule('05 12 * * *', async () => {
+// console.log('Mematikan Bot WA');
+// // SCE 
+// exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
+//   if (error) {
+//     console.error(`Error stopping the PM2 process: ${error}`);
+//     bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
+//     return;
+//   }
+//   console.log(`PM2 process stopped: ${stdout}`);
+//   bot.sendMessage(groupId, 'Bot Mati otomatis jam 12:05!');
+// });
+// }, {
+// scheduled: true,
+// timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
 
-cron.schedule('50 13 * * *', async () => {
-  console.log('Menyalakan Bot WA');
-  // SCE 
-  exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error starting the PM2 process: ${error}`);
-      bot.sendMessage(groupId, 'Error!');
-      return;
-    }
-    console.log(`PM2 process started: ${stdout}`);
-    bot.sendMessage(groupId, 'Bot menyala otomatis jam 11:50!');
-  });
+// cron.schedule('50 13 * * *', async () => {
+//   console.log('Menyalakan Bot WA');
+//   // SCE 
+//   exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
+//     if (error) {
+//       console.error(`Error starting the PM2 process: ${error}`);
+//       bot.sendMessage(groupId, 'Error!');
+//       return;
+//     }
+//     console.log(`PM2 process started: ${stdout}`);
+//     bot.sendMessage(groupId, 'Bot menyala otomatis jam 11:50!');
+//   });
 
-}, {
-  scheduled: true,
-  timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// }, {
+//   scheduled: true,
+//   timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
-cron.schedule('05 14 * * *', async () => {
-console.log('Mematikan Bot WA');
-// SCE 
-exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error stopping the PM2 process: ${error}`);
-    bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
-    return;
-  }
-  console.log(`PM2 process stopped: ${stdout}`);
-  bot.sendMessage(groupId, 'Bot Mati otomatis jam 12:05!');
-});
-}, {
-scheduled: true,
-timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// cron.schedule('05 14 * * *', async () => {
+// console.log('Mematikan Bot WA');
+// // SCE 
+// exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
+//   if (error) {
+//     console.error(`Error stopping the PM2 process: ${error}`);
+//     bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
+//     return;
+//   }
+//   console.log(`PM2 process stopped: ${stdout}`);
+//   bot.sendMessage(groupId, 'Bot Mati otomatis jam 12:05!');
+// });
+// }, {
+// scheduled: true,
+// timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
-cron.schedule('50 14 * * *', async () => {
-  console.log('Menyalakan Bot WA');
-  // SCE 
-  exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error starting the PM2 process: ${error}`);
-      bot.sendMessage(groupId, 'Error!');
-      return;
-    }
-    console.log(`PM2 process started: ${stdout}`);
-    bot.sendMessage(groupId, 'Bot menyala otomatis jam 14:50!');
-  });
+// cron.schedule('50 14 * * *', async () => {
+//   console.log('Menyalakan Bot WA');
+//   // SCE 
+//   exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
+//     if (error) {
+//       console.error(`Error starting the PM2 process: ${error}`);
+//       bot.sendMessage(groupId, 'Error!');
+//       return;
+//     }
+//     console.log(`PM2 process started: ${stdout}`);
+//     bot.sendMessage(groupId, 'Bot menyala otomatis jam 14:50!');
+//   });
 
-}, {
-  scheduled: true,
-  timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// }, {
+//   scheduled: true,
+//   timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
-cron.schedule('00 19 * * *', async () => {
-  console.log('Mematikan Bot WA');
-  // SCE 
-  exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error stopping the PM2 process: ${error}`);
-      bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
-      return;
-    }
-    console.log(`PM2 process stopped: ${stdout}`);
-    bot.sendMessage(groupId, 'Bot Mati otomatis jam 19:05!');
-  });
-  }, {
-  scheduled: true,
-  timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-});
+// cron.schedule('00 19 * * *', async () => {
+//   console.log('Mematikan Bot WA');
+//   // SCE 
+//   exec('pm2 stop my-production-wa', (error, stdout, stderr) => {
+//     if (error) {
+//       console.error(`Error stopping the PM2 process: ${error}`);
+//       bot.sendMessage(groupId, 'Bot Mati otomatis jam 09:05!');
+//       return;
+//     }
+//     console.log(`PM2 process stopped: ${stdout}`);
+//     bot.sendMessage(groupId, 'Bot Mati otomatis jam 19:05!');
+//   });
+//   }, {
+//   scheduled: true,
+//   timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+// });
 
 // jgn lupa uncomment yang mematikan pc 
 

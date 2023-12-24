@@ -5,7 +5,7 @@
   "main": "production-wa.js",
   "scripts": {
     "start": "pm2 start production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log"
-  },  
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "node-schedule": "^2.1.1",
     "node-telegram-bot": "^0.1.9",
     "node-telegram-bot-api": "^0.64.0",
+    "pm2": "^5.3.0",
     "qrcode-terminal": "^0.12.0",
     "selenium-webdriver": "^4.16.0",
     "venom": "^0.1.0",
