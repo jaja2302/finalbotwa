@@ -23,6 +23,7 @@ const server = app.listen(0, () => {
 
 
 
+
 const client = new Client({
     puppeteer: {
         headless: 'new',
@@ -303,8 +304,10 @@ async function sendtaksasiest(est, groupID) {
                 break;
             case 'SJE':
             case 'TBE':
+            case 'KTE4':
+            
 
-                folder = 'Inti';
+            folder = 'Inti';
             case 'LME1':
 
             folder = 'Plasma';
@@ -327,6 +330,7 @@ async function sendtaksasiest(est, groupID) {
             case 'BHE':
             case 'LME1':
             case 'TBE':
+            case 'KTE4':
                 await GenerateTakestEST(est);
                 break;
             default:
@@ -367,7 +371,10 @@ async function sendtaksasiest(est, groupID) {
         }else if (folder === 'Inti') {
             if (est === 'SJE') {
                 await sendPdfToGroups(folder, '120363207525577365@g.us');
-            }else {
+            } else if (est === 'KTE4'){
+                await sendPdfToGroups(folder, '120363210871038595@g.us');
+            }
+            else {
                 await sendPdfToGroups(folder, '120363193125275627@g.us');
             }
            
@@ -382,6 +389,7 @@ async function sendtaksasiest(est, groupID) {
         logError(error);
     }
 }
+
 
 // fungsi check folder ada isinya atau tidak 
 
@@ -536,6 +544,15 @@ const tasks = [
         generate: 'SJE'
     },
     { 
+        time: '05 15 * * *', 
+        message: 'Kirim Taksasi KTE4 Jam 15:05', 
+        regions: ['Inti'], 
+        groupId: '120363210871038595@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'KTE4'
+    },
+    { 
         time: '00 14 * * *', 
         message: 'Kirim Taksasi SCE  Jam 14:00', 
         regions: ['Wilayah_6'], 
@@ -622,6 +639,7 @@ tasks.forEach(task => {
         timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
     });
 });
+
 
 
 

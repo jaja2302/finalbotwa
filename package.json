@@ -4,8 +4,7 @@
   "description": "",
   "main": "production-wa.js",
   "scripts": {
-    "start": "pm2 start production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log",
-    "wa": "node production-wa.js"
+    "start": "pm2 start production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log"
   },  
   "keywords": [],
   "author": "",
