@@ -685,3 +685,69 @@ Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Reference
     at emit (node:internal/process/promises:149:20)
     at processPromiseRejections (node:internal/process/promises:283:27)
     at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error sending message: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error sending message: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error sending message: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at process.processTimers (node:internal/timers:509:9)
+Error sending message: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error logged: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at process.processTimers (node:internal/timers:509:9)
+Error logged: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+    at CDPSession.send (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:218:35)
+    at ExecutionContext._evaluateInternal (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:204:50)
+    at ExecutionContext.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:27)
+    at DOMWorld.evaluate (C:\Users\valen\OneDrive\Desktop\WaFresh\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:97:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.

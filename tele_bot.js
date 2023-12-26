@@ -37,42 +37,81 @@ bot.onText(/\/status/, (msg) => {
   // Send a confirmation message to the user who triggered the command
   bot.sendMessage(chatId, 'Message sent to the group.');
 });
+
 bot.onText(/\/startwa/, (msg) => {
-    const chatId = msg.chat.id;
-  
-    // Send "Bot Starting" message to the specified group
-    bot.sendMessage(groupId, 'Bot Starting!');
-  
-    // Start the PM2 process
-    exec('pm2 start production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log', (error, stdout, stderr) => {
+  const chatId = msg.chat.id;
+
+  exec('pm2 list', (error, stdout, stderr) => {
       if (error) {
-        console.error(`Error starting the PM2 process: ${error}`);
-        bot.sendMessage(chatId, 'Error starting the bot.');
-        return;
+          console.error(`Error checking PM2 status: ${error}`);
+          bot.sendMessage(chatId, 'Error checking bot status.');
+          return;
       }
-      console.log(`PM2 process started: ${stdout}`);
-      bot.sendMessage(chatId, 'Bot started successfully.');
-    });
+
+      const processes = stdout.split('\n');
+      let botStatus = 'offline';
+
+      processes.forEach((process) => {
+          if (process.includes('bot_da') && process.includes('online')) {
+              botStatus = 'online';
+          }
+      });
+
+      if (botStatus === 'online') {
+          bot.sendMessage(chatId, 'Bot is already online.');
+      } else {
+          // Bot is offline, start it
+          bot.sendMessage(groupId, 'Bot Starting!');
+          exec('pm2 start production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log', (error, stdout, stderr) => {
+              if (error) {
+                  console.error(`Error starting the PM2 process: ${error}`);
+                  bot.sendMessage(chatId, 'Error starting the bot.');
+                  return;
+              }
+              console.log(`PM2 process started: ${stdout}`);
+              bot.sendMessage(chatId, 'Bot started successfully.');
+          });
+      }
   });
-  
-  // Handling the /stopwa command
-  bot.onText(/\/stopwa/, (msg) => {
-    const chatId = msg.chat.id;
-  
-    // Send "Stopping Bot" message to the specified group
-    bot.sendMessage(groupId, 'Stopping Bot...');
-  
-    // Stop the PM2 process
-    exec('pm2 stop bot_da', (error, stdout, stderr) => {
+});
+
+bot.onText(/\/stopwa/, (msg) => {
+  const chatId = msg.chat.id;
+
+  exec('pm2 list', (error, stdout, stderr) => {
       if (error) {
-        console.error(`Error stopping the PM2 process: ${error}`);
-        bot.sendMessage(chatId, 'Error stopping the bot.');
-        return;
+          console.error(`Error checking PM2 status: ${error}`);
+          bot.sendMessage(chatId, 'Error checking bot status.');
+          return;
       }
-      console.log(`PM2 process stopped: ${stdout}`);
-      bot.sendMessage(chatId, 'Bot stopped successfully.');
-    });
+
+      const processes = stdout.split('\n');
+      let botStatus = 'offline';
+
+      processes.forEach((process) => {
+          if (process.includes('bot_da') && process.includes('online')) {
+              botStatus = 'online';
+          }
+      });
+
+      if (botStatus === 'offline') {
+          bot.sendMessage(chatId, 'Bot is already offline.');
+      } else {
+          // Bot is online, stop it
+          bot.sendMessage(groupId, 'Stopping Bot...');
+          exec('pm2 stop bot_da', (error, stdout, stderr) => {
+              if (error) {
+                  console.error(`Error stopping the PM2 process: ${error}`);
+                  bot.sendMessage(chatId, 'Error stopping the bot.');
+                  return;
+              }
+              console.log(`PM2 process stopped: ${stdout}`);
+              bot.sendMessage(chatId, 'Bot stopped successfully.');
+          });
+      }
   });
+});
+
 
   bot.onText(/\/getlog/, async (msg) => {
     const chatId = msg.chat.id;
@@ -139,25 +178,31 @@ bot.onText(/\/startwa/, (msg) => {
     }
   });
 
+  cron.schedule('0 * * * *', async () => {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
 
-// cron.schedule('50 08 * * *', async () => {
-//     console.log('Menyalakan Bot WA');
-//     // SCE 
-//     exec('pm2 start production-wa.js --name my-production-wa', (error, stdout, stderr) => {
-//       if (error) {
-//         console.error(`Error starting the PM2 process: ${error}`);
-//         bot.sendMessage(groupId, 'Error!');
-//         return;
-//       }
-//       console.log(`PM2 process started: ${stdout}`);
-//       bot.sendMessage(groupId, 'Bot menyala otomatis jam 08:50!');
-//     });
-  
+    console.log('Sending status to group.');
+
+    bot.sendMessage(groupId, `Bot status at ${hours}:${minutes}`);
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta'
+});
+
+// cron.schedule('*/1 * * * *', async () => {
+//   const date = new Date();
+//   const hours = date.getHours();
+//   const minutes = date.getMinutes();
+
+//   console.log('Sending status to group.');
+
+//   bot.sendMessage(groupId, `Bot status at ${hours}:${minutes}`);
 // }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+//   scheduled: true,
+//   timezone: 'Asia/Jakarta'
 // });
-
 // cron.schedule('05 09 * * *', async () => {
 //   console.log('Mematikan Bot WA');
 //   // SCE 
