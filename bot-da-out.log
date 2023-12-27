@@ -973,3 +973,47 @@ Message sent successfully!
 Detected change in error.log. Sending to group...
 Error log sent to the group.
 Running message aws
+Server running on port 50767
+AUTHENTICATED
+Client is ready!
+File 'readme.txt' in folder '' deleted successfully.
+Message sent successfully!
+Server running on port 50830
+AUTHENTICATED
+Client is ready!
+File 'readme.txt' in folder '' deleted successfully.
+Message sent successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=kte'
+Taksasi generated successfully for taksasi 'KTE'
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_kte.php'
+Taksasi generated successfully for taksasi 'KTE'
+Files generated successfully for 'KTE' in folder 'Wilayah_7'.
+File "Rekap_Taksasi_Kanamit_Rabu, 27 Desember 2023.pdf" sent to the group 120363170524329595@g.us as a document!
+File 'Rekap_Taksasi_Kanamit_Rabu, 27 Desember 2023.pdf' in folder 'Wilayah_7' deleted successfully.
+Generate Maps at 13:57..
+Message sent to the group successfully at 13:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 14 * * * (WIB)...
+Running message aws
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_sce.php'
+Taksasi generated successfully for taksasi 'SCE'
+File "Rekap_Taksasi_Sumber Cahaya_Rabu, 27 Desember 2023.pdf" sent to the group 120363152744155925@g.us as a document!
+File 'Rekap_Taksasi_Sumber Cahaya_Rabu, 27 Desember 2023.pdf' in folder 'Wilayah_6' deleted successfully.
+Sending files at 03 14 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_tbe.php'
+Taksasi generated successfully for taksasi 'TBE'
+File "Rekap_Taksasi_Tanjung Beringin_Rabu, 27 Desember 2023.pdf" sent to the group 120363193125275627@g.us as a document!
+File 'Rekap_Taksasi_Tanjung Beringin_Rabu, 27 Desember 2023.pdf' in folder 'Inti' deleted successfully.

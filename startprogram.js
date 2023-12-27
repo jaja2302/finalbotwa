@@ -95,5 +95,4 @@ async function checkInternetConnection() {
 // Check internet connection status initially
 checkInternetConnection();
 
-// Run the internet connection check every second
-setInterval(checkInternetConnection, 1000);
+setInterval(checkInternetConnection, 600000); // 600,000 milliseconds = 10 minutes
