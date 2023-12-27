@@ -751,3 +751,18 @@ Error reading or sending error log: Error: Protocol error (Runtime.callFunctionO
 Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
 Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
 Error reading or sending error log: Error: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+Invalid or empty data.
+Invalid or empty data.
+Invalid or empty data.
+Error fetching data or sending messages: Error: Evaluation failed: Error: wid error: invalid wid
+    at e (https://web.whatsapp.com/:2:4915)
+    at new f (https://web.whatsapp.com/app.bf3d055fedcf056e6aa9.js:311:220047)
+    at Object.d [as createWid] (https://web.whatsapp.com/app.bf3d055fedcf056e6aa9.js:311:226424)
+    at window.WWebJS.getContact (__puppeteer_evaluation_script__:485:45)
+    at __puppeteer_evaluation_script__:2:34
+    at ExecutionContext._evaluateInternal (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:221:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ExecutionContext.evaluate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:16)
+    at async Client.getContactById (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:965:23)
+    at async sendMessagesBasedOnData (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:99:29)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:143:5)

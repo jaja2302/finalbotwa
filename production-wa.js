@@ -80,6 +80,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 
 // sending message smartlabs json 
+
 async function sendMessagesBasedOnData() {
     try {
         // Fetch data from the PHP endpoint
@@ -92,7 +93,16 @@ async function sendMessagesBasedOnData() {
         }
 
         for (const data of numberData) {
-            const phoneNumber = `${data.penerima}@c.us`; // Adjust to match your JSON structure
+            let formattedNumber = data.penerima;
+            // Adjust phone number format if it starts with '08'
+            if (formattedNumber.startsWith('08')) {
+                formattedNumber = `62${formattedNumber.slice(1)}`;
+            }
+            
+            const phoneNumber = `${formattedNumber}@c.us`;
+
+            console.log(phoneNumber);
+            
             const message = `${data.pesan} ${data.kodesample}`; // Adjust to match your JSON structure
             const idmsg = `${data.id}`;
 
@@ -135,12 +145,18 @@ async function deletemsg(idmsg) {
     }
 }
 
+// cron.schedule('*/1 * * * *', async () => {
+//     console.log('Running message sending task...');
+//     await sendMessagesBasedOnData();
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
+
 
 // Call the function when the client is ready
 
-
-// Schedule the task to run every 5 minutes
-// cron.schedule('*/10 * * * *', async () => {
+// cron.schedule('*/1 * * * *', async () => {
 //     console.log('Running message sending task...');
 //     await sendMessagesBasedOnData();
 // }, {
@@ -302,14 +318,13 @@ async function sendtaksasiest(est, groupID) {
 
                 folder = 'Wilayah_8';
                 break;
-            case 'SJE':
+        
             case 'TBE':
             case 'KTE4':
-            
-
+            case 'SJE':
             folder = 'Inti';
+            break;
             case 'LME1':
-
             folder = 'Plasma';
                 break;
             default:
@@ -328,6 +343,7 @@ async function sendtaksasiest(est, groupID) {
             case 'UPE':
             case 'BDE':
             case 'BHE':
+            case 'SJE':
             case 'LME1':
             case 'TBE':
             case 'KTE4':
@@ -612,7 +628,7 @@ tasks.forEach(task => {
             await checkAndDeleteFiles(); // Ensure files are checked and deleted first
          
             // Wait for 10 seconds after checkAndDeleteFiles
-             if (task.generate !== 'none' && task.generate !== 'SJE' ) {
+             if (task.generate !== 'none' ) {
                 // await GenerateTakestEST(task.generate);
                 await GenerateTakestEST(task.generate);
                 // await GenerateTakestEST(est);
@@ -639,9 +655,6 @@ tasks.forEach(task => {
         timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
     });
 });
-
-
-
 
 
 cron.schedule('00 16 * * *', async () => {
@@ -884,6 +897,41 @@ function logError(error) {
         console.error('Error logged:', error);
     });
 }
+
+
+
+// bot aws 
+async function sendmsgAws(message) {
+    // Assuming 'groupChat' is the chat ID of the group
+    const groupChat = '120363214741096436@g.us';
+    const group = await client.getChatById(groupChat);
+    await group.sendMessage(message);
+}
+
+// Function to check AWS status and send a message to the WhatsApp group if conditions met
+async function statusAWS() {
+    try {
+        const response = await axios.get('https://srs-ssms.com/iot/notif_wa_last_online_device.php');
+
+        if (response.data.includes('Last online device')) {
+           
+            await sendmsgAws(response.data); // Send response data to the group
+        }
+    } catch (error) {
+        console.error(`Error fetching files:`, error);
+        // Handle the error accordingly
+        // logError(error);
+    }
+}
+
+// Schedule the status check and message sending task every minute
+cron.schedule('0 * * * *', async () => {
+    console.log('Running message aws');
+    await statusAWS(); // Call the function to check AWS status and send message
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 
 client.initialize();

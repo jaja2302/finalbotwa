@@ -2,7 +2,7 @@ const venom = require('venom-bot');
 
 // Initialize Venom client
 venom.create({
-  browserArgs: ['--no-sandbox'], // Add browser arguments here if needed
+  browserArgs: ['--no-sandbox'],
   session: 'nowaxl'
 })
   .then((client) => start(client))
@@ -10,27 +10,23 @@ venom.create({
     console.error('Error initializing Venom:', error);
   });
 
-// Function to start Venom and fetch group list
+// Function to start Venom and listen for commands
 async function start(client) {
-  try {
-    // Retrieve all chats
-    const chats = await client.getAllChats();
+  // Listen for messages
+  client.onMessage(async (message) => {
+    // Check if the message contains the '/getgroup' command
+    if (message.body.toLowerCase() === '/getgroup') {
+      // Retrieve all chats
+      const chats = await client.getAllChats();
 
-    // Filter out only groups
-    const groups = chats.filter((chat) => chat.isGroup);
+      // Filter out only groups
+      const groups = chats.filter((chat) => chat.isGroup);
 
-    // Log the list of groups
-    console.log('List of groups:');
-    groups.forEach((group) => {
-      console.log(`${group.name} - ${group.contact.id._serialized}`);
-    });
+      // Format the list of groups
+      const formattedGroups = groups.map((group) => `${group.name} - ${group.contact.id._serialized}`).join('\n');
 
-    
-
-    
-    // Close the Venom client when done
-    await client.close();
-  } catch (error) {
-    console.error('Error:', error);
-  }
+      // Send the list of groups back to the sender
+      client.sendText(message.from, `List of groups:\n${formattedGroups}`);
+    }
+  });
 }
