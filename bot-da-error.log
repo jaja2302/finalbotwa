@@ -766,3 +766,960 @@ Error fetching data or sending messages: Error: Evaluation failed: Error: wid er
     at async Client.getContactById (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:965:23)
     at async sendMessagesBasedOnData (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:99:29)
     at async cron.schedule.scheduled [as _execution] (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:143:5)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at navigate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:156:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async FrameManager.navigateFrame (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:131:21)
+    at async Frame.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:512:16)
+    at async Page.goto (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1167:16)
+    at async Client.initialize (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:124:9)
+Error logged: Error: Unhandled Rejection at: [object Promise]. Reason: Error: net::ERR_INTERNET_DISCONNECTED at https://web.whatsapp.com/
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:77:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+Error checking and deleting files: AxiosError: Request failed with status code 508
+    at settle (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1589:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'ERR_BAD_RESPONSE',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.6.2',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 16898,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 1150,
+        [Symbol(triggerId)]: 1148
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'GET /whatsapp_bot/checkfolderstatus.php HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/1.6.2\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/whatsapp_bot/checkfolderstatus.php',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 508,
+      statusMessage: 'Loop Detected',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 22,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 508,
+    statusText: 'Loop Detected',
+    headers: Object [AxiosHeaders] {
+      date: 'Wed, 27 Dec 2023 05:56:54 GMT',
+      'content-type': 'text/html; charset=utf-8',
+      'transfer-encoding': 'chunked',
+      connection: 'keep-alive',
+      'retry-after': '14400',
+      vary: 'X-Forwarded-Proto,Accept-Encoding',
+      'referrer-policy': 'no-referrer-when-downgrade',
+      server: 'DomaiNesia',
+      'dn-request-id': 'b706d0eeef936844125617af10f6c618',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'dynamic-cache-status': 'MISS'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'get',
+      url: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+      data: undefined
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'GET /whatsapp_bot/checkfolderstatus.php HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.6.2\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/whatsapp_bot/checkfolderstatus.php',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: '\n' +
+      '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n' +
+      '<HTML><HEAD>\n' +
+      '<TITLE> 508 Resource Limit Is Reached</TITLE>\n' +
+      '</HEAD><BODY>\n' +
+      '<H1>Resource Limit Is Reached</H1>\n' +
+      'The website is temporarily unable to service your request as it exceeded resource limit.\n' +
+      'Please try again later.\n' +
+      '</BODY></HTML>\n'
+  }
+}
+Error logged: AxiosError: Request failed with status code 508
+    at settle (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1589:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'ERR_BAD_RESPONSE',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.6.2',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 16898,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 1150,
+        [Symbol(triggerId)]: 1148
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'GET /whatsapp_bot/checkfolderstatus.php HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/1.6.2\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/whatsapp_bot/checkfolderstatus.php',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 508,
+      statusMessage: 'Loop Detected',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 22,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 508,
+    statusText: 'Loop Detected',
+    headers: Object [AxiosHeaders] {
+      date: 'Wed, 27 Dec 2023 05:56:54 GMT',
+      'content-type': 'text/html; charset=utf-8',
+      'transfer-encoding': 'chunked',
+      connection: 'keep-alive',
+      'retry-after': '14400',
+      vary: 'X-Forwarded-Proto,Accept-Encoding',
+      'referrer-policy': 'no-referrer-when-downgrade',
+      server: 'DomaiNesia',
+      'dn-request-id': 'b706d0eeef936844125617af10f6c618',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'dynamic-cache-status': 'MISS'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'get',
+      url: 'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php',
+      data: undefined
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'GET /whatsapp_bot/checkfolderstatus.php HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.6.2\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/whatsapp_bot/checkfolderstatus.php',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: '\n' +
+      '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n' +
+      '<HTML><HEAD>\n' +
+      '<TITLE> 508 Resource Limit Is Reached</TITLE>\n' +
+      '</HEAD><BODY>\n' +
+      '<H1>Resource Limit Is Reached</H1>\n' +
+      'The website is temporarily unable to service your request as it exceeded resource limit.\n' +
+      'Please try again later.\n' +
+      '</BODY></HTML>\n'
+  }
+}
