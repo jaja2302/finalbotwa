@@ -6,9 +6,6 @@ const ping = require('ping');
 
 
 let isFirstRun = true;
-let isInternetAvailable = true; // Flag to track internet availability
-
-
 async function activeBot() {
     exec('pm2 list', (error, stdout, stderr) => {
         if (error) {
@@ -75,6 +72,17 @@ if (isFirstRun) {
     activeBot(); // Start the bot on the first run
     isFirstRun = false; // Update the flag after the first run
 }
+let isInternetAvailable = false;
+let offlineDuration = 0;
+const offlineThreshold = 60; // Threshold in seconds
+let botStopped = false; // Flag to track if the bot has been stopped
+
+// Function to stop counting and log a waiting message
+function stopCounting() {
+    offlineDuration = 0;
+    botStopped = true;
+    console.log('Internet is currently unavailable. Bot is waiting for the internet to become available...');
+}
 
 // Function to check internet connection
 async function checkInternetConnection() {
@@ -83,11 +91,23 @@ async function checkInternetConnection() {
         if (isAlive && !isInternetAvailable) {
             console.log(`Internet is available`);
             isInternetAvailable = true;
-            activeBot(); // Restart the bot when internet becomes available
+            offlineDuration = 0;
+            if (botStopped) {
+                botStopped = false;
+                activeBot(); // Restart the bot when internet becomes available
+            }
         } else if (!isAlive && isInternetAvailable) {
             console.log(`Internet is unavailable`);
             isInternetAvailable = false;
-            offBot(); // Stop the bot when the internet becomes unavailable
+        } else if (!isAlive && !isInternetAvailable) {
+            offlineDuration++;
+            console.log(`Internet has been unavailable for ${offlineDuration} seconds`);
+
+            if (offlineDuration >= offlineThreshold && !botStopped) {
+                // console.log(`Internet has been offline for more than ${offlineThreshold} seconds. Stopping the bot.`);
+                offBot(); // Stop the bot when the internet has been offline for more than the threshold
+                stopCounting(); // Stop counting once the bot is stopped and log waiting message
+            }
         }
     }, { timeout: 10 });
 }
@@ -95,4 +115,4 @@ async function checkInternetConnection() {
 // Check internet connection status initially
 checkInternetConnection();
 
-setInterval(checkInternetConnection, 600000); // 600,000 milliseconds = 10 minutes
+setInterval(checkInternetConnection, 1000);
