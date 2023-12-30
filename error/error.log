@@ -361,3 +361,15 @@
     at emitErrorNT (node:internal/streams/destroy:151:8)
     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+2023-12-29T05:00:11.196Z: AxiosError: Request failed with status code 508
+    at settle (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1589:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+2023-12-29T07:03:29.075Z: AxiosError: Request failed with status code 508
+    at settle (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\axios\dist\node\axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1589:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
