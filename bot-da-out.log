@@ -159,3 +159,28 @@ AUTHENTICATED
 Client is ready!
 File 'readme.txt' in folder '' deleted successfully.
 Message sent successfully!
+Generate Maps at 08:57..
+Message sent to the group successfully at 08:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 09 * * * (WIB)...
+Message sent to the group successfully!
+Running message aws
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_bde.php'
+Taksasi generated successfully for taksasi 'BDE'
+File "Rekap_Taksasi_Badirih_Sabtu, 30 Desember 2023.pdf" sent to the group 120363166668733371@g.us as a document!
+File 'Rekap_Taksasi_Badirih_Sabtu, 30 Desember 2023.pdf' in folder 'Wilayah_7' deleted successfully.
+Running message aws
+Running message aws
+Generate Maps at 11:57..
+Message sent to the group successfully at 11:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 12 * * * (WIB)...
+Message sent to the group successfully!
+Running message aws
