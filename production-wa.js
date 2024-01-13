@@ -88,7 +88,7 @@ async function sendMessagesBasedOnData() {
         const numberData = response.data;
 
         if (!numberData || !Array.isArray(numberData)) {
-            console.error('Invalid or empty data.');
+            // console.error('Invalid or empty data.');
             return;
         }
 
@@ -157,7 +157,7 @@ async function deletemsg(idmsg) {
 // Call the function when the client is ready
 
 // cron.schedule('*/1 * * * *', async () => {
-//     console.log('Running message sending task...');
+//     // console.log('Running message sending task...');
 //     await sendMessagesBasedOnData();
 // }, {
 //     scheduled: true,
@@ -727,7 +727,6 @@ fs.watchFile(errorLogPath, (curr, prev) => {
     }
 });
 
-
 client.on('message', async msg => {
 
     if (msg.body === '!tarik' && !listeningForEstateInput) {
@@ -858,9 +857,50 @@ client.on('message', async msg => {
             await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
         }
     }
-    
-  
 
+    
+    else if (msg.body.toLowerCase() === '/getgroup') {
+        try {
+            // Get common groups
+            const commonGroups = await client.getCommonGroups(msg.from);
+    
+            if (commonGroups.length > 0) {
+                // Fetch group details for each common group
+                const groupDetails = await Promise.all(
+                    commonGroups.map(async (groupId) => {
+                        try {
+                            const groupInfo = await client.getChatById(groupId._serialized);
+                            return {
+                                id: groupId._serialized,
+                                name: groupInfo.name || 'Unnamed Group',
+                            };
+                        } catch (error) {
+                            console.error(`Error fetching group details for ${groupId._serialized}:`, error);
+                            return null;
+                        }
+                    })
+                );
+    
+                // Filter out null values (failed fetches)
+                const validGroupDetails = groupDetails.filter((group) => group !== null);
+    
+                // Format the list of common groups with names
+                const formattedGroups = validGroupDetails.map((group) => `${group.name} - ${group.id}`).join('\n');
+    
+                // Send the list of common groups with names back to the sender
+                await client.sendMessage(msg.from, `Common Groups:\n${formattedGroups}`);
+            } else {
+                // Respond if there are no common groups
+                await client.sendMessage(msg.from, 'You don\'t have any common groups with the bot.');
+            }
+        } catch (error) {
+            // Handle errors, such as failed API requests
+            console.error('Error retrieving common groups:', error);
+            await client.sendMessage(msg.from, 'Error retrieving common groups. Please try again later.');
+        }
+    }
+    
+    
 });
    
 
@@ -901,9 +941,9 @@ function logError(error) {
 
 
 // bot aws 
-async function sendmsgAws(message) {
-    // Assuming 'groupChat' is the chat ID of the group
-    const groupChat = '120363214741096436@g.us';
+async function sendmsgAws(message, groupid) {
+    // Assuming 'client' is your WhatsApp client instance
+    const groupChat = groupid; // Use the provided groupid
     const group = await client.getChatById(groupChat);
     await group.sendMessage(message);
 }
@@ -912,10 +952,19 @@ async function sendmsgAws(message) {
 async function statusAWS() {
     try {
         const response = await axios.get('https://srs-ssms.com/iot/notif_wa_last_online_device.php');
+        console.log(response);
+        // Check if response.data is not empty
+        if (Array.isArray(response.data) && response.data.length > 0) {
+            const jsonArray = response.data; // Use the response directly
 
-        if (response.data.includes('Last online device')) {
-           
-            await sendmsgAws(response.data); // Send response data to the group
+            // Iterate through each object in the array
+            for (const item of jsonArray) {
+                // Check if 'online' is equal to 0
+                if (item.online === 0) {
+                    // Send a message to the specified 'group_id'
+                    await sendmsgAws(item.message, item.group_id);
+                }
+            }
         }
     } catch (error) {
         console.error(`Error fetching files:`, error);
@@ -924,10 +973,29 @@ async function statusAWS() {
     }
 }
 
-// Schedule the status check and message sending task every minute
-cron.schedule('0 * * * *', async () => {
-    console.log('Running message aws');
-    await statusAWS(); // Call the function to check AWS status and send message
+
+// Schedule the status check and message sending task every 5 seconds
+// cron.schedule('*/5 * * * * *', async () => {
+//     try {
+//         console.log('Running message aws');
+//         await statusAWS(); // Call the function to check AWS status and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
+
+
+// Schedule the status check and message sending task every one hour
+cron.schedule('0 0 * * *', async () => {
+    try {
+        console.log('Running message aws');
+        await statusAWS(); // Call the function to check AWS status and send message
+    } catch (error) {
+        console.error('Error in cron job:', error);
+    }
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone according to your location
