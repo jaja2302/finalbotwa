@@ -344,8 +344,10 @@ async function sendtaksasiest(est, groupID) {
             case 'BDE':
             case 'BHE':
             case 'SJE':
+            case 'SPE':
             case 'LME1':
             case 'TBE':
+            case 'NKE':
             case 'KTE4':
                 await GenerateTakestEST(est);
                 break;
@@ -366,6 +368,12 @@ async function sendtaksasiest(est, groupID) {
             await sendPdfToGroups(folder, '120363048442215265@g.us');
             // send to testing 
             // await sendPdfToGroups(folder, '120363204285862734@g.us');
+        }  else if (folder === 'Wilayah_4') {
+            if (est === 'SPE') {
+                await sendPdfToGroups(folder, '120363220419839708@g.us');
+            }else if (est === 'NKE'){
+                await sendPdfToGroups(folder, '120363217152686034@g.us');
+            }
         } else if (folder === 'Wilayah_6') {
             if (est === 'SCE') {
                 await sendPdfToGroups(folder, '120363152744155925@g.us');
@@ -493,6 +501,9 @@ const generateAndSendMessage = async (time) => {
     }
 
     await Generatedmaps();
+
+    
+    // await Generatedmapsest(est);
     await checkAndDeleteFiles();
 };
 
@@ -506,6 +517,29 @@ cronTimes.forEach(time => {
         await generateAndSendMessage(time);
     });
 });
+
+
+
+const tasksaps = [
+    { 
+        time: '00 17 * * *', 
+        message: 'Generate Maps Jam 17:00', 
+        groupId: '120363158376501304@g.us',
+        generate: [
+            'UPE',
+            'KNE',
+        ]
+    },
+    { 
+        time: '00 17 * * *', 
+        message: 'Kirim Taksasi Umpang Wil 3 Jam 17:00', 
+        groupId: '120363158376501304@g.us',
+        generate: [
+            'UPE',
+            'KNE',
+        ]
+    },
+];
 
 
 // cronjob taksasi 
@@ -532,6 +566,16 @@ const tasks = [
         generate: 'BDE'
     },
     { 
+        time: '00 11 * * *', 
+        message: 'Kirim Taksasi NKE Wil 4  Jam 11:05', 
+        regions: ['Wilayah_4'], 
+        groupId: '120363217152686034@g.us',
+
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'NKE'
+    },
+    { 
         time: '00 12 * * *', 
         message: 'Kirim Taksasi KTE Wil 7  Jam 12:00', 
         regions: ['Wilayah_7'], 
@@ -540,6 +584,25 @@ const tasks = [
         // testgrup
         // groupId: '120363205553012899@g.us',
         generate: 'KTE'
+    },
+    { 
+        time: '05 12 * * *', 
+        message: 'Kirim Taksasi SPE Wil 4  Jam 12:03', 
+        regions: ['Wilayah_4'], 
+        groupId: '120363220419839708@g.us',
+
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'SPE'
+    },
+    { 
+        time: '03 12 * * *', 
+        message: 'Kirim Taksasi LME1  Jam 12:03', 
+        regions: ['Plasma'], 
+        groupId: '120363208984887370@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'LME1'
     },
     { 
         time: '00 15 * * *', 
@@ -576,15 +639,6 @@ const tasks = [
         // testgrup
         // groupId: '120363205553012899@g.us',
         generate: 'SCE'
-    },
-    { 
-        time: '03 12 * * *', 
-        message: 'Kirim Taksasi LME1  Jam 12:03', 
-        regions: ['Plasma'], 
-        groupId: '120363208984887370@g.us',
-        // testgrup
-        // groupId: '120363205553012899@g.us',
-        generate: 'LME1'
     },
     { 
         time: '03 14 * * *', 
@@ -702,6 +756,7 @@ let listengtaksasi = false;
 let listen2 = false;
 let listen3 = false;
 let listen4 = false;
+let listen5 = false;
 
 const allowedNumber = '120363205553012899@g.us'; 
 const adminNumber = '6281349807050@c.us'; 
@@ -899,6 +954,20 @@ client.on('message', async msg => {
             await client.sendMessage(msg.from, 'Error retrieving common groups. Please try again later.');
         }
     }
+    
+
+    else if (msg.body === '!generatemaps' && !listen5) {
+        try {
+            await Generatedmaps()
+            // Respond to confirm clearing both log files
+            await client.sendMessage(msg.from, 'Generate succes');
+        } catch (error) {
+            // Handle errors, such as file not found or other issues
+            console.error('Error clearing log files:', error);
+            await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
+        }
+    }
+
     
     
 });

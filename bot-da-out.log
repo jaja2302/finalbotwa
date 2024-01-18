@@ -1,12 +1,83 @@
+Sending files at 00 11 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_nke.php'
+Taksasi generated successfully for taksasi 'NKE'
+File "Rekap_Taksasi_Nanga Kiu_Rabu, 17 Januari 2024.pdf" sent to the group 120363217152686034@g.us as a document!
+File 'Rekap_Taksasi_Nanga Kiu_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Generate Maps at 11:57..
+Message sent to the group successfully at 11:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 12 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_kte.php'
+Taksasi generated successfully for taksasi 'KTE'
+File "Rekap_Taksasi_Kanamit_Rabu, 17 Januari 2024.pdf" sent to the group 120363170524329595@g.us as a document!
+File 'Rekap_Taksasi_Kanamit_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Sending files at 03 12 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_lme1.php'
+Taksasi generated successfully for taksasi 'LME1'
+File "Rekap_Taksasi_Limau 1_Rabu, 17 Januari 2024.pdf" sent to the group 120363208984887370@g.us as a document!
+File 'Rekap_Taksasi_Limau 1_Rabu, 17 Januari 2024.pdf' in folder 'Plasma' deleted successfully.
+Sending files at 05 12 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_spe.php'
+Taksasi generated successfully for taksasi 'SPE'
+File "Rekap_Taksasi_Sepondam_Rabu, 17 Januari 2024.pdf" sent to the group 120363220419839708@g.us as a document!
+File 'Rekap_Taksasi_Sepondam_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=lme1'
+Taksasi generated successfully for taksasi 'LME1'
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_lme1.php'
+Taksasi generated successfully for taksasi 'LME1'
+Files generated successfully for 'LME1' in folder 'Plasma'.
+File "Rekap_Taksasi_Limau 1_Rabu, 17 Januari 2024.pdf" sent to the group 120363208984887370@g.us as a document!
+File 'Rekap_Taksasi_Limau 1_Rabu, 17 Januari 2024.pdf' in folder 'Plasma' deleted successfully.
+Generate Maps at 13:57..
+Message sent to the group successfully at 13:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 14 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Taksasi generated successfully for taksasi 'SCE'
+Detected change in error.log. Sending to group...
+Error log sent to the group.
+Sending files at 03 14 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'Rekap_Taksasi_Sumber Cahaya_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_6' deleted successfully.
+Taksasi generated successfully for taksasi 'TBE'
+Detected change in error.log. Sending to group...
+Error log sent to the group.
+Notification sent to the group about the error.
 Detected change in error.log. Sending to group...
 Error log sent to the group.
 Generate Maps at 14:57..
 Message sent to the group successfully at 14:57!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
-File 'Rekap_Taksasi_Tanjung Beringin_Jumat, 29 Desember 2023.pdf' in folder 'Inti' deleted successfully.
 File 'readme.txt' in folder '' deleted successfully.
-Running message aws
 Sending files at 00 15 * * * (WIB)...
 Message sent to the group successfully!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
@@ -14,17 +85,18 @@ Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_bhe.php'
 Taksasi generated successfully for taksasi 'BHE'
-File "Rekap_Taksasi_Bahaur_Jumat, 29 Desember 2023.pdf" sent to the group 120363149785590346@g.us as a document!
-File 'Rekap_Taksasi_Bahaur_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_8' deleted successfully.
+File "Rekap_Taksasi_Bahaur_Rabu, 17 Januari 2024.pdf" sent to the group 120363149785590346@g.us as a document!
+File 'Rekap_Taksasi_Bahaur_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_8' deleted successfully.
 Sending files at 03 15 * * * (WIB)...
 Message sent to the group successfully!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
-Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_sje.php'
 Taksasi generated successfully for taksasi 'SJE'
-File "Rekap_Taksasi_Suja_Jumat, 29 Desember 2023.pdf" sent to the group 120363207525577365@g.us as a document!
-File 'Rekap_Taksasi_Suja_Jumat, 29 Desember 2023.pdf' in folder 'Inti' deleted successfully.
+Detected change in error.log. Sending to group...
+Error log sent to the group.
+File "Rekap_Taksasi_Suja_Rabu, 17 Januari 2024.pdf" sent to the group 120363207525577365@g.us as a document!
+File 'Rekap_Taksasi_Suja_Rabu, 17 Januari 2024.pdf' in folder 'Inti' deleted successfully.
 Sending files at 05 15 * * * (WIB)...
 Message sent to the group successfully!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
@@ -32,8 +104,8 @@ Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_kte4.php'
 Taksasi generated successfully for taksasi 'KTE4'
-File "Rekap_Taksasi_Karang Taba_Jumat, 29 Desember 2023.pdf" sent to the group 120363210871038595@g.us as a document!
-File 'Rekap_Taksasi_Karang Taba_Jumat, 29 Desember 2023.pdf' in folder 'Inti' deleted successfully.
+File "Rekap_Taksasi_Karang Taba_Rabu, 17 Januari 2024.pdf" sent to the group 120363210871038595@g.us as a document!
+File 'Rekap_Taksasi_Karang Taba_Rabu, 17 Januari 2024.pdf' in folder 'Inti' deleted successfully.
 Sending files at 20 15 * * * (WIB)...
 Message sent to the group successfully!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
@@ -47,89 +119,63 @@ Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Sending files to groups wil 1 2 3 at 16:05 (WIB)...
-Running message aws
 Message sent to the group successfully!
 File 'readme.txt' in folder '' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php'
 Taksasi generated successfully
-File "Rekap_Taksasi_Kenambui_Jumat, 29 Desember 2023.pdf" sent to the group 120363025737216061@g.us as a document!
-File 'Rekap_Taksasi_Kenambui_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_1' deleted successfully.
-File "Rekap_Taksasi_Pulau_Jumat, 29 Desember 2023.pdf" sent to the group 120363025737216061@g.us as a document!
-File 'Rekap_Taksasi_Pulau_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_1' deleted successfully.
-File "Rekap_Taksasi_Rangda_Jumat, 29 Desember 2023.pdf" sent to the group 120363025737216061@g.us as a document!
-File 'Rekap_Taksasi_Rangda_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_1' deleted successfully.
-File "Rekap_Taksasi_Sulung_Jumat, 29 Desember 2023.pdf" sent to the group 120363025737216061@g.us as a document!
-File 'Rekap_Taksasi_Sulung_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_1' deleted successfully.
-File "Rekap_Taksasi_Batu Kotam_Jumat, 29 Desember 2023.pdf" sent to the group 120363047670143778@g.us as a document!
-File 'Rekap_Taksasi_Batu Kotam_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_2' deleted successfully.
-File "Rekap_Taksasi_Kondang_Jumat, 29 Desember 2023.pdf" sent to the group 120363047670143778@g.us as a document!
-File 'Rekap_Taksasi_Kondang_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_2' deleted successfully.
-File "Rekap_Taksasi_Rungun_Jumat, 29 Desember 2023.pdf" sent to the group 120363047670143778@g.us as a document!
-File 'Rekap_Taksasi_Rungun_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_2' deleted successfully.
-File "Rekap_Taksasi_Selangkun_Jumat, 29 Desember 2023.pdf" sent to the group 120363047670143778@g.us as a document!
-File 'Rekap_Taksasi_Selangkun_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_2' deleted successfully.
-File "Rekap_Taksasi_Bengaris_Jumat, 29 Desember 2023.pdf" sent to the group 120363048442215265@g.us as a document!
-File 'Rekap_Taksasi_Bengaris_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_3' deleted successfully.
-File "Rekap_Taksasi_Natai Baru_Jumat, 29 Desember 2023.pdf" sent to the group 120363048442215265@g.us as a document!
-File 'Rekap_Taksasi_Natai Baru_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_3' deleted successfully.
-File "Rekap_Taksasi_Suayap_Jumat, 29 Desember 2023.pdf" sent to the group 120363048442215265@g.us as a document!
-File 'Rekap_Taksasi_Suayap_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_3' deleted successfully.
+File "Rekap_Taksasi_Kenambui_Rabu, 17 Januari 2024.pdf" sent to the group 120363025737216061@g.us as a document!
+File 'Rekap_Taksasi_Kenambui_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File "Rekap_Taksasi_Pulau_Rabu, 17 Januari 2024.pdf" sent to the group 120363025737216061@g.us as a document!
+File 'Rekap_Taksasi_Pulau_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File "Rekap_Taksasi_Rangda_Rabu, 17 Januari 2024.pdf" sent to the group 120363025737216061@g.us as a document!
+File 'Rekap_Taksasi_Rangda_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File "Rekap_Taksasi_Sulung_Rabu, 17 Januari 2024.pdf" sent to the group 120363025737216061@g.us as a document!
+File 'Rekap_Taksasi_Sulung_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File "Rekap_Taksasi_Batu Kotam_Rabu, 17 Januari 2024.pdf" sent to the group 120363047670143778@g.us as a document!
+File 'Rekap_Taksasi_Batu Kotam_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File "Rekap_Taksasi_Kondang_Rabu, 17 Januari 2024.pdf" sent to the group 120363047670143778@g.us as a document!
+File 'Rekap_Taksasi_Kondang_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File "Rekap_Taksasi_Rungun_Rabu, 17 Januari 2024.pdf" sent to the group 120363047670143778@g.us as a document!
+File 'Rekap_Taksasi_Rungun_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File "Rekap_Taksasi_Selangkun_Rabu, 17 Januari 2024.pdf" sent to the group 120363047670143778@g.us as a document!
+File 'Rekap_Taksasi_Selangkun_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File "Rekap_Taksasi_Bengaris_Rabu, 17 Januari 2024.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Bengaris_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+File "Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+File "Rekap_Taksasi_Suayap_Rabu, 17 Januari 2024.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Suayap_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
-Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=rde'
-Taksasi generated successfully for taksasi 'RDE'
-File 'Rekap_Taksasi_Suja_Jumat, 29 Desember 2023.pdf' in folder 'Inti' deleted successfully.
-File 'Rekap_Taksasi_Merambang_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_4' deleted successfully.
-File 'Rekap_Taksasi_Nanga Kiu_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_4' deleted successfully.
-File 'Rekap_Taksasi_Pedongatan_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_4' deleted successfully.
-File 'Rekap_Taksasi_Sepondam_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_4' deleted successfully.
-File 'Rekap_Taksasi_Batu Tunggal_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_5' deleted successfully.
-File 'Rekap_Taksasi_Nanuah_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_5' deleted successfully.
-File 'Rekap_Taksasi_Sungai Bulik_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_5' deleted successfully.
-File 'Rekap_Taksasi_Malata_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_6' deleted successfully.
-File 'Rekap_Taksasi_Sulung Research Station_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_9' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=nbe'
+Taksasi generated successfully for taksasi 'NBE'
+File 'Rekap_Taksasi_Suja_Rabu, 17 Januari 2024.pdf' in folder 'Inti' deleted successfully.
+File 'Rekap_Taksasi_Nanga Kiu_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+File 'Rekap_Taksasi_Sepondam_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+File 'Rekap_Taksasi_Sungai Bulik_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+File 'Rekap_Taksasi_Sulung Research Station_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_9' deleted successfully.
 File 'readme.txt' in folder '' deleted successfully.
-Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=rde'
-Taksasi generated successfully for taksasi 'RDE'
-Files generated successfully for 'RDE' in folder 'Wilayah_1'.
-File "Rekap_Taksasi_Rangda_Jumat, 29 Desember 2023.pdf" sent to the group 120363025737216061@g.us as a document!
-File 'Rekap_Taksasi_Rangda_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_1' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=nbe'
+Taksasi generated successfully for taksasi 'NBE'
+Files generated successfully for 'NBE' in folder 'Wilayah_3'.
+File "Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
-Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=kte4'
-Taksasi generated successfully for taksasi 'KTE4'
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=nbe'
+Taksasi generated successfully for taksasi 'NBE'
+File 'Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
 File 'readme.txt' in folder '' deleted successfully.
-Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_kte4.php'
-Taksasi generated successfully for taksasi 'KTE4'
-Files generated successfully for 'KTE4' in folder 'Inti'.
-File "Rekap_Taksasi_Karang Taba_Jumat, 29 Desember 2023.pdf" sent to the group 120363210871038595@g.us as a document!
-File 'Rekap_Taksasi_Karang Taba_Jumat, 29 Desember 2023.pdf' in folder 'Inti' deleted successfully.
-Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
-Taksasi generated Maps successfully
-Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
-Taksasi generated Maps successfully
-Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=kde'
-Taksasi generated successfully for taksasi 'KDE'
-File 'readme.txt' in folder '' deleted successfully.
-Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=sje'
-Taksasi generated successfully for taksasi 'SJE'
-File 'readme.txt' in folder '' deleted successfully.
-Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=kde'
-Taksasi generated successfully for taksasi 'KDE'
-Files generated successfully for 'KDE' in folder 'Wilayah_2'.
-Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_sje.php'
-Taksasi generated successfully for taksasi 'SJE'
-Files generated successfully for 'SJE' in folder 'Inti'.
-File "Rekap_Taksasi_Suja_Jumat, 29 Desember 2023.pdf" sent to the group 120363207525577365@g.us as a document!
-File 'Rekap_Taksasi_Suja_Jumat, 29 Desember 2023.pdf' in folder 'Inti' deleted successfully.
-File "Rekap_Taksasi_Kondang_Jumat, 29 Desember 2023.pdf" sent to the group 120363047670143778@g.us as a document!
-File 'Rekap_Taksasi_Kondang_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_2' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=nbe'
+Taksasi generated successfully for taksasi 'NBE'
+Files generated successfully for 'NBE' in folder 'Wilayah_3'.
+File "Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Natai Baru_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
 Generate Maps at 16:57..
 Message sent to the group successfully at 16:57!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
-Running message aws
 Sending files at 00 17 * * * (WIB)...
 Message sent to the group successfully!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
@@ -137,28 +183,292 @@ Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_upe.php'
 Taksasi generated successfully for taksasi 'UPE'
-File "Rekap_Taksasi_Umpang_Jumat, 29 Desember 2023.pdf" sent to the group 120363048442215265@g.us as a document!
-File 'Rekap_Taksasi_Umpang_Jumat, 29 Desember 2023.pdf' in folder 'Wilayah_3' deleted successfully.
+File "Rekap_Taksasi_Umpang_Rabu, 17 Januari 2024.pdf" sent to the group 120363048442215265@g.us as a document!
+File 'Rekap_Taksasi_Umpang_Rabu, 17 Januari 2024.pdf' in folder 'Wilayah_3' deleted successfully.
 Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Running message aws
-Server running on port 50045
-AUTHENTICATED
-Client is ready!
-File 'readme.txt' in folder '' deleted successfully.
-Message sent successfully!
+{
+  status: 200,
+  statusText: 'OK',
+  headers: Object [AxiosHeaders] {
+    date: 'Wed, 17 Jan 2024 16:59:35 GMT',
+    'content-type': 'text/html; charset=UTF-8',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    vary: 'Accept-Encoding, X-Forwarded-Proto,Accept-Encoding',
+    'referrer-policy': 'no-referrer-when-downgrade',
+    server: 'DomaiNesia',
+    'dn-request-id': 'de6fbfa7c48ee2396e471df379af9343',
+    'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+    'dynamic-cache-status': 'MISS',
+    'alt-svc': 'h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400, h3=":443"; ma=86400'
+  },
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.6.2',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://srs-ssms.com/iot/notif_wa_last_online_device.php',
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 128395231,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2024694,
+        [Symbol(triggerId)]: 2024692
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'GET /iot/notif_wa_last_online_device.php HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/1.6.2\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/iot/notif_wa_last_online_device.php',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 200,
+      statusMessage: 'OK',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://srs-ssms.com/iot/notif_wa_last_online_device.php',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 26,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://srs-ssms.com/iot/notif_wa_last_online_device.php',
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  data: [
+    {
+      idwl: '10',
+      online: 1,
+      group_id: '120363214741096436@g.us',
+      datetime: '17-01-2024 23:57:09',
+      message: 'Status device AWS Sulung Ranch  dengan last online 17-01-2024 23:57:09'
+    },
+    {
+      idwl: '100',
+      online: 0,
+      group_id: '',
+      datetime: '15-01-2024 11:30:54',
+      message: 'Last online device Test terakhir 15-01-2024 11:30:54\n'
+    },
+    {
+      idwl: '2',
+      online: 0,
+      group_id: '',
+      datetime: '17-01-2024 15:51:38',
+      message: 'Last online device SRS terakhir 17-01-2024 15:51:38\n'
+    },
+    {
+      idwl: '79',
+      online: 1,
+      group_id: '120363200959267322@g.us',
+      datetime: '17-01-2024 23:53:48',
+      message: 'Status device NBE OD B9  dengan last online 17-01-2024 23:53:48'
+    }
+  ]
+}
+Detected change in error.log. Sending to group...
+Error log sent to the group.
 Generate Maps at 08:57..
 Message sent to the group successfully at 08:57!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
@@ -166,16 +476,22 @@ Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Sending files at 00 09 * * * (WIB)...
 Message sent to the group successfully!
-Running message aws
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
 Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_bde.php'
 Taksasi generated successfully for taksasi 'BDE'
-File "Rekap_Taksasi_Badirih_Sabtu, 30 Desember 2023.pdf" sent to the group 120363166668733371@g.us as a document!
-File 'Rekap_Taksasi_Badirih_Sabtu, 30 Desember 2023.pdf' in folder 'Wilayah_7' deleted successfully.
-Running message aws
-Running message aws
+File "Rekap_Taksasi_Badirih_Kamis, 18 Januari 2024.pdf" sent to the group 120363166668733371@g.us as a document!
+File 'Rekap_Taksasi_Badirih_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Sending files at 00 11 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_nke.php'
+Taksasi generated successfully for taksasi 'NKE'
+File "Rekap_Taksasi_Nanga Kiu_Kamis, 18 Januari 2024.pdf" sent to the group 120363217152686034@g.us as a document!
+File 'Rekap_Taksasi_Nanga Kiu_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
 Generate Maps at 11:57..
 Message sent to the group successfully at 11:57!
 Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
@@ -183,4 +499,100 @@ Taksasi generated Maps successfully
 File 'readme.txt' in folder '' deleted successfully.
 Sending files at 00 12 * * * (WIB)...
 Message sent to the group successfully!
-Running message aws
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_kte.php'
+Taksasi generated successfully for taksasi 'KTE'
+File "Rekap_Taksasi_Kanamit_Kamis, 18 Januari 2024.pdf" sent to the group 120363170524329595@g.us as a document!
+File 'Rekap_Taksasi_Kanamit_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Sending files at 03 12 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_lme1.php'
+Taksasi generated successfully for taksasi 'LME1'
+File "Rekap_Taksasi_Limau 1_Kamis, 18 Januari 2024.pdf" sent to the group 120363208984887370@g.us as a document!
+File 'Rekap_Taksasi_Limau 1_Kamis, 18 Januari 2024.pdf' in folder 'Plasma' deleted successfully.
+Sending files at 05 12 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_spe.php'
+Taksasi generated successfully for taksasi 'SPE'
+File "Rekap_Taksasi_Sepondam_Kamis, 18 Januari 2024.pdf" sent to the group 120363220419839708@g.us as a document!
+File 'Rekap_Taksasi_Sepondam_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=spe'
+Taksasi generated successfully for taksasi 'SPE'
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_spe.php'
+Taksasi generated successfully for taksasi 'SPE'
+Files generated successfully for 'SPE' in folder 'Wilayah_4'.
+File "Rekap_Taksasi_Sepondam_Kamis, 18 Januari 2024.pdf" sent to the group 120363220419839708@g.us as a document!
+File 'Rekap_Taksasi_Sepondam_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Generate Maps at 13:57..
+Message sent to the group successfully at 13:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 14 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_sce.php'
+Taksasi generated successfully for taksasi 'SCE'
+File "Rekap_Taksasi_Sumber Cahaya_Kamis, 18 Januari 2024.pdf" sent to the group 120363152744155925@g.us as a document!
+File 'Rekap_Taksasi_Sumber Cahaya_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_6' deleted successfully.
+Sending files at 03 14 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_tbe.php'
+Taksasi generated successfully for taksasi 'TBE'
+File "Rekap_Taksasi_Tanjung Beringin_Kamis, 18 Januari 2024.pdf" sent to the group 120363193125275627@g.us as a document!
+File 'Rekap_Taksasi_Tanjung Beringin_Kamis, 18 Januari 2024.pdf' in folder 'Inti' deleted successfully.
+Generate Maps at 14:57..
+Message sent to the group successfully at 14:57!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Sending files at 00 15 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_bhe.php'
+Taksasi generated successfully for taksasi 'BHE'
+File "Rekap_Taksasi_Bahaur_Kamis, 18 Januari 2024.pdf" sent to the group 120363149785590346@g.us as a document!
+File 'Rekap_Taksasi_Bahaur_Kamis, 18 Januari 2024.pdf' in folder 'Wilayah_8' deleted successfully.
+Sending files at 03 15 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_sje.php'
+Taksasi generated successfully for taksasi 'SJE'
+File "Rekap_Taksasi_Suja_Kamis, 18 Januari 2024.pdf" sent to the group 120363207525577365@g.us as a document!
+File 'Rekap_Taksasi_Suja_Kamis, 18 Januari 2024.pdf' in folder 'Inti' deleted successfully.
+Sending files at 05 15 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_kte4.php'
+Taksasi generated successfully for taksasi 'KTE4'
+File "Rekap_Taksasi_Karang Taba_Kamis, 18 Januari 2024.pdf" sent to the group 120363210871038595@g.us as a document!
+File 'Rekap_Taksasi_Karang Taba_Kamis, 18 Januari 2024.pdf' in folder 'Inti' deleted successfully.
+Sending files at 20 15 * * * (WIB)...
+Message sent to the group successfully!
+Process completed for 'https://srs-ssms.com/rekap_pdf/check_taksasi_get.php'
+Taksasi generated Maps successfully
+File 'readme.txt' in folder '' deleted successfully.
+Process completed for 'https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=none'
+Taksasi generated successfully for taksasi 'none'

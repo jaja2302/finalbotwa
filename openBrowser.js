@@ -1,49 +1,83 @@
 const puppeteer = require('puppeteer');
-async function generateWithPuppeteer(url) {
-  try {
-    const browser = await puppeteer.launch({
-      headless: 'new',
-      executablePath: './chrome-win/chrome.exe',
-      browserArgs: [
-        '--disable-web-security',
-        '--no-sandbox',
-        '--disable-web-security',
-        '--aggressive-cache-discard',
-        '--disable-cache',
-        '--disable-application-cache',
-        '--disable-offline-load-stale-cache',
-        '--disk-cache-size=0',
-        '--disable-background-networking',
-        '--disable-default-apps',
-        '--disable-extensions',
-        '--disable-sync',
-        '--disable-translate',
-        '--hide-scrollbars',
-        '--metrics-recording-only',
-        '--mute-audio',
-        '--no-first-run',
-        '--safebrowsing-disable-auto-update',
-        '--ignore-certificate-errors',
-        '--ignore-ssl-errors',
-        '--ignore-certificate-errors-spki-list',
-      ],
-    });
 
-    const page = await browser.newPage();
 
-    await page.goto(url);
+async function generateWithPuppeteer(url, maxAttempts = 4) {
+  let attempts = 0;
 
-    await new Promise(resolve => setTimeout(resolve, 10000));
+  while (attempts < maxAttempts) {
+    let browser;
 
-    await browser.close();
+    try {
+      browser = await puppeteer.launch({
+        headless: false,
+        executablePath: './chrome-win/chrome.exe',
+        args: [
+          '--disable-web-security',
+          '--no-sandbox',
+          '--disable-web-security',
+          '--aggressive-cache-discard',
+          '--disable-cache',
+          '--disable-application-cache',
+          '--disable-offline-load-stale-cache',
+          '--disk-cache-size=0',
+          '--disable-background-networking',
+          '--disable-default-apps',
+          '--disable-extensions',
+          '--disable-sync',
+          '--disable-translate',
+          '--hide-scrollbars',
+          '--metrics-recording-only',
+          '--mute-audio',
+          '--no-first-run',
+          '--safebrowsing-disable-auto-update',
+          '--ignore-certificate-errors',
+          '--ignore-ssl-errors',
+          '--ignore-certificate-errors-spki-list',
+        ],
+      });
 
-    console.log(`Process completed for '${url}'`);
-  } catch (error) {
-    console.error(`Error processing '${url}':`, error);
+      const page = await browser.newPage();
+
+      // Set a longer timeout (e.g., 90 seconds)
+      await page.setDefaultTimeout(90000);
+
+      // Navigate to the URL
+      const response = await page.goto(url, { waitUntil: 'networkidle0' });
+
+      if (response.status() === 500) {
+        // HTTP status code 500 indicates a server error
+        console.log(`Server returned a "Server Limit" error. Retrying...`);
+        attempts++;
+        continue; // Skip closing the browser and proceed to the next attempt
+      }
+
+      // Wait for 1 minute for the page to generate
+      await page.waitForTimeout(60000);
+
+      // Break out of the loop if successful
+      console.log('Operation successful!');
+      break;
+    } catch (error) {
+      console.error(`Error processing '${url}':`, error);
+      attempts++;
+    } finally {
+      // Close the browser in the finally block to ensure it happens regardless of success or failure
+      if (browser) {
+        await browser.close();
+      }
+    }
+
+    if (attempts < maxAttempts) {
+      console.log(`Retrying (${attempts + 1}/${maxAttempts})...`);
+      // You can introduce a delay between retries if needed
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    } else {
+      console.error(`Max attempts reached. Unable to process '${url}'.`);
+    }
   }
 }
 
-// Usage examples:
+// Usage example:
 async function Generatedmaps() {
   await generateWithPuppeteer('https://srs-ssms.com/rekap_pdf/check_taksasi_get.php');
   console.log(`Taksasi generated Maps successfully`);
