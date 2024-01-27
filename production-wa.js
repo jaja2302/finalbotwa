@@ -6,9 +6,6 @@ const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
 const schedule = require('node-schedule');
-const { exec } = require('child_process');
-const { spawn } = require('child_process');
-
 
 // const generatemaps = require('./openBrowser.js');
 const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST,GenDefaultTaksasi,Generatedmapsest } = require('./openBrowser'); // Note: Remove the '.js' extension
@@ -198,7 +195,7 @@ async function sendPdfToGroups(folder, groupID) {
                     await deleteFile(fileName, folder);
                 } else {
                     console.log(`Group ${groupID} not found!`);
-                    logError(error);
+                    // logError(error);
                 }
             }
         };
@@ -220,7 +217,7 @@ async function sendPdfToGroups(folder, groupID) {
             }
         } catch (sendMessageError) {
             console.error('Error sending message:', sendMessageError);
-            logError(error);
+            // logError(error);
         }
     }
 
@@ -240,7 +237,7 @@ async function deleteFile(filename, folder) {
         }
     } catch (error) {
         console.error(`Error checking or deleting file '${filename}' in folder '${folder}':`, error.message);
-        logError(error);
+        // logError(error);
     }
 }
 
@@ -262,7 +259,7 @@ async function checkAndDeleteFiles() {
         }
     } catch (error) {
         console.error('Error checking and deleting files:', error);
-        logError(error);
+        // logError(error);
     }
 }
 
@@ -334,10 +331,11 @@ async function sendtaksasiest(est, groupID) {
         }
 
     
-        await Generatedmapsest(est);
+        // await Generatedmapsest(est);
         await checkAndDeleteFiles(); 
-        // Hit the URL to regenerate and save PDFs in the corresponding folder
-        switch (est) {
+                // Hit the URLs to regenerate and save PDFs in the corresponding folder
+          // Hit the URLs to regenerate and save PDFs and maps in the corresponding folders
+          switch (est) {
             case 'KTE':
             case 'SCE':
             case 'UPE':
@@ -349,13 +347,46 @@ async function sendtaksasiest(est, groupID) {
             case 'TBE':
             case 'NKE':
             case 'KTE4':
-                await GenerateTakestEST(est);
-                break;
+              const pdfUrl = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
+              const mapsUrl = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
+              
+              try {
+                await Promise.all([
+                  axios.get(pdfUrl),
+                  axios.get(mapsUrl)
+                ]);
+          
+                // No need to handle the response data since it's not used
+                // Additional actions after the requests are successful can be included here
+              } catch (error) {
+                // Handle any errors that occurred during the requests
+                console.error(`Error making Axios request: ${error.message}`);
+              }
+              
+              break;
+          
             default:
-                await GenDefaultTaksasi(est);
-                break;
-        }
-        // await GenDefaultTaksasi(est);
+              const pdfUrl2 = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
+              const mapsUrl2 = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
+          
+              try {
+                await Promise.all([
+                  axios.get(pdfUrl2),
+                  axios.get(mapsUrl2)
+                ]);
+          
+                // No need to handle the response data since it's not used
+                // Additional actions after the requests are successful can be included here
+              } catch (error) {
+                // Handle any errors that occurred during the requests
+                console.error(`Error making Axios request: ${error.message}`);
+              }
+          
+              // await GenDefaultTaksasi(est);
+              break;
+          }
+          
+  
 
         console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
 
@@ -373,7 +404,13 @@ async function sendtaksasiest(est, groupID) {
                 await sendPdfToGroups(folder, '120363220419839708@g.us');
             }else if (est === 'NKE'){
                 await sendPdfToGroups(folder, '120363217152686034@g.us');
+            }  else if (est === 'PDE'){
+                await sendPdfToGroups(folder, '120363217291038671@g.us');
             }
+        }else if (folder === 'Wilayah_5') {
+            if (est === 'SBE') {
+                await sendPdfToGroups(folder, '120363220146576654@g.us');
+            } 
         } else if (folder === 'Wilayah_6') {
             if (est === 'SCE') {
                 await sendPdfToGroups(folder, '120363152744155925@g.us');
@@ -388,6 +425,11 @@ async function sendtaksasiest(est, groupID) {
             } else if (est === 'BDE') {
                 await sendPdfToGroups(folder, '120363166668733371@g.us');
             }
+
+            // testing 
+            // grup asli = 120363166668733371@g.us
+            // grup testing = 120363205553012899@g.us
+
         } else if (folder === 'Wilayah_8') {
             if (est === 'BHE') {
                 await sendPdfToGroups(folder, '120363149785590346@g.us');
@@ -410,7 +452,7 @@ async function sendtaksasiest(est, groupID) {
 
     } catch (error) {
         console.error(`Error fetching files:`, error);
-        logError(error);
+        // logError(error);
     }
 }
 
@@ -471,7 +513,7 @@ async function sendperwil(wilayah, groupID) {
         // await checkAndDeleteFiles();
     } catch (error) {
         console.error(`Error fetching files:`, error);
-        logError(error);
+        // logError(error);
     }
 }
 
@@ -497,7 +539,7 @@ const generateAndSendMessage = async (time) => {
         }
     } catch (error) {
         console.error('Error sending message:', error);
-        logError(error);
+        // logError(error);
     }
 
     await Generatedmaps();
@@ -508,7 +550,7 @@ const generateAndSendMessage = async (time) => {
 };
 
 // Define cron job times
-const cronTimes = ['08:57', '11:57', '13:57', '14:57', '15:57', '16:57'];
+const cronTimes = ['15:57'];
 
 // Create cron jobs dynamically using a loop
 cronTimes.forEach(time => {
@@ -520,26 +562,6 @@ cronTimes.forEach(time => {
 
 
 
-const tasksaps = [
-    { 
-        time: '00 17 * * *', 
-        message: 'Generate Maps Jam 17:00', 
-        groupId: '120363158376501304@g.us',
-        generate: [
-            'UPE',
-            'KNE',
-        ]
-    },
-    { 
-        time: '00 17 * * *', 
-        message: 'Kirim Taksasi Umpang Wil 3 Jam 17:00', 
-        groupId: '120363158376501304@g.us',
-        generate: [
-            'UPE',
-            'KNE',
-        ]
-    },
-];
 
 
 // cronjob taksasi 
@@ -553,7 +575,8 @@ const tasks = [
         groupId: '120363048442215265@g.us',
         // test  
         // groupId: '120363205553012899@g.us',
-        generate: 'UPE'
+        generate: 'UPE',
+        versi: '2'
     },
     { 
         time: '00 09 * * *', 
@@ -563,7 +586,8 @@ const tasks = [
 
         // tes 
         // groupId: '120363205553012899@g.us',
-        generate: 'BDE'
+        generate: 'BDE',
+        versi: '2'
     },
     { 
         time: '00 11 * * *', 
@@ -573,7 +597,8 @@ const tasks = [
 
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'NKE'
+        generate: 'NKE',
+        versi: '2'
     },
     { 
         time: '00 12 * * *', 
@@ -583,7 +608,8 @@ const tasks = [
 
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'KTE'
+        generate: 'KTE',
+        versi: '2'
     },
     { 
         time: '05 12 * * *', 
@@ -593,7 +619,8 @@ const tasks = [
 
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'SPE'
+        generate: 'SPE',
+        versi: '2'
     },
     { 
         time: '03 12 * * *', 
@@ -602,8 +629,30 @@ const tasks = [
         groupId: '120363208984887370@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'LME1'
+        generate: 'LME1',
+        versi: '2'
     },
+    { 
+        time: '04 12 * * *', 
+        message: 'Kirim Taksasi PDE  Jam 12:04', 
+        regions: ['Wilayah_4'], 
+        groupId: '120363217291038671@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'PDE',
+        versi: '1'
+    },
+    { 
+        time: '04 12 * * *', 
+        message: 'Kirim Taksasi SBE  Jam 12:04', 
+        regions: ['Wilayah_5'], 
+        groupId: '120363220146576654@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'SBE',
+        versi: '1'
+    },
+    
     { 
         time: '00 15 * * *', 
         message: 'Kirim Taksasi BHE Jam 15:00', 
@@ -611,7 +660,8 @@ const tasks = [
         groupId: '120363149785590346@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'BHE'
+        generate: 'BHE',
+        versi: '2'
     },
     { 
         time: '03 15 * * *', 
@@ -620,7 +670,8 @@ const tasks = [
         groupId: '120363207525577365@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'SJE'
+        generate: 'SJE',
+        versi: '2'
     },
     { 
         time: '05 15 * * *', 
@@ -629,7 +680,8 @@ const tasks = [
         groupId: '120363210871038595@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'KTE4'
+        generate: 'KTE4',
+        versi: '2'
     },
     { 
         time: '00 14 * * *', 
@@ -638,7 +690,8 @@ const tasks = [
         groupId: '120363152744155925@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'SCE'
+        generate: 'SCE',
+        versi: '2'
     },
     { 
         time: '03 14 * * *', 
@@ -647,18 +700,18 @@ const tasks = [
         groupId: '120363193125275627@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
-        generate: 'TBE'
+        generate: 'TBE',
+        versi: '2'
     },
     { 
         time: '20 15 * * *', 
         message: 'Harian Guys', 
         regions: [], 
         groupId: '120363158376501304@g.us',
-
-        // testgrup
-        // groupId: '120363205553012899@g.us',
-        generate: 'none'
-    }
+        generate: 'none',
+        versi: '1'
+    },
+    
 ];
 tasks.forEach(task => {
     cron.schedule(task.time, async () => {
@@ -673,35 +726,55 @@ tasks.forEach(task => {
             }
         } catch (error) {
             console.error('Error sending message:', error);
-            logError(error);
+            // logError(error);
         }
        
         try {
-            await Generatedmaps();
-
+            // await Generatedmaps();
+        
             await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-         
-            // Wait for 10 seconds after checkAndDeleteFiles
-             if (task.generate !== 'none' ) {
-                // await GenerateTakestEST(task.generate);
-                await GenerateTakestEST(task.generate);
-                // await GenerateTakestEST(est);
-             }else {
-                await GenDefaultTaksasi(task.generate);
-             }
-            // }else if (task.generate == 'KTE' || task.generate == 'UPE' || task.generate == 'SCE') {
-            //     // await GenerateTakestEST(task.generate);
-            //     await GenerateTakestEST(est);
-
-            // }
+            const baseURL = 'https://srs-ssms.com/rekap_pdf/';
+            const generateParam = task.generate().toLowerCase(); // Ensure lowercase
+        
+            const url = `${baseURL}pdf_taksasi_folder.php?est=${generateParam}`;
+            const url2 = `${baseURL}pdf_taksasi_folder.php?est=${generateParam}`;
+            const maps1 = `${baseURL}check_taksasi_get.php?est=${generateParam}`;
+        
+            try {
+                if (task.versi !== 1) {
+                    // await GenerateTakestEST(task.generate);
+                    // await GenerateTakestEST(task.generate);
+                    // await GenerateTakestEST(est);
+        
+                    await Promise.all([
+                        axios.get(url),
+                        axios.get(maps1)
+                    ]);
+        
+                    // If you need to perform additional actions after the requests are successful, you can include them here.
+                } else {
+                    // await GenDefaultTaksasi(task.generate);
+        
+                    await Promise.all([
+                        axios.get(url2),
+                        axios.get(maps1)
+                    ]);
+        
+                    // If you need to perform additional actions after the requests are successful, you can include them here.
+                }
+            } catch (error) {
+                // Handle any errors that occurred during the requests
+                console.error(`Error making Axios request: ${error.message}`);
+            }
         
             for (const region of task.regions) {
                 await sendPdfToGroups(region, task.groupId); // Use task.groupId for all regions
             }
         } catch (error) {
             console.error('Error processing task:', error);
-            logError(error);
+            // logError(error);
         }
+        
         
         
     }, {
@@ -723,7 +796,7 @@ cron.schedule('00 16 * * *', async () => {
         }
     } catch (error) {
         console.error('Error sending message:', error);
-        logError(error);
+        // logError(error);
     }
  
     try {
@@ -786,10 +859,11 @@ client.on('message', async msg => {
 
     if (msg.body === '!tarik' && !listeningForEstateInput) {
         let chat = await msg.getChat();
+    
         if (chat.isGroup) {
             listeningForEstateInput = true;
             msg.reply('Masukan Estate (Harap huruf Kapital!!):');
-
+    
             let inputTimeout = setTimeout(() => {
                 if (listeningForEstateInput) {
                     msg.reply('Waktu habis. Mohon masukkan Perintah !tarik kembali.');
@@ -797,29 +871,28 @@ client.on('message', async msg => {
                     client.removeListener('message', listener);
                 }
             }, 60000); // Set a timeout of 60 seconds
-
+    
             const listener = async (message) => {
                 if (message.from === msg.from) {
                     const estate = message.body;
-
+    
                     clearTimeout(inputTimeout); // Clear the timeout as input is received
-
-                    await Generatedmaps().then(() => {
-                        msg.reply('Mohon Tunggu Maps sedang di proses...');
-                        setTimeout(() => {
-                            sendtaksasiest(estate, chat.id);
-                            listeningForEstateInput = false;
-                            client.removeListener('message', listener);
-                        }, 10000);
-                    });
+    
+                    msg.reply('Mohon Tunggu Maps sedang di proses...');
+                    setTimeout(() => {
+                        sendtaksasiest(estate, chat.id);
+                        listeningForEstateInput = false;
+                        client.removeListener('message', listener);
+                    }, 10000);
                 }
             };
-
+    
             client.on('message', listener);
         } else {
             msg.reply('This command can only be used in a group!');
         }
     }
+    
 
 
     else if (msg.body === '!taksasi' && !listengtaksasi) {

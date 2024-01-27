@@ -1,79 +1,54 @@
 const puppeteer = require('puppeteer');
 
+async function generateWithPuppeteer(url, maxRetries = 4) {
+  let attempt = 1;
 
-async function generateWithPuppeteer(url, maxAttempts = 4) {
-  let attempts = 0;
+  while (attempt <= maxRetries) {
+    console.log(`Attempt ${attempt}`);
+    
+    const browser = await puppeteer.launch({
+      executablePath: './chrome-win/chrome.exe',
+      headless: false,
+    });
 
-  while (attempts < maxAttempts) {
-    let browser;
+    const page = await browser.newPage();
 
-    try {
-      browser = await puppeteer.launch({
-        headless: false,
-        executablePath: './chrome-win/chrome.exe',
-        args: [
-          '--disable-web-security',
-          '--no-sandbox',
-          '--disable-web-security',
-          '--aggressive-cache-discard',
-          '--disable-cache',
-          '--disable-application-cache',
-          '--disable-offline-load-stale-cache',
-          '--disk-cache-size=0',
-          '--disable-background-networking',
-          '--disable-default-apps',
-          '--disable-extensions',
-          '--disable-sync',
-          '--disable-translate',
-          '--hide-scrollbars',
-          '--metrics-recording-only',
-          '--mute-audio',
-          '--no-first-run',
-          '--safebrowsing-disable-auto-update',
-          '--ignore-certificate-errors',
-          '--ignore-ssl-errors',
-          '--ignore-certificate-errors-spki-list',
-        ],
+    // Event listener for network logs
+    page
+      .on('response', async (response) => {
+        console.log(`${response.status()} ${response.url()}`);
+        if (response.status() === 500 || response.status() === 503) {
+          console.log(`Retrying due to status code: ${response.status()}`);
+          attempt++;
+          await browser.close();
+          return generateWithPuppeteer(url, maxRetries);
+        }
+      })
+      .on('requestfailed', async (request) => {
+        console.log(`${request.failure().errorText} ${request.url()}`);
+        if (request.failure().errorText.includes('500') || request.failure().errorText.includes('503')) {
+          console.log(`Retrying due to request failure: ${request.failure().errorText}`);
+          attempt++;
+          await browser.close();
+          return generateWithPuppeteer(url, maxRetries);
+        }
       });
 
-      const page = await browser.newPage();
+    // Navigate to the URL
+    await page.goto(url);
 
-      // Set a longer timeout (e.g., 90 seconds)
-      await page.setDefaultTimeout(90000);
+    // Your code inside page.evaluate()
+    await page.evaluate(() => {
+      console.log('hello', 5, { foo: 'bar' });
+    });
 
-      // Navigate to the URL
-      const response = await page.goto(url, { waitUntil: 'networkidle0' });
+    // Wait for some time to ensure the network logs are captured
+    await page.waitForTimeout(2000);
 
-      if (response.status() === 500) {
-        // HTTP status code 500 indicates a server error
-        console.log(`Server returned a "Server Limit" error. Retrying...`);
-        attempts++;
-        continue; // Skip closing the browser and proceed to the next attempt
-      }
+    // Close the browser
+    await browser.close();
 
-      // Wait for 1 minute for the page to generate
-      await page.waitForTimeout(60000);
-
-      // Break out of the loop if successful
-      console.log('Operation successful!');
-      break;
-    } catch (error) {
-      console.error(`Error processing '${url}':`, error);
-      attempts++;
-    } finally {
-      // Close the browser in the finally block to ensure it happens regardless of success or failure
-      if (browser) {
-        await browser.close();
-      }
-    }
-
-    if (attempts < maxAttempts) {
-      console.log(`Retrying (${attempts + 1}/${maxAttempts})...`);
-      // You can introduce a delay between retries if needed
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    } else {
-      console.error(`Max attempts reached. Unable to process '${url}'.`);
-    }
+    break; // Break the loop if the request is successful
   }
 }
 
@@ -82,6 +57,7 @@ async function Generatedmaps() {
   await generateWithPuppeteer('https://srs-ssms.com/rekap_pdf/check_taksasi_get.php');
   console.log(`Taksasi generated Maps successfully`);
 }
+
 async function Generatedmapsest(est) {
  
   const url = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;

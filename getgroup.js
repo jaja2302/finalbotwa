@@ -3,7 +3,7 @@ const venom = require('venom-bot');
 // Initialize Venom client
 venom.create({
   browserArgs: ['--no-sandbox'],
-  session: 'aaaa'
+  session: 'tsel'
 })
   .then((client) => start(client))
   .catch((error) => {
@@ -14,6 +14,12 @@ venom.create({
 async function start(client) {
   // Listen for messages
   client.onMessage(async (message) => {
+    if (message.body.toLowerCase() === '!hello') {
+      // Retrieve all chats
+     
+      // Send a response back to the sender
+      client.sendText(message.from, 'hai juga');
+    }
     // Check if the message contains the '/getgroup' command
     if (message.body.toLowerCase() === '!groupchat') {
       // Retrieve all chats
