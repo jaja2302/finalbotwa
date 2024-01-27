@@ -349,7 +349,7 @@ async function sendtaksasiest(est, groupID) {
             case 'KTE4':
               const pdfUrl = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
               const mapsUrl = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
-              
+              console.log(pdfUrl);
               try {
                 await Promise.all([
                   axios.get(pdfUrl),
@@ -368,7 +368,7 @@ async function sendtaksasiest(est, groupID) {
             default:
               const pdfUrl2 = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
               const mapsUrl2 = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
-          
+              console.log(pdfUrl2);
               try {
                 await Promise.all([
                   axios.get(pdfUrl2),
@@ -594,6 +594,7 @@ const tasks = [
         message: 'Kirim Taksasi NKE Wil 4  Jam 11:05', 
         regions: ['Wilayah_4'], 
         groupId: '120363217152686034@g.us',
+        // groupId: '120363205553012899@g.us',
 
         // testgrup
         // groupId: '120363205553012899@g.us',
@@ -734,8 +735,8 @@ tasks.forEach(task => {
         
             await checkAndDeleteFiles(); // Ensure files are checked and deleted first
             const baseURL = 'https://srs-ssms.com/rekap_pdf/';
-            const generateParam = task.generate().toLowerCase(); // Ensure lowercase
-        
+            const generateParam = task.generate.toLowerCase();
+
             const url = `${baseURL}pdf_taksasi_folder.php?est=${generateParam}`;
             const url2 = `${baseURL}pdf_taksasi_folder.php?est=${generateParam}`;
             const maps1 = `${baseURL}check_taksasi_get.php?est=${generateParam}`;
