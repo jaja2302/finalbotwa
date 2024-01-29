@@ -1,11 +1,12 @@
 const puppeteer = require('puppeteer');
-
 async function generateWithPuppeteer(url, maxRetries = 4) {
   let attempt = 1;
+  let shouldRetry = false;
 
   while (attempt <= maxRetries) {
     console.log(`Attempt ${attempt}`);
-    
+    shouldRetry = false;
+
     const browser = await puppeteer.launch({
       executablePath: './chrome-win/chrome.exe',
       headless: false,
@@ -19,18 +20,14 @@ async function generateWithPuppeteer(url, maxRetries = 4) {
         console.log(`${response.status()} ${response.url()}`);
         if (response.status() === 500 || response.status() === 503) {
           console.log(`Retrying due to status code: ${response.status()}`);
-          attempt++;
-          await browser.close();
-          return generateWithPuppeteer(url, maxRetries);
+          shouldRetry = true;
         }
       })
       .on('requestfailed', async (request) => {
         console.log(`${request.failure().errorText} ${request.url()}`);
         if (request.failure().errorText.includes('500') || request.failure().errorText.includes('503')) {
           console.log(`Retrying due to request failure: ${request.failure().errorText}`);
-          attempt++;
-          await browser.close();
-          return generateWithPuppeteer(url, maxRetries);
+          shouldRetry = true;
         }
       });
 
@@ -45,10 +42,21 @@ async function generateWithPuppeteer(url, maxRetries = 4) {
     // Wait for some time to ensure the network logs are captured
     await page.waitForTimeout(2000);
 
-    // Close the browser
-    await browser.close();
+    // Close the browser after 5 seconds if status is not 500 or 503
+    if (!shouldRetry) {
+      setTimeout(async () => {
+        await browser.close();
+      }, 5000);
+    }
 
-    break; // Break the loop if the request is successful
+    if (shouldRetry) {
+      await browser.close();
+      await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds before retrying
+    } else {
+      break; // Break the loop if the request is successful
+    }
+    
+    attempt++;
   }
 }
 

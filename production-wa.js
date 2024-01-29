@@ -731,7 +731,7 @@ tasks.forEach(task => {
         }
        
         try {
-            // await Generatedmaps();
+            await Generatedmaps();
         
             await checkAndDeleteFiles(); // Ensure files are checked and deleted first
             const baseURL = 'https://srs-ssms.com/rekap_pdf/';
@@ -831,6 +831,7 @@ let listen2 = false;
 let listen3 = false;
 let listen4 = false;
 let listen5 = false;
+let listen6 = false;
 
 const allowedNumber = '120363205553012899@g.us'; 
 const adminNumber = '6281349807050@c.us'; 
@@ -880,11 +881,14 @@ client.on('message', async msg => {
                     clearTimeout(inputTimeout); // Clear the timeout as input is received
     
                     msg.reply('Mohon Tunggu Maps sedang di proses...');
-                    setTimeout(() => {
-                        sendtaksasiest(estate, chat.id);
-                        listeningForEstateInput = false;
-                        client.removeListener('message', listener);
-                    }, 10000);
+                    await Generatedmaps().then(() => {
+                        msg.reply('Mohon Tunggu Maps sedang di proses...');
+                        setTimeout(() => {
+                            sendtaksasiest(estate, chat.id);
+                            listeningForEstateInput = false;
+                            client.removeListener('message', listener);
+                        }, 10000);
+                    });
                 }
             };
     
@@ -1042,6 +1046,18 @@ client.on('message', async msg => {
         }
     }
 
+    else if (msg.body === '!aws' && !listen6) {
+        try {
+            await statusAWS()
+            // Respond to confirm clearing both log files
+            await client.sendMessage(msg.from, 'check aws');
+        } catch (error) {
+            // Handle errors, such as file not found or other issues
+            console.error('Error clearing log files:', error);
+            await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
+        }
+    }
+
     
     
 });
@@ -1092,6 +1108,7 @@ async function sendmsgAws(message, groupid) {
 }
 
 // Function to check AWS status and send a message to the WhatsApp group if conditions met
+
 async function statusAWS() {
     try {
         const response = await axios.get('https://srs-ssms.com/iot/notif_wa_last_online_device.php');
@@ -1102,8 +1119,8 @@ async function statusAWS() {
 
             // Iterate through each object in the array
             for (const item of jsonArray) {
-                // Check if 'online' is equal to 0
-                if (item.online === 0) {
+                // Check if 'online' is equal to 0 and 'group_id' is not empty
+                if (item.online === 0 && item.group_id && item.group_id.trim() !== '') {
                     // Send a message to the specified 'group_id'
                     await sendmsgAws(item.message, item.group_id);
                 }
@@ -1112,7 +1129,7 @@ async function statusAWS() {
     } catch (error) {
         console.error(`Error fetching files:`, error);
         // Handle the error accordingly
-        // logError(error);
+        logError(error);
     }
 }
 
