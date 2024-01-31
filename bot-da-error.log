@@ -1,0 +1,348 @@
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+C:\Users\jaja.valentino\Desktop\finalbotwa\openBrowser.js:2
+const puppeteer = require('puppeteer');
+      ^
+
+SyntaxError: Identifier 'puppeteer' has already been declared
+    at internalCompileFunction (node:internal/vm:77:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1288:20)
+    at Module._compile (node:internal/modules/cjs/loader:1340:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at Hook._require.Module.require (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:101:39)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:11:113)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Object.<anonymous> (C:\Users\jaja.valentino\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+Error sending message: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'getChat')
+    at __puppeteer_evaluation_script__:2:40
+    at ExecutionContext._evaluateInternal (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:221:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ExecutionContext.evaluate (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:110:16)
+    at async Client.getChatById (C:\Users\jaja.valentino\Desktop\finalbotwa\node_modules\whatsapp-web.js\src\Client.js:940:20)
+    at async generateAndSendMessage (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:504:27)
+    at async Job.job (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:530:9)
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42
+Error reading or sending error log: Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')
+    at __puppeteer_evaluation_script__:2:42

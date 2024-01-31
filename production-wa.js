@@ -335,58 +335,30 @@ async function sendtaksasiest(est, groupID) {
         await checkAndDeleteFiles(); 
                 // Hit the URLs to regenerate and save PDFs in the corresponding folder
           // Hit the URLs to regenerate and save PDFs and maps in the corresponding folders
-          switch (est) {
-            case 'KTE':
-            case 'SCE':
-            case 'UPE':
-            case 'BDE':
-            case 'BHE':
-            case 'SJE':
-            case 'SPE':
-            case 'LME1':
-            case 'TBE':
-            case 'NKE':
-            case 'KTE4':
-              const pdfUrl = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
-              const mapsUrl = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
-              console.log(pdfUrl);
-              try {
-                await Promise.all([
-                  axios.get(pdfUrl),
-                  axios.get(mapsUrl)
-                ]);
+        //   switch (est) {
+        //     case 'KTE':
+        //     case 'SCE':
+        //     case 'UPE':
+        //     case 'BDE':
+        //     case 'BHE':
+        //     case 'SJE':
+        //     case 'SPE':
+        //     case 'LME1':
+        //     case 'TBE':
+        //     case 'NKE':
+        //     case 'KTE4':
+        //         await Generatedmapsest(est)
+        //         await GenerateTakestEST(est)
+        //       break;
           
-                // No need to handle the response data since it's not used
-                // Additional actions after the requests are successful can be included here
-              } catch (error) {
-                // Handle any errors that occurred during the requests
-                console.error(`Error making Axios request: ${error.message}`);
-              }
-              
-              break;
+        //     default:
+        //         await Generatedmapsest(est)
+        //         await GenDefaultTaksasi(est)
+        //       break;
+        //   }
           
-            default:
-              const pdfUrl2 = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
-              const mapsUrl2 = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
-              console.log(pdfUrl2);
-              try {
-                await Promise.all([
-                  axios.get(pdfUrl2),
-                  axios.get(mapsUrl2)
-                ]);
-          
-                // No need to handle the response data since it's not used
-                // Additional actions after the requests are successful can be included here
-              } catch (error) {
-                // Handle any errors that occurred during the requests
-                console.error(`Error making Axios request: ${error.message}`);
-              }
-          
-              // await GenDefaultTaksasi(est);
-              break;
-          }
-          
-  
+        await Generatedmapsest(est)
+        await GenDefaultTaksasi(est)
 
         console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
 
@@ -410,6 +382,9 @@ async function sendtaksasiest(est, groupID) {
         }else if (folder === 'Wilayah_5') {
             if (est === 'SBE') {
                 await sendPdfToGroups(folder, '120363220146576654@g.us');
+            } 
+            if (est === 'BTE') {
+                await sendPdfToGroups(folder, '120363226513991710@g.us');
             } 
         } else if (folder === 'Wilayah_6') {
             if (est === 'SCE') {
@@ -550,7 +525,7 @@ const generateAndSendMessage = async (time) => {
 };
 
 // Define cron job times
-const cronTimes = ['15:57'];
+const cronTimes = ['13:57','14:57','11:57','10:57','08:57','16:57','15:57'];
 
 // Create cron jobs dynamically using a loop
 cronTimes.forEach(time => {
@@ -613,7 +588,7 @@ const tasks = [
         versi: '2'
     },
     { 
-        time: '05 12 * * *', 
+        time: '02 12 * * *', 
         message: 'Kirim Taksasi SPE Wil 4  Jam 12:03', 
         regions: ['Wilayah_4'], 
         groupId: '120363220419839708@g.us',
@@ -624,7 +599,7 @@ const tasks = [
         versi: '2'
     },
     { 
-        time: '03 12 * * *', 
+        time: '04 12 * * *', 
         message: 'Kirim Taksasi LME1  Jam 12:03', 
         regions: ['Plasma'], 
         groupId: '120363208984887370@g.us',
@@ -634,7 +609,7 @@ const tasks = [
         versi: '2'
     },
     { 
-        time: '04 12 * * *', 
+        time: '06 12 * * *', 
         message: 'Kirim Taksasi PDE  Jam 12:04', 
         regions: ['Wilayah_4'], 
         groupId: '120363217291038671@g.us',
@@ -644,7 +619,7 @@ const tasks = [
         versi: '1'
     },
     { 
-        time: '04 12 * * *', 
+        time: '08 12 * * *', 
         message: 'Kirim Taksasi SBE  Jam 12:04', 
         regions: ['Wilayah_5'], 
         groupId: '120363220146576654@g.us',
@@ -653,7 +628,15 @@ const tasks = [
         generate: 'SBE',
         versi: '1'
     },
-    
+    { 
+        time: '10 12 * * *', 
+        message: 'Kirim Taksasi BTE  Jam 12:10', 
+        regions: ['Wilayah_5'], 
+        groupId: '120363226513991710@g.us',
+      
+        generate: 'BTE',
+        versi: '1'
+    },
     { 
         time: '00 15 * * *', 
         message: 'Kirim Taksasi BHE Jam 15:00', 
@@ -703,16 +686,17 @@ const tasks = [
         // groupId: '120363205553012899@g.us',
         generate: 'TBE',
         versi: '2'
-    },
+    },  
     { 
-        time: '20 15 * * *', 
-        message: 'Harian Guys', 
-        regions: [], 
-        groupId: '120363158376501304@g.us',
-        generate: 'none',
-        versi: '1'
-    },
-    
+        time: '15 09 * * *', 
+        message: 'Testing bot', 
+        regions: ['Wilayah_7'], 
+        groupId: '120363205553012899@g.us',
+        // testgrup
+        // groupId: '120363205553012899@g.us',
+        generate: 'BDE',
+        versi: '2'
+    },    
 ];
 tasks.forEach(task => {
     cron.schedule(task.time, async () => {
@@ -731,43 +715,12 @@ tasks.forEach(task => {
         }
        
         try {
-            await Generatedmaps();
+            // await Generatedmaps();
         
-            await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-            const baseURL = 'https://srs-ssms.com/rekap_pdf/';
-            const generateParam = task.generate.toLowerCase();
-
-            const url = `${baseURL}pdf_taksasi_folder.php?est=${generateParam}`;
-            const url2 = `${baseURL}pdf_taksasi_folder.php?est=${generateParam}`;
-            const maps1 = `${baseURL}check_taksasi_get.php?est=${generateParam}`;
-        
-            try {
-                if (task.versi !== 1) {
-                    // await GenerateTakestEST(task.generate);
-                    // await GenerateTakestEST(task.generate);
-                    // await GenerateTakestEST(est);
-        
-                    await Promise.all([
-                        axios.get(url),
-                        axios.get(maps1)
-                    ]);
-        
-                    // If you need to perform additional actions after the requests are successful, you can include them here.
-                } else {
-                    // await GenDefaultTaksasi(task.generate);
-        
-                    await Promise.all([
-                        axios.get(url2),
-                        axios.get(maps1)
-                    ]);
-        
-                    // If you need to perform additional actions after the requests are successful, you can include them here.
-                }
-            } catch (error) {
-                // Handle any errors that occurred during the requests
-                console.error(`Error making Axios request: ${error.message}`);
-            }
-        
+            await checkAndDeleteFiles(); 
+            await Generatedmapsest(task.generate);
+            await GenDefaultTaksasi(task.generate);
+          
             for (const region of task.regions) {
                 await sendPdfToGroups(region, task.groupId); // Use task.groupId for all regions
             }
@@ -775,9 +728,6 @@ tasks.forEach(task => {
             console.error('Error processing task:', error);
             // logError(error);
         }
-        
-        
-        
     }, {
         scheduled: true,
         timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
@@ -785,7 +735,8 @@ tasks.forEach(task => {
 });
 
 
-cron.schedule('00 16 * * *', async () => {
+
+cron.schedule('04 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
     try {
         const groupChat = await client.getChatById('120363205553012899@g.us');
