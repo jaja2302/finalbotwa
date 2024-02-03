@@ -52,7 +52,6 @@ async function generateWithPuppeteer(url, maxRetries = 3) {
   }
 }
 
-
 async function generatetpdf(url, attempts = 0) {
   if (attempts >= 4) {
     console.log('Maximum retry attempts reached. Exiting...');
@@ -66,29 +65,33 @@ async function generatetpdf(url, attempts = 0) {
 
   const page = await browser.newPage();
 
-  // Wait for the page to load completely
-  await page.goto(url);
-  await page.waitForTimeout(5000); // Adjust the delay time as needed
+  try {
+    // Wait for the page to load completely
+    await page.goto(url);
+    await page.waitForTimeout(5000); // Adjust the delay time as needed
 
-  // Extracting the content
-  const content = await page.evaluate(() => {
-    const element = document.querySelector('th[colspan="16"].text-center');
-    if (element && element.textContent.trim() === 'LAPORAN TAKSASI PANEN') {
-      return true;
+    // Extracting the content
+    const content = await page.evaluate(() => {
+      const element = document.querySelector('th[colspan="16"].text-center');
+      if (element && element.textContent.trim() === 'LAPORAN TAKSASI PANEN') {
+        return true;
+      }
+      return false;
+    });
+
+    if (content) {
+      console.log('Content found: LAPORAN TAKSASI PANEN');
+    } else {
+      console.log('Content not found: LAPORAN TAKSASI PANEN');
+      console.log('Retrying...');
+      return await generatetpdf(url, attempts + 1); // Retry if content not found
     }
-    return false;
-  });
-
-  if (content) {
-    console.log('Content found: LAPORAN TAKSASI PANEN');
-  } else {
-    console.log('Content not found: LAPORAN TAKSASI PANEN');
-    console.log('Retrying...');
-    await generatetpdf(url, attempts + 1); // Retry if content not found
+  } catch (error) {
+    console.error('Error fetching files:', error);
+  } finally {
+    // Close the browser
+    await browser.close();
   }
-
-  // Close the browser
-  await browser.close();
 }
 
 // Usage example:

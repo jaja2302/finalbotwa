@@ -429,3 +429,12 @@
     at emit (node:internal/process/promises:150:20)
     at processPromiseRejections (node:internal/process/promises:284:27)
     at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+2024-02-01T07:00:07.229Z: Error: Unhandled Rejection at: [object Promise]. Reason: ProtocolError: Network.enable timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.
+    at process.<anonymous> (C:\Users\jaja.valentino\Desktop\finalbotwa\production-wa.js:74:14)
+    at process.emit (node:events:526:35)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at processTicksAndRejections (node:internal/process/task_queues:96:32)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)

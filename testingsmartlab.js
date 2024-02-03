@@ -27,7 +27,6 @@ client.on('auth_failure', msg => {
     console.error('AUTHENTICATION FAILURE', msg);
 });
 
-
 async function sendMessagesBasedOnData() {
     try {
         // Fetch data from the PHP endpoint
@@ -39,9 +38,21 @@ async function sendMessagesBasedOnData() {
             return;
         }
 
+        console.log(response);
+
         for (const data of numberData) {
             const phoneNumber = `${data.penerima}@c.us`; // Adjust to match your JSON structure
-            const message = `${data.pesan} ${data.kodesample}`; // Adjust to match your JSON structure
+
+            // Adjust message formatting
+            const message = `
+            Yth. Pelanggan Setia Lab CBI,
+            
+            Sampel anda telah kami terima dg no surat *${data.nomor_surat}* progress saat ini *${data.progress}*.
+            Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
+            
+            Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+            `;
+            
             const idmsg = `${data.id}`; 
 
             const contact = await client.getContactById(phoneNumber);
@@ -60,6 +71,7 @@ async function sendMessagesBasedOnData() {
         console.error('Error fetching data or sending messages:', error);
     }
 }
+
 async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
     await new Promise((resolve) => {
         setTimeout(async () => {

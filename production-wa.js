@@ -687,16 +687,16 @@ const tasks = [
         generate: 'TBE',
         versi: '2'
     },  
-    { 
-        time: '15 09 * * *', 
-        message: 'Testing bot', 
-        regions: ['Wilayah_7'], 
-        groupId: '120363205553012899@g.us',
-        // testgrup
-        // groupId: '120363205553012899@g.us',
-        generate: 'BDE',
-        versi: '2'
-    },    
+    // { 
+    //     time: '15 09 * * *', 
+    //     message: 'Testing bot', 
+    //     regions: ['Wilayah_7'], 
+    //     groupId: '120363205553012899@g.us',
+    //     // testgrup
+    //     // groupId: '120363205553012899@g.us',
+    //     generate: 'BDE',
+    //     versi: '2'
+    // },    
 ];
 tasks.forEach(task => {
     cron.schedule(task.time, async () => {
