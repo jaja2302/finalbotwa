@@ -8,7 +8,7 @@ async function generateWithPuppeteer(url, maxRetries = 3) {
 
     const browser = await puppeteer.launch({
       executablePath: './chrome-win/chrome.exe',
-      headless: false,
+      headless: 'new',
     });
 
     const page = await browser.newPage();
@@ -60,7 +60,7 @@ async function generatetpdf(url, attempts = 0) {
 
   const browser = await puppeteer.launch({
     executablePath: './chrome-win/chrome.exe',
-    headless: false,
+    headless: 'new',
   });
 
   const page = await browser.newPage();

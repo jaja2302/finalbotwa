@@ -38,7 +38,7 @@ async function sendMessagesBasedOnData() {
             return;
         }
 
-        console.log(response);
+        // console.log(response);
 
         for (const data of numberData) {
             const phoneNumber = `${data.penerima}@c.us`; // Adjust to match your JSON structure

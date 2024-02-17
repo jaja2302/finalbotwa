@@ -382,15 +382,16 @@ async function sendtaksasiest(est, groupID) {
         }else if (folder === 'Wilayah_5') {
             if (est === 'SBE') {
                 await sendPdfToGroups(folder, '120363220146576654@g.us');
-            } 
-            if (est === 'BTE') {
+            } else if (est === 'BTE') {
                 await sendPdfToGroups(folder, '120363226513991710@g.us');
+            }  else if (est === 'NNE') {
+                await sendPdfToGroups(folder, '120363231670115838@g.us');
             } 
         } else if (folder === 'Wilayah_6') {
             if (est === 'SCE') {
-                await sendPdfToGroups(folder, '120363152744155925@g.us');
-            } else {
-                await sendPdfToGroups(folder, '120363152744155925@g.us');
+                await sendPdfToGroups(folder, '120363232871713646@g.us');
+            } else if (est === 'MLE'){
+                await sendPdfToGroups(folder, '120363213054175770@g.us');
             }
         } else if (folder === 'Wilayah_7') {
             if (est === 'KTE') {
@@ -637,6 +638,24 @@ const tasks = [
         generate: 'BTE',
         versi: '1'
     },
+
+    { 
+        time: '12 12 * * *', 
+        message: 'Kirim Taksasi MLE  Jam 12:12', 
+        regions: ['Wilayah_6'], 
+        groupId: '120363213054175770@g.us',
+      
+        generate: 'MLE',
+        versi: '1'
+    },
+    { 
+        time: '00 10 * * *', 
+        message: 'Kirim Taksasi NNE  Jam 00:10', 
+        regions: ['Wilayah_5'], 
+        groupId: '120363231670115838@g.us',
+        generate: 'NNE',
+        versi: '1'
+    },
     { 
         time: '00 15 * * *', 
         message: 'Kirim Taksasi BHE Jam 15:00', 
@@ -652,8 +671,6 @@ const tasks = [
         message: 'Kirim Taksasi SJE Jam 15:00', 
         regions: ['Inti'], 
         groupId: '120363207525577365@g.us',
-        // testgrup
-        // groupId: '120363205553012899@g.us',
         generate: 'SJE',
         versi: '2'
     },
@@ -671,7 +688,7 @@ const tasks = [
         time: '00 14 * * *', 
         message: 'Kirim Taksasi SCE  Jam 14:00', 
         regions: ['Wilayah_6'], 
-        groupId: '120363152744155925@g.us',
+        groupId: '120363232871713646@g.us',
         // testgrup
         // groupId: '120363205553012899@g.us',
         generate: 'SCE',
@@ -1102,7 +1119,7 @@ async function statusAWS() {
 // Schedule the status check and message sending task every one hour
 cron.schedule('0 0 * * *', async () => {
     try {
-        console.log('Running message aws');
+        // console.log('Running message aws');
         await statusAWS(); // Call the function to check AWS status and send message
     } catch (error) {
         console.error('Error in cron job:', error);
@@ -1111,6 +1128,80 @@ cron.schedule('0 0 * * *', async () => {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone according to your location
 });
+
+
+function readLatestId() {
+    try {
+        if (fs.existsSync('latest_id.txt')) {
+            const data = fs.readFileSync('latest_id.txt', 'utf8');
+            return parseInt(data.trim()); // Parse the ID as an integer
+        } else {
+            // If the file doesn't exist, set the initial latest_id to 9
+            writeLatestId(9);
+            return 9;
+        }
+    } catch (err) {
+        console.error('Error reading latest ID:', err);
+        return null;
+    }
+}
+
+// Function to write the latest ID to a file
+function writeLatestId(id) {
+    try {
+        fs.writeFileSync('latest_id.txt', id.toString()); // Write the ID to the file
+    } catch (err) {
+        console.error('Error writing latest ID:', err);
+    }
+}
+async function statusHistory() {
+    try {
+        // Get the latest ID from the file
+        let latestId = readLatestId();
+
+        // Fetch new data from the API using the latest ID
+        const response = await axios.get('https://qc-apps.srs-ssms.com/api/history', {
+            params: {
+                id: latestId // Change the parameter name to "id"
+            }
+        });
+
+        // Log the fetched data
+        // console.log('Fetched data:', response.data);
+
+        // Update the latest ID with the maximum ID from the response
+        if (Array.isArray(response.data) && response.data.length > 0) {
+            const maxId = Math.max(...response.data.map(item => item.id));
+            writeLatestId(maxId);
+
+            // Process and send the new data as needed
+            const groupId = '120363205553012899@g.us'; // Replace with your actual group ID
+            const message = 'New History Edit: ' + JSON.stringify(response.data); // Customize the message as needed
+            await sendmsgAws(message, groupId);
+        } else {
+            // console.log('No new data fetched.');
+        }
+
+    } catch (error) {
+        console.error(`Error fetching data:`, error);
+        // Handle the error accordingly
+    }
+}
+
+
+// Schedule the cron job setipa 10 menit
+cron.schedule('*/10 * * * *', async () => {
+    try {
+        // console.log('Running message history');
+        await statusHistory(); // Call the function to check history and send message
+    } catch (error) {
+        console.error('Error in cron job:', error);
+    }
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
+
 
 
 client.initialize();

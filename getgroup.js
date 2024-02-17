@@ -3,7 +3,7 @@ const venom = require('venom-bot');
 // Initialize Venom client
 venom.create({
   browserArgs: ['--no-sandbox'],
-  session: 'whatsapp'
+  session: 'xlgroup'
 })
   .then((client) => start(client))
   .catch((error) => {
