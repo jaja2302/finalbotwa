@@ -78,16 +78,22 @@ process.on('unhandledRejection', (reason, promise) => {
 
 // sending message smartlabs json 
 
+
 async function sendMessagesBasedOnData() {
     try {
         // Fetch data from the PHP endpoint
-        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php');
+        // local 
+        // const response = await axios.get('http://localhost:52914/data'); 
+        // online 
+        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php'); 
         const numberData = response.data;
 
         if (!numberData || !Array.isArray(numberData)) {
-            // console.error('Invalid or empty data.');
+            console.error('Invalid or empty data.');
             return;
         }
+
+        // console.log(response);
 
         for (const data of numberData) {
             let formattedNumber = data.penerima;
@@ -98,11 +104,32 @@ async function sendMessagesBasedOnData() {
             
             const phoneNumber = `${formattedNumber}@c.us`;
 
-            console.log(phoneNumber);
+        
+            // Get current time in Indonesia's timezone
+            const currentTime = moment().tz('Asia/Jakarta');
+        
+            // Determine greeting based on time of day
+            let greeting;
+            const currentHour = currentTime.hours();
+            if (currentHour < 10) {
+                greeting = 'Selamat Pagi';
+            } else if (currentHour < 15) {
+                greeting = 'Selamat Siang';
+            } else if (currentHour < 19) {
+                greeting = 'Selamat Sore';
+            } else {
+                greeting = 'Selamat Malam';
+            }
+        
+            const chatContent = `Yth. Pelanggan Setia Lab CBI,
             
-            const message = `${data.pesan} ${data.kodesample}`; // Adjust to match your JSON structure
-            const idmsg = `${data.id}`;
-
+            \nSampel anda telah kami terima dg no surat *${data.no_surat}* progress saat ini *${data.progres}*.Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
+            \nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+             
+            const message = `${greeting}\n${chatContent}`;
+        
+            const idmsg = `${data.id}`; 
+        
             const contact = await client.getContactById(phoneNumber);
             if (contact) {
                 const chat = await contact.getChat();
@@ -119,12 +146,11 @@ async function sendMessagesBasedOnData() {
         console.error('Error fetching data or sending messages:', error);
     }
 }
-
 async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
     await new Promise((resolve) => {
         setTimeout(async () => {
             await chat.sendMessage(message);
-            console.log(`Message "${message}" sent to ${phoneNumber}`);
+            // console.log(`Message "${message}" sent to ${phoneNumber}`);
 
             // After sending the message, proceed to delete the message ID
             await deletemsg(idmsg);
@@ -142,24 +168,15 @@ async function deletemsg(idmsg) {
     }
 }
 
-// cron.schedule('*/1 * * * *', async () => {
-//     console.log('Running message sending task...');
-//     await sendMessagesBasedOnData();
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
-
-
 // Call the function when the client is ready
 
-// cron.schedule('*/1 * * * *', async () => {
-//     // console.log('Running message sending task...');
-//     await sendMessagesBasedOnData();
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
+cron.schedule('*/1 * * * *', async () => {
+    // console.log('Running message sending task...');
+    await sendMessagesBasedOnData();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 // ... (other parts of your code)
 // kodingan taksasi 
