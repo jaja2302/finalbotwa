@@ -32,9 +32,9 @@ async function sendMessagesBasedOnData() {
     try {
         // Fetch data from the PHP endpoint
         // local 
-        const response = await axios.get('http://localhost:52914/data'); 
+        // const response = await axios.get('http://localhost:52914/data'); 
         // online 
-        // const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php'); 
+        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php'); 
         const numberData = response.data;
 
         if (!numberData || !Array.isArray(numberData)) {
@@ -111,7 +111,10 @@ async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
 
 async function deletemsg(idmsg) {
     try {
-        await axios.post('http://localhost:52914/deletedata', { id: idmsg });
+        // await axios.post('http://localhost:52914/deletedata', { id: idmsg });
+
+        // online 
+        await axios.post('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php', { id: idmsg });
         console.log(`Message ID '${idmsg}' deleted successfully.`);
     } catch (error) {
         console.error(`Error deleting message ID '${idmsg}':`, error);
@@ -152,13 +155,13 @@ client.on('message', async msg => {
 
    
 
-// cron.schedule('*/1 * * * *', async () => {
-//     console.log('Running message sending task...');
-//     await sendMessagesBasedOnData();
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
+cron.schedule('*/1 * * * *', async () => {
+    console.log('Running message sending task...');
+    await sendMessagesBasedOnData();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 
 client.initialize();

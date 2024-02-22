@@ -6,6 +6,7 @@ const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
 const schedule = require('node-schedule');
+const moment = require('moment-timezone');
 
 // const generatemaps = require('./openBrowser.js');
 const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST,GenDefaultTaksasi,Generatedmapsest } = require('./openBrowser'); // Note: Remove the '.js' extension
@@ -89,7 +90,7 @@ async function sendMessagesBasedOnData() {
         const numberData = response.data;
 
         if (!numberData || !Array.isArray(numberData)) {
-            console.error('Invalid or empty data.');
+            // console.error('Invalid or empty data.');
             return;
         }
 
@@ -107,7 +108,7 @@ async function sendMessagesBasedOnData() {
         
             // Get current time in Indonesia's timezone
             const currentTime = moment().tz('Asia/Jakarta');
-        
+
             // Determine greeting based on time of day
             let greeting;
             const currentHour = currentTime.hours();
