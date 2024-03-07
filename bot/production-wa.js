@@ -90,7 +90,8 @@ async function sendMessagesBasedOnData() {
         const numberData = response.data;
 
         if (!Array.isArray(numberData) || numberData.length === 0) {
-            // console.log('Invalid or empty data.');
+            console.log('Invalid or empty data.');
+            // console.error('Invalid or empty data.');
             return;
         }
 
@@ -111,7 +112,7 @@ async function sendMessagesBasedOnData() {
                     await deletemsg(data.id);
                     continue;
                 }
-
+            
                 const currentTime = moment().tz('Asia/Jakarta');
                 const currentHour = currentTime.hours();
                 let greeting;
@@ -124,21 +125,23 @@ async function sendMessagesBasedOnData() {
                 } else {
                     greeting = 'Selamat Malam';
                 }
-
-                const chatContent = `Yth. Pelanggan Setia Lab CBI,
-                
-            \nSampel anda telah kami terima dg no surat *${data.no_surat}* progress saat ini *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
-            \nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-
+            
+                let chatContent; // Declare chatContent outside of the if-else block
+                if (data.type === "input") {
+                    chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+                } else {
+                    chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+                }
+            
                 const message = `${greeting}\n${chatContent}`;
-
+            
                 const chat = await contact.getChat();
                 if (chat) {
                     await sendMessageWithDelay(chat, message, phoneNumber, data.id);
                 } else {
                     console.log(`Chat not found for ${phoneNumber}`);
                 }
-
+            
                 // If any data is sent, set the flag to false
                 allDataSentAndDeleted = false;
             } catch (error) {
@@ -146,6 +149,7 @@ async function sendMessagesBasedOnData() {
                 // console.log(`Contact not found for ${phoneNumber}. Deleting corresponding data...`);
                 await deletemsg(data.id);
             }
+            
         }
 
         // If all data is sent and deleted, stop the program
@@ -157,6 +161,7 @@ async function sendMessagesBasedOnData() {
         // console.error('Error fetching data or sending messages:', error);
     }
 }
+
 
 async function isValidWhatsAppNumber(phoneNumber) {
     try {
@@ -387,30 +392,7 @@ async function sendtaksasiest(est, groupID) {
     
         // await Generatedmapsest(est);
         await checkAndDeleteFiles(); 
-                // Hit the URLs to regenerate and save PDFs in the corresponding folder
-          // Hit the URLs to regenerate and save PDFs and maps in the corresponding folders
-        //   switch (est) {
-        //     case 'KTE':
-        //     case 'SCE':
-        //     case 'UPE':
-        //     case 'BDE':
-        //     case 'BHE':
-        //     case 'SJE':
-        //     case 'SPE':
-        //     case 'LME1':
-        //     case 'TBE':
-        //     case 'NKE':
-        //     case 'KTE4':
-        //         await Generatedmapsest(est)
-        //         await GenerateTakestEST(est)
-        //       break;
-          
-        //     default:
-        //         await Generatedmapsest(est)
-        //         await GenDefaultTaksasi(est)
-        //       break;
-        //   }
-          
+     
         await Generatedmapsest(est)
         await GenDefaultTaksasi(est)
 

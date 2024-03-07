@@ -4,7 +4,9 @@
   "description": "",
   "main": "production-wa.js",
   "scripts": {
-    "start": "pm2 start bot/production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log"
+    "start": "pm2 start bot/production-wa.js --name bot_da -o bot-da-out.log -e bot-da-error.log",
+    "db" : "node bot/dbconection.js",
+    "test" : "node bot/botsmartlabs.js"
   },
   
   "keywords": [],
