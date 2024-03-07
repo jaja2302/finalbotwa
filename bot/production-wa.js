@@ -9,7 +9,7 @@ const schedule = require('node-schedule');
 const moment = require('moment-timezone');
 
 // const generatemaps = require('./openBrowser.js');
-const { Generatedmaps, GetYoutubeurl, GenerateTaksasi, GenerateTakestEST,GenDefaultTaksasi,Generatedmapsest } = require('./openBrowser'); // Note: Remove the '.js' extension
+const { Generatedmaps, GenerateTaksasi,GenDefaultTaksasi,Generatedmapsest } = require('./openBrowser'); // Note: Remove the '.js' extension
 
 const path = require('path');
 
