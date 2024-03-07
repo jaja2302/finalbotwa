@@ -97,32 +97,32 @@ async function generatetpdf(url, attempts = 0) {
 // Usage example:
 async function Generatedmaps() {
   await generateWithPuppeteer('https://srs-ssms.com/rekap_pdf/check_taksasi_get.php');
-  console.log(`Taksasi generated Maps successfully`);
+  console.error(`Taksasi generated Maps successfully`);
 }
 async function Generatedmapsest(est) {
  
   const url = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
   await generateWithPuppeteer(url);
-  console.log(`Taksasi generated successfully for taksasi '${est}'`);
+  console.error(`Taksasi generated successfully for taksasi '${est}'`);
 }
 
 async function GenerateTakestEST(est) {
   const url = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder_${est.toLowerCase()}.php`;
   await generatetpdf(url);
-  console.log(`Taksasi generated successfully for taksasi '${est}'`);
+  console.error(`Taksasi generated successfully for taksasi '${est}'`);
 }
 
 async function GenDefaultTaksasi(est) {
   const url = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
   await generatetpdf(url);
-  console.log(`Taksasi generated successfully for taksasi '${est}'`);
+  console.error(`Taksasi generated successfully for taksasi '${est}'`);
 }
 
 
 async function GenerateTaksasi() {
  
   await generatetpdf('https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php');
-  console.log(`Taksasi generated successfully`);
+  console.error(`Taksasi generated successfully`);
 
 }
 

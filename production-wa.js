@@ -82,92 +82,121 @@ process.on('unhandledRejection', (reason, promise) => {
 
 async function sendMessagesBasedOnData() {
     try {
-        // Fetch data from the PHP endpoint
+         // Fetch data from the PHP endpoint
         // local 
         // const response = await axios.get('http://localhost:52914/data'); 
         // online 
         const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php'); 
         const numberData = response.data;
 
-        if (!numberData || !Array.isArray(numberData)) {
-            // console.error('Invalid or empty data.');
+        if (!Array.isArray(numberData) || numberData.length === 0) {
+            // console.log('Invalid or empty data.');
             return;
         }
 
-        // console.log(response);
+        let allDataSentAndDeleted = true; // Flag to track if all data is sent and deleted
 
         for (const data of numberData) {
             let formattedNumber = data.penerima;
-            // Adjust phone number format if it starts with '08'
-            if (formattedNumber.startsWith('08')) {
+            if (formattedNumber && formattedNumber.startsWith('08')) {
                 formattedNumber = `62${formattedNumber.slice(1)}`;
             }
-            
+
             const phoneNumber = `${formattedNumber}@c.us`;
 
-        
-            // Get current time in Indonesia's timezone
-            const currentTime = moment().tz('Asia/Jakarta');
+            try {
+                const contact = await client.getContactById(phoneNumber);
+                if (!contact) {
+                    // console.log(`Contact not found for ${phoneNumber}. Deleting corresponding data...`);
+                    await deletemsg(data.id);
+                    continue;
+                }
 
-            // Determine greeting based on time of day
-            let greeting;
-            const currentHour = currentTime.hours();
-            if (currentHour < 10) {
-                greeting = 'Selamat Pagi';
-            } else if (currentHour < 15) {
-                greeting = 'Selamat Siang';
-            } else if (currentHour < 19) {
-                greeting = 'Selamat Sore';
-            } else {
-                greeting = 'Selamat Malam';
-            }
-        
-            const chatContent = `Yth. Pelanggan Setia Lab CBI,
-            
-            \nSampel anda telah kami terima dg no surat *${data.no_surat}* progress saat ini *${data.progres}*.Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
+                const currentTime = moment().tz('Asia/Jakarta');
+                const currentHour = currentTime.hours();
+                let greeting;
+                if (currentHour < 10) {
+                    greeting = 'Selamat Pagi';
+                } else if (currentHour < 15) {
+                    greeting = 'Selamat Siang';
+                } else if (currentHour < 19) {
+                    greeting = 'Selamat Sore';
+                } else {
+                    greeting = 'Selamat Malam';
+                }
+
+                const chatContent = `Yth. Pelanggan Setia Lab CBI,
+                
+            \nSampel anda telah kami terima dg no surat *${data.no_surat}* progress saat ini *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
             \nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-             
-            const message = `${greeting}\n${chatContent}`;
-        
-            const idmsg = `${data.id}`; 
-        
-            const contact = await client.getContactById(phoneNumber);
-            if (contact) {
+
+                const message = `${greeting}\n${chatContent}`;
+
                 const chat = await contact.getChat();
                 if (chat) {
-                    await sendMessageWithDelay(chat, message, phoneNumber, idmsg);
+                    await sendMessageWithDelay(chat, message, phoneNumber, data.id);
                 } else {
                     console.log(`Chat not found for ${phoneNumber}`);
                 }
-            } else {
-                console.log(`Contact not found for ${phoneNumber}`);
+
+                // If any data is sent, set the flag to false
+                allDataSentAndDeleted = false;
+            } catch (error) {
+                // console.error('Error checking WhatsApp number:', error);
+                // console.log(`Contact not found for ${phoneNumber}. Deleting corresponding data...`);
+                await deletemsg(data.id);
             }
         }
+
+        // If all data is sent and deleted, stop the program
+        if (allDataSentAndDeleted) {
+            console.log('All data sent and deleted. Stopping the program.');
+            return;
+        }
     } catch (error) {
-        console.error('Error fetching data or sending messages:', error);
+        // console.error('Error fetching data or sending messages:', error);
     }
 }
-async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
-    await new Promise((resolve) => {
-        setTimeout(async () => {
-            await chat.sendMessage(message);
-            // console.log(`Message "${message}" sent to ${phoneNumber}`);
 
-            // After sending the message, proceed to delete the message ID
-            await deletemsg(idmsg);
-            resolve();
-        }, 10000); // 10 seconds delay
-    });
+async function isValidWhatsAppNumber(phoneNumber) {
+    try {
+        const contact = await client.getContactById(phoneNumber);
+        return !!contact;
+    } catch (error) {
+        console.log('Error checking WhatsApp number:', error);
+        return false;
+    }
+}
+
+
+
+async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
+    try {
+        await new Promise((resolve) => {
+            setTimeout(async () => {
+                await chat.sendMessage(message);
+                console.log(`Message "${message}" sent to ${phoneNumber}`);
+                await deletemsg(idmsg);
+                resolve();
+            }, 10000);
+        });
+    } catch (error) {
+        console.log('Error sending message with delay:', error);
+    }
 }
 
 async function deletemsg(idmsg) {
     try {
+        // await axios.post('http://localhost:52914/deletedata', { id: idmsg });
         await axios.post('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php', { id: idmsg });
+     
         console.log(`Message ID '${idmsg}' deleted successfully.`);
     } catch (error) {
-        console.error(`Error deleting message ID '${idmsg}':`, error);
+        console.log(`Error deleting message ID '${idmsg}':`, error);
     }
 }
+
+
 
 // Call the function when the client is ready
 
@@ -219,7 +248,14 @@ async function sendPdfToGroups(folder, groupID) {
         };
 
         await sendPdfToGroup(folder, groupID);
+        const logFilePath = './bot-da-out.log'; // Main log file path
+        const errorLogFilePath = './bot-da-error.log'; // Error log file path
 
+        // Clear main log file
+        fs.writeFileSync(logFilePath, '');
+
+        // Clear error log file
+        fs.writeFileSync(errorLogFilePath, '');
 
     } catch (error) {
         console.error('Error fetching or sending PDF files:', error);
@@ -228,13 +264,13 @@ async function sendPdfToGroups(folder, groupID) {
             if (groupChat) {
                 const errorMessage = 'There was an error sending the PDF files.\nError Details:\n' + error.stack;
                 await groupChat.sendMessage(errorMessage);
-                console.log('Notification sent to the group about the error.');
+                console.error('Notification sent to the group about the error.');
             } else {
                 console.log('Group not found!');
                 logError(error);
             }
         } catch (sendMessageError) {
-            console.error('Error sending message:', sendMessageError);
+            console.log('Error sending message:', sendMessageError);
             // logError(error);
         }
     }
@@ -254,7 +290,7 @@ async function deleteFile(filename, folder) {
             console.log(`Unexpected status code ${response.status} received. Skipping deletion.`);
         }
     } catch (error) {
-        console.error(`Error checking or deleting file '${filename}' in folder '${folder}':`, error.message);
+        console.log(`Error checking or deleting file '${filename}' in folder '${folder}':`, error.message);
         // logError(error);
     }
 }
@@ -276,7 +312,7 @@ async function checkAndDeleteFiles() {
             // logError is called here, consider removing this line as 'error' isn't defined in this scope
         }
     } catch (error) {
-        console.error('Error checking and deleting files:', error);
+        console.log('Error checking and deleting files:', error);
         // logError(error);
     }
 }
@@ -396,6 +432,8 @@ async function sendtaksasiest(est, groupID) {
                 await sendPdfToGroups(folder, '120363217152686034@g.us');
             }  else if (est === 'PDE'){
                 await sendPdfToGroups(folder, '120363217291038671@g.us');
+            }else if (est === 'MRE'){
+                await sendPdfToGroups(folder, '120363217205685424@g.us');
             }
         }else if (folder === 'Wilayah_5') {
             if (est === 'SBE') {
@@ -445,7 +483,7 @@ async function sendtaksasiest(est, groupID) {
 
 
     } catch (error) {
-        console.error(`Error fetching files:`, error);
+        console.log(`Error fetching files:`, error);
         // logError(error);
     }
 }
@@ -667,6 +705,15 @@ const tasks = [
         versi: '1'
     },
     { 
+        time: '14 12 * * *', 
+        message: 'Kirim Taksasi MRE  Jam 12:14', 
+        regions: ['Wilayah_4'], 
+        groupId: '120363217205685424@g.us',
+      
+        generate: 'MRE',
+        versi: '1'
+    },
+    { 
         time: '00 10 * * *', 
         message: 'Kirim Taksasi NNE  Jam 00:10', 
         regions: ['Wilayah_5'], 
@@ -745,7 +792,7 @@ tasks.forEach(task => {
                 console.log(`Group not found!`);
             }
         } catch (error) {
-            console.error('Error sending message:', error);
+            console.error('Error Cronjob Kirim taksasi Harian Nich:');
             // logError(error);
         }
        
@@ -760,7 +807,7 @@ tasks.forEach(task => {
                 await sendPdfToGroups(region, task.groupId); // Use task.groupId for all regions
             }
         } catch (error) {
-            console.error('Error processing task:', error);
+            console.error('Error Cronjob Kirim taksasi Harian Nich:');
             // logError(error);
         }
     }, {
@@ -782,7 +829,7 @@ cron.schedule('04 16 * * *', async () => {
             console.log(`Group not found!`);
         }
     } catch (error) {
-        console.error('Error sending message:', error);
+        console.error('Kirim Taksasi Wil 1 2 3 error say');
         // logError(error);
     }
  
@@ -798,8 +845,8 @@ cron.schedule('04 16 * * *', async () => {
         await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
         await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
     } catch (error) {
-        console.error('Error processing task:', error);
-        logError(error);
+        console.error('Kirim Taksasi Wil 1 2 3 error say');
+        // logError(error);
     }
 
 
@@ -1137,6 +1184,14 @@ async function statusAWS() {
 // Schedule the status check and message sending task every one hour
 cron.schedule('0 0 * * *', async () => {
     try {
+        const logFilePath = './bot-da-out.log'; // Main log file path
+        const errorLogFilePath = './bot-da-error.log'; // Error log file path
+
+        // Clear main log file
+        fs.writeFileSync(logFilePath, '');
+
+        // Clear error log file
+        fs.writeFileSync(errorLogFilePath, '');
         // console.log('Running message aws');
         await statusAWS(); // Call the function to check AWS status and send message
     } catch (error) {

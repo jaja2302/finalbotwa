@@ -30,96 +30,122 @@ client.on('auth_failure', msg => {
 
 async function sendMessagesBasedOnData() {
     try {
-        // Fetch data from the PHP endpoint
+         // Fetch data from the PHP endpoint
         // local 
         // const response = await axios.get('http://localhost:52914/data'); 
         // online 
         const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php'); 
         const numberData = response.data;
 
-        if (!numberData || !Array.isArray(numberData)) {
-            console.error('Invalid or empty data.');
+        if (!Array.isArray(numberData) || numberData.length === 0) {
+            console.log('Invalid or empty data.');
+            // console.error('Invalid or empty data.');
             return;
         }
 
-        // console.log(response);
+        let allDataSentAndDeleted = true; // Flag to track if all data is sent and deleted
 
         for (const data of numberData) {
             let formattedNumber = data.penerima;
-            // Adjust phone number format if it starts with '08'
-            if (formattedNumber.startsWith('08')) {
+            if (formattedNumber && formattedNumber.startsWith('08')) {
                 formattedNumber = `62${formattedNumber.slice(1)}`;
             }
-            
+
             const phoneNumber = `${formattedNumber}@c.us`;
 
-        
-            // Get current time in Indonesia's timezone
-            const currentTime = moment().tz('Asia/Jakarta');
-        
-            // Determine greeting based on time of day
-            let greeting;
-            const currentHour = currentTime.hours();
-            if (currentHour < 10) {
-                greeting = 'Selamat Pagi';
-            } else if (currentHour < 15) {
-                greeting = 'Selamat Siang';
-            } else if (currentHour < 19) {
-                greeting = 'Selamat Sore';
-            } else {
-                greeting = 'Selamat Malam';
-            }
-        
-            const chatContent = `Yth. Pelanggan Setia Lab CBI,
-            
-        \nSampel anda telah kami terima dg no surat *${data.no_surat}* progress saat ini *${data.progres}*.Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
-        \nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-        
-            const message = `${greeting}\n${chatContent}`;
-        
-            const idmsg = `${data.id}`; 
-        
-            const contact = await client.getContactById(phoneNumber);
-            if (contact) {
+            try {
+                const contact = await client.getContactById(phoneNumber);
+                if (!contact) {
+                    // console.log(`Contact not found for ${phoneNumber}. Deleting corresponding data...`);
+                    await deletemsg(data.id);
+                    continue;
+                }
+
+                const currentTime = moment().tz('Asia/Jakarta');
+                const currentHour = currentTime.hours();
+                let greeting;
+                if (currentHour < 10) {
+                    greeting = 'Selamat Pagi';
+                } else if (currentHour < 15) {
+                    greeting = 'Selamat Siang';
+                } else if (currentHour < 19) {
+                    greeting = 'Selamat Sore';
+                } else {
+                    greeting = 'Selamat Malam';
+                }
+
+                const chatContent = `Yth. Pelanggan Setia Lab CBI,
+                
+            \nSampel anda telah kami terima dg no surat *${data.no_surat}* progress saat ini *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*
+            \nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+
+                const message = `${greeting}\n${chatContent}`;
+
                 const chat = await contact.getChat();
                 if (chat) {
-                    await sendMessageWithDelay(chat, message, phoneNumber, idmsg);
+                    await sendMessageWithDelay(chat, message, phoneNumber, data.id);
                 } else {
                     console.log(`Chat not found for ${phoneNumber}`);
                 }
-            } else {
-                console.log(`Contact not found for ${phoneNumber}`);
+
+                // If any data is sent, set the flag to false
+                allDataSentAndDeleted = false;
+            } catch (error) {
+                // console.error('Error checking WhatsApp number:', error);
+                // console.log(`Contact not found for ${phoneNumber}. Deleting corresponding data...`);
+                await deleteData(data.id);
             }
         }
+
+        // If all data is sent and deleted, stop the program
+        if (allDataSentAndDeleted) {
+            console.log('All data sent and deleted. Stopping the program.');
+            return;
+        }
     } catch (error) {
-        console.error('Error fetching data or sending messages:', error);
+        // console.error('Error fetching data or sending messages:', error);
+    }
+}
+
+
+
+async function deleteData(id) {
+    try {
+        // await axios.post('http://localhost:52914/deletedata', { id });
+        await axios.post('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php', { id: idmsg });
+     
+        console.log(`Data with ID '${id}' deleted successfully.`);
+    } catch (error) {
+        console.log(`Error deleting data with ID '${id}':`, error);
     }
 }
 
 async function sendMessageWithDelay(chat, message, phoneNumber, idmsg) {
-    await new Promise((resolve) => {
-        setTimeout(async () => {
-            await chat.sendMessage(message);
-            console.log(`Message "${message}" sent to ${phoneNumber}`);
-
-            // After sending the message, proceed to delete the message ID
-            // await deletemsg(idmsg);
-            resolve();
-        }, 10000); // 10 seconds delay
-    });
+    try {
+        await new Promise((resolve) => {
+            setTimeout(async () => {
+                await chat.sendMessage(message);
+                console.log(`Message "${message}" sent to ${phoneNumber}`);
+                await deletemsg(idmsg);
+                resolve();
+            }, 10000);
+        });
+    } catch (error) {
+        console.log('Error sending message with delay:', error);
+    }
 }
 
 async function deletemsg(idmsg) {
     try {
         // await axios.post('http://localhost:52914/deletedata', { id: idmsg });
-
-        // online 
         await axios.post('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php', { id: idmsg });
+     
         console.log(`Message ID '${idmsg}' deleted successfully.`);
     } catch (error) {
-        console.error(`Error deleting message ID '${idmsg}':`, error);
+        console.log(`Error deleting message ID '${idmsg}':`, error);
     }
 }
+
 
 
 client.on('ready', async () => { 
@@ -136,7 +162,7 @@ client.on('message', async msg => {
             // await client.sendMessage(msg.from, 'Text Sending');
         } catch (error) {
             // Handle errors, such as file not found or other issues
-            console.error('Error clearing log files:', error);
+            console.log('Error clearing log files:', error);
             await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
         }
     } 
@@ -147,7 +173,7 @@ client.on('message', async msg => {
             await client.sendMessage(msg.from, 'Hali Juga');
         } catch (error) {
             // Handle errors, such as file not found or other issues
-            console.error('Error clearing log files:', error);
+            console.log('Error clearing log files:', error);
             await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
         }
     } 
