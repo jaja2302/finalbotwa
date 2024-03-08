@@ -25,7 +25,7 @@ const server = app.listen(0, () => {
 const client = new Client({
     puppeteer: {
         headless: 'new',
-        executablePath: './chrome-win/chrome.exe',
+        executablePath: '../chrome-win/chrome.exe',
         browserArgs: [
             '--disable-web-security',
             '--no-sandbox',
@@ -200,6 +200,8 @@ async function deletemsg(idmsg) {
         console.log(`Error deleting message ID '${idmsg}':`, error);
     }
 }
+
+
 
 
 

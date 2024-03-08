@@ -7,7 +7,7 @@ async function generateWithPuppeteer(url, maxRetries = 3) {
     let contentNotFoundCount = 0;
 
     const browser = await puppeteer.launch({
-      executablePath: './chrome-win/chrome.exe',
+      executablePath: '../chrome-win/chrome.exe',
       headless: 'new',
     });
 
@@ -59,7 +59,7 @@ async function generatetpdf(url, attempts = 0) {
   }
 
   const browser = await puppeteer.launch({
-    executablePath: './chrome-win/chrome.exe',
+    executablePath: '../chrome-win/chrome.exe',
     headless: 'new',
   });
 
