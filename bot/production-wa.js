@@ -5,7 +5,6 @@ const app = express();
 const fs = require('fs');
 const cron = require('node-cron');
 const axios = require('axios');
-const schedule = require('node-schedule');
 const moment = require('moment-timezone');
 
 // const generatemaps = require('./openBrowser.js');
@@ -90,7 +89,7 @@ async function sendMessagesBasedOnData() {
         const numberData = response.data;
 
         if (!Array.isArray(numberData) || numberData.length === 0) {
-            console.log('Invalid or empty data.');
+            // console.log('Invalid or empty data.');
             // console.error('Invalid or empty data.');
             return;
         }
@@ -202,13 +201,27 @@ async function deletemsg(idmsg) {
 }
 
 
-
+// bot aws 
+async function sendmsgAws(message, groupid) {
+    // Assuming 'client' is your WhatsApp client instance
+    const groupChat = groupid; // Use the provided groupid
+    const group = await client.getChatById(groupChat);
+    await group.sendMessage(message);
+}
 
 
 // Call the function when the client is ready
 
-cron.schedule('*/1 * * * *', async () => {
+cron.schedule('*/5 * * * *', async () => {
     // console.log('Running message sending task...');
+    const logFilePath = './bot-da-out.log'; // Main log file path
+    const errorLogFilePath = './bot-da-error.log'; // Error log file path
+
+    // Clear main log file
+    fs.writeFileSync(logFilePath, '');
+
+    // Clear error log file
+    fs.writeFileSync(errorLogFilePath, '');
     await sendMessagesBasedOnData();
 }, {
     scheduled: true,
@@ -383,11 +396,14 @@ async function sendtaksasiest(est, groupID) {
             folder = 'Inti';
             break;
             case 'LME1':
+            case 'LME2':
             folder = 'Plasma';
                 break;
             default:
                 // Handle cases where est doesn't match any defined folders
                 console.log('Invalid est value provided.');
+                await sendmsgAws(`Tidak ada ${est} ini di database`, '120363205553012899@g.us');
+
                 return;
         }
 
@@ -395,10 +411,12 @@ async function sendtaksasiest(est, groupID) {
         // await Generatedmapsest(est);
         await checkAndDeleteFiles(); 
      
-        await Generatedmapsest(est)
+        // await Generatedmapsest(est)
         await GenDefaultTaksasi(est)
+        await sendmsgAws(`Generate pdf untuk ${est} sukses`, '120363205553012899@g.us');
 
-        console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
+        // await client.sendMessage(`Generate pdf untuk ${est} sukses`);
+        // console.log(`Files generated successfully for '${est}' in folder '${folder}'.`);
 
         // testing 
         if (folder === 'Wilayah_1') {
@@ -461,10 +479,15 @@ async function sendtaksasiest(est, groupID) {
             }
            
         }else if (folder === 'Plasma') {
-            await sendPdfToGroups(folder, '120363208984887370@g.us');
+            if (est === 'LME1') {
+                await sendPdfToGroups(folder, '120363208984887370@g.us');
+            } else if (est === 'LME2'){
+                await sendPdfToGroups(folder, '120363193243380343@g.us');
+            }
         }
-
-
+        // await sendMessage(`kirim pdf untuk ${est} sukses`);
+ 
+        await sendmsgAws(`kirim pdf untuk ${est} sukses`, '120363205553012899@g.us');
 
     } catch (error) {
         console.log(`Error fetching files:`, error);
@@ -504,15 +527,22 @@ async function sendperwil(wilayah, groupID) {
             default:
                 // Handle cases where est doesn't match any defined folders
                 console.log('Invalid est value provided.');
+                await sendmsgAws(`Data anda masukan Salah`, '120363205553012899@g.us');
+
+
                 return;
         }
 
         // Perform operations sequentially
         await Generatedmaps(); 
+        await sendmsgAws(`Generate maps sukses`, '120363205553012899@g.us');
+
+
         await checkAndDeleteFiles(); 
 
         // Generate maps
         await GenerateTaksasi();
+        await sendmsgAws(`Generate PDF sukses`, '120363205553012899@g.us');
 
         // Send PDFs based on folder
         if (folder === 'Wilayah_1') {
@@ -524,12 +554,15 @@ async function sendperwil(wilayah, groupID) {
         } else if (folder === 'Wilayah_9') {
             await sendPdfToGroups(folder, '120363205553012899@g.us');
         }
+        await sendmsgAws(`Pdf dikirim ke grup sukses`, '120363205553012899@g.us');
 
         // Check and delete files again
         // await checkAndDeleteFiles();
     } catch (error) {
         console.error(`Error fetching files:`, error);
         // logError(error);
+        await sendmsgAws(`Pdf dikirim ke grup gagal`, '120363205553012899@g.us');
+
     }
 }
 
@@ -569,12 +602,12 @@ const generateAndSendMessage = async (time) => {
 const cronTimes = ['13:57','14:57','11:57','10:57','08:57','16:57','15:57'];
 
 // Create cron jobs dynamically using a loop
-cronTimes.forEach(time => {
-    const [hours, minutes] = time.split(':');
-    const job = schedule.scheduleJob(`${minutes} ${hours} * * *`, async () => {
-        await generateAndSendMessage(time);
-    });
-});
+// cronTimes.forEach(time => {
+//     const [hours, minutes] = time.split(':');
+//     const job = schedule.scheduleJob(`${minutes} ${hours} * * *`, async () => {
+//         await generateAndSendMessage(time);
+//     });
+// });
 
 
 
@@ -698,6 +731,15 @@ const tasks = [
         versi: '1'
     },
     { 
+        time: '16 12 * * *', 
+        message: 'Kirim Taksasi LME2  Jam 12:16', 
+        regions: ['Plasma'], 
+        groupId: '120363193243380343@g.us',
+      
+        generate: 'LME2',
+        versi: '1'
+    },
+    { 
         time: '00 10 * * *', 
         message: 'Kirim Taksasi NNE  Jam 00:10', 
         regions: ['Wilayah_5'], 
@@ -753,18 +795,7 @@ const tasks = [
         generate: 'TBE',
         versi: '2'
     },  
-    // { 
-    //     time: '15 09 * * *', 
-    //     message: 'Testing bot', 
-    //     regions: ['Wilayah_7'], 
-    //     groupId: '120363205553012899@g.us',
-    //     // testgrup
-    //     // groupId: '120363205553012899@g.us',
-    //     generate: 'BDE',
-    //     versi: '2'
-    // },    
-];
-tasks.forEach(task => {
+];tasks.forEach(task => {
     cron.schedule(task.time, async () => {
         console.log(`Sending files at ${task.time} (WIB)...`);
         try {
@@ -776,23 +807,28 @@ tasks.forEach(task => {
                 console.log(`Group not found!`);
             }
         } catch (error) {
-            console.error('Error Cronjob Kirim taksasi Harian Nich:');
+            console.error('Error sending message in cronjob:', error);
             // logError(error);
         }
        
         try {
-            // await Generatedmaps();
-        
             await checkAndDeleteFiles(); 
             await Generatedmapsest(task.generate);
+        
+            await sendmsgAws(`Generate maps untuk ${task.generate} sukses`, '120363205553012899@g.us');
+
             await GenDefaultTaksasi(task.generate);
-          
+            await sendmsgAws(`Generate PDF untuk ${task.generate} sukses`, '120363205553012899@g.us');
+
             for (const region of task.regions) {
                 await sendPdfToGroups(region, task.groupId); // Use task.groupId for all regions
             }
+            await sendmsgAws(`Laporan Harian Estate ${task.generate} berhasil dikirim ke group`, '120363205553012899@g.us');
+
         } catch (error) {
-            console.error('Error Cronjob Kirim taksasi Harian Nich:');
-            // logError(error);
+            console.error('Error performing task in cronjob:', error);
+            await sendmsgAws(`Laporan Harian Estate ${task.generate} Gagal dikirim ke group`, '120363205553012899@g.us');
+
         }
     }, {
         scheduled: true,
@@ -801,11 +837,11 @@ tasks.forEach(task => {
 });
 
 
-
 cron.schedule('04 16 * * *', async () => {
     console.log('Sending files to groups wil 1 2 3 at 16:05 (WIB)...');
+    let groupChat;
     try {
-        const groupChat = await client.getChatById('120363205553012899@g.us');
+        groupChat = await client.getChatById('120363205553012899@g.us');
         if (groupChat) {
             await groupChat.sendMessage('Kirim Taksasi Wil 1 ,2,3 Jam 16:02');
             console.log(`Message sent to the group successfully!`);
@@ -819,33 +855,31 @@ cron.schedule('04 16 * * *', async () => {
  
     try {
         await checkAndDeleteFiles(); // Ensure files are checked and deleted first
-    
         // Wait for 10 seconds after checkAndDeleteFiles
+        await Generatedmaps();
         await GenerateTaksasi();
-        // await GenerateTakestEST('NBE');
-    
-
+      
         await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
+    
         await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
+    
         await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
+     
+
     } catch (error) {
         console.error('Kirim Taksasi Wil 1 2 3 error say');
         // logError(error);
+     
     }
-
-
-    // await sendPdfToGroups('Wilayah_1', '120363025737216061@g.us');
-    // await sendPdfToGroups('Wilayah_2', '120363047670143778@g.us');
-    // await sendPdfToGroups('Wilayah_3', '120363048442215265@g.us');
 }, {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 });
 
+
 let listeningForEstateInput = false;
 let listengtaksasi = false;
 let listen2 = false;
-let listen3 = false;
 let listen4 = false;
 let listen5 = false;
 let listen6 = false;
@@ -897,15 +931,18 @@ client.on('message', async msg => {
     
                     clearTimeout(inputTimeout); // Clear the timeout as input is received
     
-                    msg.reply('Mohon Tunggu Maps sedang di proses...');
-                    await Generatedmaps().then(() => {
-                        msg.reply('Mohon Tunggu Maps sedang di proses...');
+                    // msg.reply('Mohon Tunggu Maps sedang di proses...');
+                    await Generatedmapsest(estate).then(() => {
+                        // msg.reply('Mohon Tunggu Maps sedang di proses...');
                         setTimeout(() => {
                             sendtaksasiest(estate, chat.id);
+                            // console.error('Estate ' + estate + ' Pdf Berhasil Di kirim');
+                            // msg.reply('Estate ' + estate + ' Pdf Berhasil Di kirim ke group');
                             listeningForEstateInput = false;
                             client.removeListener('message', listener);
                         }, 10000);
                     });
+
                 }
             };
     
@@ -1074,9 +1111,6 @@ client.on('message', async msg => {
             await client.sendMessage(msg.from, 'Error clearing log files. Please try again later.');
         }
     }
-
-    
-    
 });
    
 
@@ -1116,13 +1150,7 @@ function logError(error) {
 
 
 
-// bot aws 
-async function sendmsgAws(message, groupid) {
-    // Assuming 'client' is your WhatsApp client instance
-    const groupChat = groupid; // Use the provided groupid
-    const group = await client.getChatById(groupChat);
-    await group.sendMessage(message);
-}
+
 
 // Function to check AWS status and send a message to the WhatsApp group if conditions met
 
@@ -1168,14 +1196,7 @@ async function statusAWS() {
 // Schedule the status check and message sending task every one hour
 cron.schedule('0 0 * * *', async () => {
     try {
-        const logFilePath = './bot-da-out.log'; // Main log file path
-        const errorLogFilePath = './bot-da-error.log'; // Error log file path
-
-        // Clear main log file
-        fs.writeFileSync(logFilePath, '');
-
-        // Clear error log file
-        fs.writeFileSync(errorLogFilePath, '');
+      
         // console.log('Running message aws');
         await statusAWS(); // Call the function to check AWS status and send message
     } catch (error) {
