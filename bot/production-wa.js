@@ -1090,7 +1090,7 @@ client.on('message', async msg => {
 
     else if (msg.body === '!generatemaps' && !listen5) {
         try {
-            await Generatedmaps()
+            await Generatedmapsest('NBE')
             // Respond to confirm clearing both log files
             await client.sendMessage(msg.from, 'Generate succes');
         } catch (error) {
@@ -1194,18 +1194,18 @@ async function statusAWS() {
 
 
 // Schedule the status check and message sending task every one hour
-cron.schedule('0 0 * * *', async () => {
-    try {
+// cron.schedule('0 0 * * *', async () => {
+//     try {
       
-        // console.log('Running message aws');
-        await statusAWS(); // Call the function to check AWS status and send message
-    } catch (error) {
-        console.error('Error in cron job:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+//         // console.log('Running message aws');
+//         await statusAWS(); // Call the function to check AWS status and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
 
 function readLatestId() {
@@ -1268,17 +1268,17 @@ async function statusHistory() {
 
 
 // Schedule the cron job setipa 10 menit
-cron.schedule('*/10 * * * *', async () => {
-    try {
-        // console.log('Running message history');
-        await statusHistory(); // Call the function to check history and send message
-    } catch (error) {
-        console.error('Error in cron job:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+// cron.schedule('*/10 * * * *', async () => {
+//     try {
+//         // console.log('Running message history');
+//         await statusHistory(); // Call the function to check history and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
 
 

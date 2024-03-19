@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const axios = require('axios');
 async function generateWithPuppeteer(url, maxRetries = 3) {
   let attempt = 1;
 
@@ -99,11 +100,45 @@ async function Generatedmaps() {
   await generateWithPuppeteer('https://srs-ssms.com/rekap_pdf/check_taksasi_get.php');
   // console.error(`Taksasi generated Maps successfully`);
 }
-async function Generatedmapsest(est) {
- 
-  const url = `https://srs-ssms.com/rekap_pdf/check_taksasi_get.php?est=${est.toLowerCase()}`;
-  await generateWithPuppeteer(url);
-  // console.error(`Taksasi generated successfully for taksasi '${est}'`);
+
+async function Generatedmapsest(estate, datetime) {
+  const maxRetries = 5;
+  let retryCount = 0;
+  let currentDate = new Date();
+  let year = currentDate.getFullYear();
+  let month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to the month because months are zero-based
+  let day = String(currentDate.getDate()).padStart(2, '0');
+  
+  let newDatetime = `${year}-${month}-${day}`;
+  // console.log(newDatetime);
+  while (retryCount < maxRetries) {
+      try {
+          const formData = new URLSearchParams();
+          formData.append('estate', estate);
+          formData.append('datetime', newDatetime);
+
+          const response = await axios.post('https://digi-kappa-lac.vercel.app/api/run', formData, {
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded' // Set the proper content type for form data
+              }
+          });
+
+          console.log('Response data:', response.data); // Access the response data
+          // await sock.sendMessage(idgroup, { text: `Map ${estate} berhasil di generate` });
+          return response.data;
+      } catch (error) {
+          console.error('error generate maps nya ');
+          // await sock.sendMessage(idgroup, { text: `Map ${estate} gagal di generate ${error.status}`});
+          retryCount++;
+          if (retryCount === maxRetries) {
+              // await sock.sendMessage(idgroup, { text: `Terjadi kesalahan menarik ${estate} yang gagal di generate`});
+              throw error;
+          } else {
+              console.log(`Retrying (${retryCount}/${maxRetries})...`);
+              // await sock.sendMessage(idgroup, { text: `Menarik ulang Map ${estate} yang gagal di generate`});
+          }
+      }
+  }
 }
 
 async function GenerateTakestEST(est) {
