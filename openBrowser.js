@@ -60,7 +60,7 @@ async function generatetpdf(url, attempts = 0) {
   }
 
   const browser = await puppeteer.launch({
-    executablePath: '../chrome-win/chrome.exe',
+    executablePath: './chrome-win/chrome.exe',
     headless: 'new',
   });
 
@@ -101,21 +101,15 @@ async function Generatedmaps() {
   // console.error(`Taksasi generated Maps successfully`);
 }
 
+  
 async function Generatedmapsest(estate, datetime) {
   const maxRetries = 5;
   let retryCount = 0;
-  let currentDate = new Date();
-  let year = currentDate.getFullYear();
-  let month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to the month because months are zero-based
-  let day = String(currentDate.getDate()).padStart(2, '0');
-  
-  let newDatetime = `${year}-${month}-${day}`;
-  // console.log(newDatetime);
   while (retryCount < maxRetries) {
       try {
           const formData = new URLSearchParams();
           formData.append('estate', estate);
-          formData.append('datetime', newDatetime);
+          formData.append('datetime', datetime);
 
           const response = await axios.post('https://digi-kappa-lac.vercel.app/api/run', formData, {
               headers: {
@@ -127,7 +121,7 @@ async function Generatedmapsest(estate, datetime) {
           // await sock.sendMessage(idgroup, { text: `Map ${estate} berhasil di generate` });
           return response.data;
       } catch (error) {
-          console.error('error generate maps nya ');
+          console.log('Error fetching data:', error);
           // await sock.sendMessage(idgroup, { text: `Map ${estate} gagal di generate ${error.status}`});
           retryCount++;
           if (retryCount === maxRetries) {
@@ -148,12 +142,29 @@ async function GenerateTakestEST(est) {
 }
 
 async function GenDefaultTaksasi(est) {
-  const url = `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`;
-  await generatetpdf(url);
-  // console.error(`Taksasi generated successfully for taksasi '${est}'`);
+  let attempts = 0;
+  const maxAttempts = 5;
+  const retryDelay = 3000; // 3 seconds in milliseconds
+
+  while (attempts < maxAttempts) {
+      try {
+          const response = await axios.get(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`);
+          // await sock.sendMessage(idgroup, { text: `Pdf berhasil di generate ${est}` })
+          return response;
+      } catch (error) {
+          console.error('Error fetching data:', error);
+          attempts++;
+          if (attempts < maxAttempts) {
+              console.log(`Retrying attempt ${attempts} for ${est}`);
+              // await sock.sendMessage(idgroup, { text: `Mengulang Generate PDF ${est}` })
+              await new Promise(resolve => setTimeout(resolve, retryDelay));
+          } else {
+            console.log(`Retrying attempt ${attempts} for ${est}`);
+              throw error;
+          }
+      }
+  }
 }
-
-
 async function GenerateTaksasi() {
  
   await generatetpdf('https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php');
@@ -165,7 +176,7 @@ async function GetYoutubeurl() {
   try {
     const browser = await puppeteer.launch({
       headless:true,
-      executablePath: './chrome-win/chrome.exe',
+      executablePath: '../chrome-win/chrome.exe',
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
